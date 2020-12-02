@@ -7,24 +7,23 @@ import './Home.scss'
 import Header from '../Header/Header'
 
 import { ReactComponent as User } from '../../images/user.svg'
-import { ReactComponent as Star } from '../../images/star.svg'
+import { ReactComponent as Performance } from '../../images/performance.svg'
 import { ReactComponent as Nurse } from '../../images/nurse.svg'
 import { ReactComponent as House } from '../../images/house.svg'
-import { ReactComponent as Clients } from '../../images/clients.svg'
-import { ReactComponent as Messages } from '../../images/messages.svg'
+import { ReactComponent as Pupils } from '../../images/pupils.svg'
+import { ReactComponent as Payments } from '../../images/payments.svg'
 import { ReactComponent as Broadcast } from '../../images/broadcast.svg'
-import { ReactComponent as Employees } from '../../images/employees.svg'
-import { ReactComponent as Appointment } from '../../images/appointment.svg'
+import { ReactComponent as Teachers } from '../../images/teachers.svg'
+import { ReactComponent as Lesson } from '../../images/lessons.svg'
 
 const TITLE = 'Домашняя'
 
 const SECTIONS = [
-    { title: 'Приёмы', href: '/appointments', Icon: Appointment },
-    { title: 'События', href: '/events', Icon: Star  },
-    { title: 'Оповещения', href: '/notifications', Icon: Broadcast },
-    { title: 'Сообщения', href: '/messages', Icon: Messages },
-    { title: 'Клиенты', href: '/clients', Icon: Clients },
-    { title: 'Сотрудники', href: '/employees', Icon: Employees }
+    { title: 'Уроки', href: '/lessons', Icon: Lesson },
+    { title: 'Успеваемость', href: '/performance', Icon: Performance  },
+    { title: 'Оплаты', href: '/payments', Icon: Payments },
+    { title: 'Ученики', href: '/pupils', Icon: Pupils },
+    { title:' Преподаватели', href: '/teachers', Icon: Teachers }
 ]
 
 export default class Home extends Component {

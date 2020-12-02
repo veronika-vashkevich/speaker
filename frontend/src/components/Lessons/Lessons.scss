@@ -1,0 +1,28 @@
+.Lessons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Lessons-HeaderBody {
+  max-width: 1300px;
+}
+
+.Lessons-Body {
+  flex: 1;
+  max-width: 1300px;
+  min-width: 700px;
+}
+
+.Lessons-Filter {
+  margin-top: 40px;
+}
+
+.Lessons-FilterForm {
+  display: flex;
+  justify-content: row;
+}
+
+.Lessons-FilterField {
+  margin-left: 12px;
+}
