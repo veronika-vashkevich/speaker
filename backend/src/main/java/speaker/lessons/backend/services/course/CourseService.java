@@ -5,9 +5,13 @@ import org.springframework.stereotype.Service;
 import speaker.lessons.backend.controllers.exceptions.course.CourseException;
 import speaker.lessons.backend.models.Course;
 import speaker.lessons.backend.models.Enrollment;
+import speaker.lessons.backend.models.Pupil;
+import speaker.lessons.backend.models.Teacher;
 import speaker.lessons.backend.models.authorization.User;
 import speaker.lessons.backend.repositories.CourseRepository;
 import speaker.lessons.backend.repositories.EnrollmentRepository;
+import speaker.lessons.backend.repositories.PupilRepository;
+import speaker.lessons.backend.repositories.TeacherRepository;
 import speaker.lessons.backend.repositories.UserRepository;
 import speaker.lessons.backend.services.security.ISecurityService;
 
@@ -19,15 +23,24 @@ public class CourseService implements ICourseService {
 
     private final CourseRepository courseRepository;
     private final UserRepository userRepository;
+    private final PupilRepository pupilRepository;
+    private final TeacherRepository teacherRepository;
     private final ISecurityService securityService;
     private final EnrollmentRepository enrollmentRepository;
 
     @Autowired
-    public CourseService(CourseRepository courseRepository, UserRepository userRepository, ISecurityService securityService, EnrollmentRepository enrollmentRepository) {
+    public CourseService(CourseRepository courseRepository, 
+                         UserRepository userRepository, 
+                         ISecurityService securityService, 
+                         EnrollmentRepository enrollmentRepository, 
+                         TeacherRepository teacherRepository,
+                         PupilRepository pupilRepository) {
         this.courseRepository = courseRepository;
         this.userRepository = userRepository;
         this.securityService = securityService;
         this.enrollmentRepository = enrollmentRepository;
+        this.teacherRepository = teacherRepository;
+        this.pupilRepository = pupilRepository;
     }
 
     public Collection<Course> getAllCourses() {
@@ -42,14 +55,14 @@ public class CourseService implements ICourseService {
     @Override
     @Transactional
     public Course addCourse(Course course) throws CourseException {
-        int ownerId = securityService.getCurrentUser()
+        int teacherId = securityService.getCurrentUser()
                 .orElseThrow(() -> new CourseException("Trying to get current user returned Optional.empty()."))
                 .getId();
 
-        User owner = userRepository.findById(ownerId)
-                .orElseThrow(() -> new CourseException(String.format("Failed to find user with id=%d.", ownerId)));
+        Teacher teacher = teacherRepository.findById(teacherId)
+                .orElseThrow(() -> new CourseException(String.format("Failed to find user with id=%d.", teacherId)));
 
-        course.setOwner(owner);
+        course.setTeacher(teacher);
         return courseRepository.save(course);
     }
 
@@ -67,12 +80,12 @@ public class CourseService implements ICourseService {
     @Override
     @Transactional
     public Course updateCourse(Course course) {
-        User owner = courseRepository
+        Teacher teacher = courseRepository
                 .findById(course.getId())
                 .orElseThrow(() -> new CourseException("Course cannot be not found."))
-                .getOwner();
+                .getTeacher();
 
-        course.setOwner(owner);
+        course.setTeacher(teacher);
         return courseRepository.save(course);
     }
 
@@ -89,10 +102,10 @@ public class CourseService implements ICourseService {
                 .orElseThrow(() -> new CourseException("Trying to get current user returned Optional.empty()."))
                 .getId();
 
-        User user = userRepository.findById(userId)
+        Pupil pupil = pupilRepository.findById(userId)
                 .orElseThrow(() -> new CourseException(String.format("Failed to find user with id=%d.", userId)));
 
-        if (course.getOwner().getId() == userId) {
+        if (course.getTeacher().getId() == userId) {
             throw new CourseException("You are the owner of the course!" +
                     " You cannot enlist to your own course! Who would teach it? :P");
         }
@@ -101,7 +114,7 @@ public class CourseService implements ICourseService {
             throw new CourseException(String.format("User already enrolled in course with id=%d.", userId));
         }
 
-        this.enrollmentRepository.save(new Enrollment(course, user));
+        this.enrollmentRepository.save(new Enrollment(course, pupil));
 
         return course;
     }

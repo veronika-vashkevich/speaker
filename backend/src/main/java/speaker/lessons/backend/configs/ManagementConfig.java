@@ -13,11 +13,11 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
  */
 @Configuration
 @ComponentScan(basePackages = {
-        "ubb.courses.backend.controllers", "ubb.courses.backend.services",
-        "ubb.courses.backend.configs", "ubb.courses.backend.dtos", "ubb.courses.backend.security"
+        "speaker.lessons.backend.controllers", "speaker.lessons.backend.services",
+        "speaker.lessons.backend.configs", "speaker.lessons.backend.dtos", "speaker.lessons.backend.security"
 })
-@EntityScan(basePackages = {"ubb.courses.backend.models"})
-@EnableJpaRepositories(basePackages = {"ubb.courses.backend.repositories"})
+@EntityScan(basePackages = {"speaker.lessons.backend.models"})
+@EnableJpaRepositories(basePackages = {"speaker.lessons.backend.repositories"})
 @EnableTransactionManagement
 public class ManagementConfig {
     @Bean

@@ -1,4 +1,4 @@
-package speaker.lessons.backend;
+package speaker.lessons.backend.models;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

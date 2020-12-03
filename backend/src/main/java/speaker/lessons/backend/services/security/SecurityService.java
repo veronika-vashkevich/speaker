@@ -87,9 +87,9 @@ public class SecurityService implements ISecurityService {
         Set<Course> courses = user.getCourses();
 
         logger.info(
-                "isCourseOwner: {}'s set of courses is {}.",
+                "isCourseTeacher: {}'s set of courses is {}.",
                 user.getName(),
-                courses.stream().map(BaseEntity::getId).collect(Collectors.toList())
+                courses.stream().map(course -> course.getId()).collect(Collectors.toList())
         );
 
         return courses.stream().anyMatch(c -> c.getId() == courseId);

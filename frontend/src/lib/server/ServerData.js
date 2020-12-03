@@ -1,3 +1,6 @@
+import { filter } from 'underscore'
+
+const USER = 'Иванов Иван Иванович'
 
 export const lessons = [
     {
@@ -121,3 +124,20 @@ export const lessons = [
         paid:'yes'
     }
 ]
+
+
+export function getLessons (params) {
+    const {
+        startDate,
+        endDate,
+        clientName,
+        onlyMe,
+    } = params
+
+    return filter(lessons, o => {
+        return (startDate ? o.date >= startDate : true) &&
+            (endDate ? o.date <= endDate : true) &&
+            (clientName ? (clientName.length > 2 ? o.clientName.includes(clientName) : true) : true) &&
+            (onlyMe ? o.holderName === USER : true)
+    })
+}
