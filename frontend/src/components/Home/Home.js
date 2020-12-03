@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import { map } from 'underscore'
+import { Link } from "react-router-dom"
 
 import './Home.scss'
 
@@ -42,10 +43,12 @@ export default class Home extends Component {
                 <div className='Home-Body'>
                     <div className='SectionNavigation'>
                         {map(SECTIONS, ({ title, href, Icon }) => (
-                            <a className='SectionNavigation-Item Section' href='#'>
+                            // с помощью компонента Link будет осуществляться
+                            // навигация по разделам приложения
+                            <Link className='SectionNavigation-Item Section' to={href}>
                                 <Icon className='Section-Icon'/>
                                 <span className='Section-Title'>{title}</span>
-                            </a>
+                            </Link>
                         ))}
                     </div>
                 </div>

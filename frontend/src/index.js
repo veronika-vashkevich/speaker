@@ -1,10 +1,19 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 
-//сначала подключем общие стили
+import { Router } from "react-router-dom"
+import {createBrowserHistory} from 'history'
+
 import './index.scss'
 
-//затем компоненты
 import App from './App'
 
-ReactDOM.render(<App />, document.getElementById('root'));
+// создаём кастомную историю
+const history = createBrowserHistory()
+
+ReactDOM.render((
+        <Router history={history}>
+            <App/>
+        </Router>
+    ), document.getElementById('root')
+);

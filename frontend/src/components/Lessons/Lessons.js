@@ -17,7 +17,6 @@ import { ReactComponent as Lesson } from '../../images/lessons.svg'
 import { lessons as data } from '../../lib/MockData'
 
 const TITLE = 'Уроки'
-
 const USER = 'Иванов Иван Иванович'
 
 export default class Lessons extends Component {
@@ -136,7 +135,7 @@ export default class Lessons extends Component {
                                 }
                             },
                             {
-                                dataField: 'teacher',
+                                dataField: 'teacherName',
                                 text: 'Преподаватель',
                                 headerStyle: {
                                     width: '300px'
@@ -157,14 +156,14 @@ export default class Lessons extends Component {
                                 }
                             },
                             {
-                                dataField: 'lessonMark',
+                                    dataField: 'lessonMark',
                                 text: 'Оценка за урок',
                                 headerStyle: {
                                     width: '300px'
                                 }
                             },
                             {
-                                dataField: 'notes',
+                                    dataField: 'notes',
                                 text: 'Примечания',
                                 headerStyle: {
                                     width: '300px'
