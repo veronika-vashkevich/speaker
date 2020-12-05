@@ -7,7 +7,6 @@ import './Home.scss'
 
 import Header from '../Header/Header'
 
-import { ReactComponent as User } from '../../images/user.svg'
 import { ReactComponent as Performance } from '../../images/performance.svg'
 import { ReactComponent as House } from '../../images/house.svg'
 import { ReactComponent as Pupils } from '../../images/pupils.svg'

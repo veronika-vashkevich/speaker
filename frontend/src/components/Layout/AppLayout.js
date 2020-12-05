@@ -1,8 +1,12 @@
 //loads when we specify the APP Route
 import React, {Component} from 'react'
 import auth from "../Auth/Auth"
+import { Provider } from 'react-redux';
+
 
 export default class AppLayout extends Component {
+    
+    
     render() {
         return(
             <div>
