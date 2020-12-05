@@ -16,14 +16,14 @@ public class CourseConverter implements IDTOConverter<CourseDTO, Course> {
         courseDto.setId(entity.getId());
         courseDto.setName(entity.getName());
         courseDto.setDescription(entity.getDescription());
-        PersonDTO ownerDTO = new PersonDTO(entity.getTeacher().getId(), entity.getTeacher().getFirstName(), entity.getTeacher().getEmail());
-        courseDto.setStudents(entity.getPupils()
+        PersonDTO ownerDTO = new PersonDTO(entity.getOwner().getId(), entity.getOwner().getName(), entity.getOwner().getEmail());
+        courseDto.setStudents(entity.getStudents()
                 .stream()
                 .map(enrollment ->
                         new PersonDTO(
-                                enrollment.getPupil().getId(),
-                                enrollment.getPupil().getFirstName(),
-                                enrollment.getPupil().getEmail()))
+                                enrollment.getUser().getId(),
+                                enrollment.getUser().getName(),
+                                enrollment.getUser().getEmail()))
                 .collect(Collectors.toSet()));
         courseDto.setOwner(ownerDTO);
         courseDto.setLessons(entity.getLessons()

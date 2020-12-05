@@ -21,12 +21,12 @@ import javax.validation.constraints.NotNull;
 public class Enrollment extends BaseEntity {
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "course")
+    @JoinColumn(name = "course_id")
     @NotNull
     private Course course;
 
     @ManyToOne(cascade = CascadeType.DETACH)
-    @JoinColumn(name = "pupil")
+    @JoinColumn(name = "user_id")
     @NotNull
-    private Pupil pupil;
+    private User user;
 }

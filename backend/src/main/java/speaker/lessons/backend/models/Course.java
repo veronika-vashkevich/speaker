@@ -1,17 +1,34 @@
 package speaker.lessons.backend.models;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
-import speaker.lessons.backend.models.lesson.Lesson;
 import speaker.lessons.backend.models.authorization.User;
-import speaker.lessons.backend.models.generic.BaseEntity;
+import speaker.lessons.backend.models.lesson.Lesson;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OrderBy;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Builder
 @Entity
@@ -37,20 +54,26 @@ public class Course {
     @NotNull
     private String description;
 
-    @Column(name = "createdDate", nullable = false, updatable = false)
+    @Column(name = "created_date", nullable = false, updatable = false)
     @CreatedDate
     private Date createdDate;
 
-    @Column(name = "modifiedDate")
+    @Column(name = "modified_date")
     @LastModifiedDate
     private Date modifiedDate;
+    
+    @Column(name = "number_of_lessons", nullable = false)
+    private String numberOfLessons;
+
+    @Column(name = "lessons_per_week", nullable = false)
+    private String lessonsPerWeek;
+
+    @OneToMany(mappedBy = "course")
+    private Set<Enrollment> students = new HashSet<>();
 
     @ManyToOne
-    @JoinColumn(name = "teacher", nullable = false)
-    private Teacher teacher;
-
-    @OneToMany(mappedBy = "pupil")
-    private Set<Enrollment> pupils = new HashSet<>();
+    @JoinColumn(name = "user_id", nullable = false)
+    private User owner;
 
     @OneToMany(mappedBy = "course")
     @OrderBy("orderIndex asc")

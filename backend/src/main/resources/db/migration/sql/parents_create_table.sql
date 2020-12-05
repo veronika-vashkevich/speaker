@@ -5,6 +5,5 @@ CREATE TABLE `speaker`.`parents` (
   `lastName` VARCHAR(45) NULL,
   `phone` VARCHAR(45) NULL,
   `email` VARCHAR(45) NOT NULL,
-  `pupil` INT NULL,
   PRIMARY KEY (`id`));
 

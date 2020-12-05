@@ -1,12 +1,24 @@
 package speaker.lessons.backend.models.lesson;
 
-import lombok.*;
-import org.springframework.format.annotation.DateTimeFormat;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 import speaker.lessons.backend.models.Course;
-import speaker.lessons.backend.models.Teacher;
-import speaker.lessons.backend.models.generic.BaseEntity;
+import speaker.lessons.backend.models.authorization.User;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.sql.Timestamp;
 import java.util.Date;
@@ -24,7 +36,7 @@ public class Lesson  {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "orderIndex")
+    @Column(name = "order_index")
     @NotNull
     private Integer orderIndex;
 
@@ -33,7 +45,7 @@ public class Lesson  {
     private String title;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "course", nullable = false)
+    @JoinColumn(name = "course_id", nullable = false)
     private Course course;
 
     @Column(name = "content")
@@ -42,29 +54,22 @@ public class Lesson  {
     @Column(name = "url")
     private String url;
 
-    @Column(name = "mediaType")
+    @Column(name = "media_type")
     @NotNull
     @Enumerated(EnumType.STRING)
     private LessonType type;
 
     @Column(name = "date")
     private Timestamp date;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "teacher", nullable = false)
-    private Teacher teacher;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "pupil", nullable = false)
-    private String pupil;
-
-    @Column(name = "lessonNumber")
+    
+    
+    @Column(name = "lesson_number")
     private int lessonNumber;
 
-    @Column(name = "lessonsLeft")
+    @Column(name = "lessons_left")
     private int lessonsLeft;
 
-    @Column(name = "lessonMark")
+    @Column(name = "lesson_mark")
     private String lessonMark;
     
     @Column(name = "notes")
@@ -73,7 +78,10 @@ public class Lesson  {
     @Column(name = "paid")
     private boolean paid;
     
-    @Column(name = "payDate")
+    @Column(name = "pay_date")
     private Date payDate;
-    
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", nullable = false)
+    private User user;
 }

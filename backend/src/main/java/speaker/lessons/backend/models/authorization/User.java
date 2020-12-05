@@ -22,12 +22,6 @@ import javax.persistence.*;
 public class User extends BaseEntity {
 
     @Column
-    private String name;
-
-    @Column
-    private String email;
-
-    @Column
     private String password;
 
     @Column(name = "account_expired")
@@ -46,15 +40,15 @@ public class User extends BaseEntity {
             CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
     private Set<UserAuthority> userAuthorities = new HashSet<>();
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-    private Set<Course> courses;
-
     @OneToMany(mappedBy = "user")
     private Set<Enrollment> enrollments;
 
-    public User(String name, String email, String password) {
-        this.name = name;
-        this.email = email;
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    private Set<Course> courses;
+
+    public User(/*String name, String email,*/ String password) {
+//        this.name = name;
+//        this.email = email;
         this.password = password;
     }
 }

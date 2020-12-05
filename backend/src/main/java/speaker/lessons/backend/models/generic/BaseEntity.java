@@ -15,16 +15,10 @@ public class BaseEntity {
     @Column(name = "id")
     private Integer id;
 
-    @Column(name = "firstName")
+    @Column(name = "name")
     @NotNull
-    private String firstName;
-
-    @Column(name = "lastName")
-    private String lastName;
-
-    @Column(name = "middleName")
-    private String middleName;
-
+    private String name;
+    
     @Column(name = "phone")
     private String phone;
 

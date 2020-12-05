@@ -5,7 +5,7 @@ CREATE TABLE `speaker`.`enrollments` (
   PRIMARY KEY (`id`),
   INDEX `course_idx` (`course` ASC) VISIBLE,
   INDEX `pupil_idx` (`pupil` ASC) VISIBLE,
-  CONSTRAINT `courseId`
+  CONSTRAINT `course_id`
     FOREIGN KEY (`course`)
     REFERENCES `speaker`.`courses` (`id`)
     ON DELETE NO ACTION

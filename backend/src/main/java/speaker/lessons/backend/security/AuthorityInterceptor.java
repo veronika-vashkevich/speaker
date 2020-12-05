@@ -52,19 +52,19 @@ public class AuthorityInterceptor implements HandlerInterceptor {
         /* Get a map of request attributes. */
         Map<String, String> attributes =
                 (Map<String, String>) request.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-
-        if (isCourseOwner != null) {
-            logger.info("picked up an isCourseOwner.");
-            int courseId = Integer.parseInt(attributes.get(isCourseOwner.pathVariable()));
-            logger.info("knows that the course it has been called upon is courseId={}.", courseId);
-
-            if (securityService.isCourseOwner(courseId)) {
-                return true;
-            } else {
-                response.setStatus(HttpStatus.FORBIDDEN.value());
-                return false;
-            }
-        }
+//
+//        if (isCourseOwner != null) {
+//            logger.info("picked up an isCourseOwner.");
+//            int courseId = Integer.parseInt(attributes.get(isCourseOwner.pathVariable()));
+//            logger.info("knows that the course it has been called upon is courseId={}.", courseId);
+//
+//            if (securityService.isCourseOwner(courseId)) {
+//                return true;
+//            } else {
+//                response.setStatus(HttpStatus.FORBIDDEN.value());
+//                return false;
+//            }
+//        }
 
         return true;
     }

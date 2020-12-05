@@ -2,16 +2,21 @@ package speaker.lessons.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-import speaker.lessons.backend.dtos.lesson.LessonConverter;
-import speaker.lessons.backend.dtos.lesson.LessonDTO;
-import speaker.lessons.backend.dtos.lesson.ReorderOperationDTO;
-import speaker.lessons.backend.models.Course;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 import speaker.lessons.backend.annotations.IsCourseOwner;
 import speaker.lessons.backend.annotations.IsStudent;
 import speaker.lessons.backend.annotations.IsTeacher;
 import speaker.lessons.backend.dtos.courses.CourseConverter;
 import speaker.lessons.backend.dtos.courses.CourseDTO;
+import speaker.lessons.backend.dtos.lesson.LessonConverter;
+import speaker.lessons.backend.models.Course;
 import speaker.lessons.backend.services.course.ICourseService;
 import speaker.lessons.backend.services.lesson.ILessonService;
 
@@ -76,28 +81,28 @@ public class CourseController  {
         return ResponseEntity.ok(this.courseConverter.createFrom(this.courseService.enrollStudent(id)));
     }
 
-    @IsCourseOwner
-    @PostMapping("/{id}/lessons")
-    public ResponseEntity<LessonDTO> createLesson(@PathVariable Integer id, @RequestBody LessonDTO lessonDTO) {
-        return ResponseEntity.ok(
-                this.lessonConverter.createFrom(
-                        this.lessonService.createLesson(
-                                id, this.lessonConverter.createFrom(lessonDTO)))
-        );
-    }
+//    @IsCourseOwner
+//    @PostMapping("/{id}/lessons")
+//    public ResponseEntity<LessonDTO> createLesson(@PathVariable Integer id, @RequestBody LessonDTO lessonDTO) {
+//        return ResponseEntity.ok(
+//                this.lessonConverter.createFrom(
+//                        this.lessonService.createLesson(
+//                                id, this.lessonConverter.createFrom(lessonDTO)))
+//        );
+//    }
 
-    @IsCourseOwner
-    @PostMapping("/{id}/lessons/{lessonId}")
-    public ResponseEntity<LessonDTO> reOrderLesson(
-            @PathVariable Integer id,
-            @PathVariable Integer lessonId,
-            @RequestBody ReorderOperationDTO reorderOperation
-    ) {
-        int orderIndex = reorderOperation.getOrder();
-        return ResponseEntity.ok(
-                this.lessonConverter.createFrom(
-                        this.lessonService.reOrderLesson(id, lessonId, orderIndex))
-        );
-    }
+//    @IsCourseOwner
+//    @PostMapping("/{id}/lessons/{lessonId}")
+//    public ResponseEntity<LessonDTO> reOrderLesson(
+//            @PathVariable Integer id,
+//            @PathVariable Integer lessonId,
+//            @RequestBody ReorderOperationDTO reorderOperation
+//    ) {
+//        int orderIndex = reorderOperation.getOrder();
+//        return ResponseEntity.ok(
+//                this.lessonConverter.createFrom(
+//                        this.lessonService.reOrderLesson(id, lessonId, orderIndex))
+//        );
+//    }
 
 }

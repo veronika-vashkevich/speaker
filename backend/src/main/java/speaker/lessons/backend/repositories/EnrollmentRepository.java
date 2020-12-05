@@ -9,7 +9,7 @@ import java.util.List;
 @Repository
 public interface EnrollmentRepository extends JpaRepository<Enrollment, Integer> {
 
-    List<Enrollment> deleteAllByCourseId(Integer id);
+    List<Enrollment> deleteAllByCourseId(Integer CourseId);
 
-    Enrollment findByCourseIdInAndUserId(int course_id, int user_id);
+    Enrollment findByCourseIdInAndUserId(int courseId, int userId);
 }
