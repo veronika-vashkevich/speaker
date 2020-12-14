@@ -8,8 +8,7 @@
 
 .Home-Body {
   flex: 1;
-  max-width: 800px;
-  min-width: 500px;
+ 
 }
 
 .SectionNavigation {
@@ -22,14 +21,23 @@
 }
 
 .SectionNavigation-Item {
-  border: 2px solid #1b9c75;
+  border: 2px solid #f8a30a;
   margin-right: 10px;
   margin-bottom: 10px;
 }
 
+.SectionNavigation-Item-Contact-me {
+  display: flex;
+  align-items: center;
+  border: 2px solid #f8a30a;
+  width: 400px;
+  height: 600px;
+  margin: 0 auto;
+}
+
 .Section {
   &:hover {
-    background-color: rgba($color: #1b9c75, $alpha: 0.1)
+    background-color: rgba($color: #f5634a, $alpha: 0.1)
   }
   padding: 40px;
   padding-bottom: 40px;
@@ -39,16 +47,16 @@
 .Section-Icon {
   width: 90px;
   height: 90px;
-  fill: #1b9c75;
+  fill: #f8a30a;
   position: relative;
   margin-top: -10px;
 }
 .Section-Icon-Big {
-  width: 270px;
-  height: 270px;
-  fill: #1b9c75;
+  width: 210px;
+  height: 210px;
+  fill: #1a63ab;
   position: relative;
-  margin-top: -10px;
+  margin-top: 0 auto;
 }
 .Section-Title {
   position: absolute;
@@ -59,5 +67,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: #1b9c75;
+  font-weight: bold;
+  color: #1a63ab;
+}
+
+.Contact-me-button {
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 25px;
 }

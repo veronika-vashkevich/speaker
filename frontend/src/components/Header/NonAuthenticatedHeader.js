@@ -4,6 +4,7 @@ import cn from 'classname'
 import auth from '../Auth/Auth'
 import './Header.scss'
 import SchoolLogo from './SchoolLogo'
+import { Link } from 'react-router-dom'
 
 
 
@@ -18,22 +19,21 @@ export default class NonAuthenticatedHeader extends Component {
         return (
             <div className={cn('Header', className)}>
                 <div className='Header-Body'>
-                    <SchoolLogo {...this.props}/>
-                    <div className='flex-1 d-flex flex-row justify-content-end align-items-end'>
-                        if(!auth.isAuthenticated()){
-                        <h1>NOT AUTHENTICTAED </h1>
-                    }
-                        <button className='Header-ExitBtn btn btn-primary 'onClick={() => {
-                                this.props.history.push("/login");
-                       
-                        }}
-                        >
-                            Войти
-                        </button>
-                        <button className='Header-ExitBtn btn btn-primary '>
-                            Зарегистрироваться
-                        </button>
-                    </div>
+                        <SchoolLogo  style={{position: "fixed"}} {...this.props}/>
+                        <div className="topnav">
+                            <a href="/home">Домашняя</a>
+                            <a href="/courses">Курсы</a>
+                            <a href="/my-cabinet">Мой кабинет</a>
+                            <a href="/about-us">О нас</a>
+                            <a href="/contacts">Контакты</a>
+                        </div>
+                        <div>
+                            <button className='Header-ExitBtn btn btn-primary bold ' onClick={() => { this.props.history.push("/login");}} >Войти
+                            </button>
+                            <button className='Header-ExitBtn btn btn-primary bold '>
+                                Зарегистрироваться
+                            </button>
+                        </div>
                 </div>
             </div>
         )

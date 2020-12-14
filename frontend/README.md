@@ -82,3 +82,7 @@ This section has moved here: https://facebook.github.io/create-react-app/docs/de
 ### `yarn build` fails to minify
 
 This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+
+
+Orange #f8a30a rgb(248, 163, 10)
+Blue #1a63ab rgb(26, 99, 171)

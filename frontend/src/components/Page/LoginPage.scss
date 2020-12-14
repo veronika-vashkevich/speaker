@@ -1,14 +1,19 @@
+input {
+  font-size: 20px;
+}
 
 .form-wrapper {
   font-size: 25px;
   align-items: center;
-  color: #1b9c75;
-  width: 400px;
+  justify-content: center;
+  width: 100%;
+  color: #1a63ab;
+  border-color: #1a63ab;
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
   border-radius: 10px;
-  background-color: #ffffff; /* or absolute */
+  background-color: white; /* or absolute */
  
   
 }
@@ -31,9 +36,14 @@ form {
 }
 
 .container{
+  display: block;
   padding: 40px;
-  padding-bottom: 200px;
-  position: relative;
-  color: #1b9c75;
+  padding-bottom: 20px;
+  justify-content: center;
+  align-items: center;
+  font-size: 20px;
+  color: #1a63ab;
   top:1%;
+  border: 1px solid #ccc;
+  
 }

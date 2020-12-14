@@ -29,9 +29,12 @@ export default class Header extends Component {
                                 {userName}
                             </div>
                         )}
-                        <a className='btn btn-primary Header-ExitBtn'>
+                        <button className='btn btn-primary Header-ExitBtn'  onClick={() => {
+                            this.props.history.push("/");
+
+                        }}>
                             Выйти
-                        </a>
+                        </button>
                     </div>
                 </div>
             </div>

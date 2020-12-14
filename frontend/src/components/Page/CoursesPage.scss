@@ -1,0 +1,36 @@
+div.gallery {
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  display: block;
+  float: left;
+  width: 270px;
+  height: 270px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+.active {
+  background-color: lightblue;
+}
+
+div.gallery img {
+  width: 80%;
+  height: auto;
+}
+
+div.desc {
+  padding: 0px;
+  text-align: center;
+  color: #1a63ab;
+  margin-top: 0px; 
+}
+
+.courses-vertical-container {
+  display: block;
+  margin-left: 20px;
+  margin-right: 20px;
+  width: 30%;
+}

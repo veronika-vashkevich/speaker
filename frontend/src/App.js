@@ -16,6 +16,7 @@ import Lessons from './components/Lessons/Lessons'
 import LandingPage from "./components/Landing/LandingPage";
 import AppLayout from "./components/Layout/AppLayout"
 import LoginPage from "./components/Page/LoginPage";
+import CoursesPage from "./components/Page/CoursesPage";
 
 
 class App extends Component {
@@ -30,6 +31,9 @@ class App extends Component {
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/app" component={AppLayout} />
                     <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/home" component={LandingPage} />
+                    <Route exact path="/lessons" component={Lessons} />
+                    <Route exact path="/courses" component={CoursesPage} />
                     <ProtectedRoute exact path="/app" component={AppLayout} />
                     <Route path="*"component={() => "404 NOT FOUND"} />
                 </Switch>

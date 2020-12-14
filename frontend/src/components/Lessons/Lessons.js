@@ -6,6 +6,7 @@ import { map, filter } from 'underscore'
 import { Button } from 'reactstrap'
 
 import './Lessons.scss'
+import { lessons as data } from '../../lib/server/ServerData'
 
 import Table from '../Table/Table'
 import Header from '../Header/Header'
@@ -18,6 +19,7 @@ import service from '../../services/LessonService'
 
 import { ReactComponent as Search } from '../../images/search.svg'
 import { ReactComponent as Lesson } from '../../images/lessons.svg'
+import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 
 const TITLE = 'Уроки'
 
@@ -37,43 +39,43 @@ export default class Lessons extends Component {
         }
     }
 
-    componentDidMount() {
-        this.load()
-    }
-
-    onChangeFilterField = (name, value) => {
-        const { filter } = this.state
-
-        this.setState({
-            filter: { ...filter, ...{ [name]: value } }
-        })
-    }
-
-    onChangeFilterDateField = (name, value) => {
-        const { filter } = this.state
-
-        this.setState({
-            filter: { ...filter, ...{ [name]: value && value.getTime() } }
-        })
-    }
-
-    onSearch = () => {
-        this.load()
-    }
-
-    load() {
-        this.setState({ isLoading: true })
-
-        service
-            .find({ filter: this.state.filter })
-            .then(({ success, data }) => {
-                if (success) {
-                    this.setState({
-                        data, isLoading: false
-                    })
-                }
-            })
-    }
+    // componentDidMount() {
+    //     this.load()
+    // }
+    //
+    // onChangeFilterField = (name, value) => {
+    //     const { filter } = this.state
+    //
+    //     this.setState({
+    //         filter: { ...filter, ...{ [name]: value } }
+    //     })
+    // }
+    //
+    // onChangeFilterDateField = (name, value) => {
+    //     const { filter } = this.state
+    //
+    //     this.setState({
+    //         filter: { ...filter, ...{ [name]: value && value.getTime() } }
+    //     })
+    // }
+    //
+    // onSearch = () => {
+    //     this.load()
+    // }
+    //
+    // load() {
+    //     this.setState({ isLoading: true })
+    //
+    //     service
+    //         .find({ filter: this.state.filter })
+    //         .then(({ success, data }) => {
+    //             if (success) {
+    //                 this.setState({
+    //                     data, isLoading: false
+    //                 })
+    //             }
+    //         })
+    // }
 
     render() {
         const {
@@ -89,15 +91,18 @@ export default class Lessons extends Component {
 
         return (
             <div className='Lessons'>
-                <Header
-                    title={TITLE}
-                    userName={USER}
-                    className='Lessons-Header'
-                    bodyClassName='Lessons-HeaderBody'
-                    renderIcon={() => (
-                        <Lesson className='Header-Icon' />
-                    )}
-                />
+                <NonAuthenticatedHeader {...this.props}/>
+                
+                {/*<Header*/}
+                {/*    title={TITLE}*/}
+                {/*    userName={USER}*/}
+                {/*    className='Lessons-Header'*/}
+                {/*    bodyClassName='Lessons-HeaderBody'*/}
+                {/*    renderIcon={() => (*/}
+                {/*        <Lesson className='Header-Icon' />*/}
+                {/*    )}*/}
+                {/*    {... this.props}*/}
+                {/*/>*/}
                 <div className='Lessons-Body'>
                     <div className='Lessons-Filter'>
                         <Form className='Lessons-FilterForm'>

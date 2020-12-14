@@ -1,0 +1,41 @@
+.table{
+  width: 100%;
+  margin-right: 0px;
+  margin-top: 0px;
+  text-align: left;
+  display: block;
+}
+
+.scroll-pane{
+  width: 70%;
+  height: 800px;
+  margin-right: 0px;
+  text-align: left;
+  overflow: scroll;
+  display: block;
+}
+
+tbody {
+  overflow-y: auto;
+  display: block;
+  max-height: 30em;    // For example
+}
+
+
+thead {
+  display: table;
+  overflow-y: auto;
+  width: 100%;     // Fill the containing table
+}
+
+tbody tr{
+  display: table;
+  text-align: left;
+  width: 100%;     // Fill the containing table
+}
+
+tbody tr th{
+  display: table;
+  text-align: left;
+  width: 100%;     // Fill the containing table
+}

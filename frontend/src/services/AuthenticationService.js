@@ -5,32 +5,33 @@ export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
 class AuthenticationService {
 
-    executeBasicAuthenticationService(username, password) {
+    executeBasicAuthenticationService(email, password) {
         return axios.get(`${API_URL}/basicauth`,
             // return axios.get(`/basicauth`,
-            { headers: { authorization: this.createBasicAuthToken(username, password) } })
+            { headers: { authorization: this.createBasicAuthToken(email, password) } })
     }
 
-    executeJwtAuthenticationService(username, password) {
-        return axios.post(`${API_URL}/authenticate`, {
-            username,
+    executeJwtAuthenticationService(email, password) {
+        return axios.post(`${API_URL}/auth/login`, {
+        // return axios.post(`${API_URL}/login`, {
+            email,
             password
         })
     }
 
-    createBasicAuthToken(username, password) {
-        return 'Basic ' + window.btoa(username + ":" + password)
+    createBasicAuthToken(email, password) {
+        return 'Basic ' + window.btoa(email + ":" + password)
     }
 
-    registerSuccessfulLogin(username, password) {
-        //let basicAuthHeader = 'Basic ' +  window.btoa(username + ":" + password)
+    registerSuccessfulLogin(email, password) {
+        //let basicAuthHeader = 'Basic ' +  window.btoa(email + ":" + password)
         //console.log('registerSuccessfulLogin')
-        sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, username)
-        this.setupAxiosInterceptors(this.createBasicAuthToken(username, password))
+        sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, email)
+        this.setupAxiosInterceptors(this.createBasicAuthToken(email, password))
     }
 
-    registerSuccessfulLoginForJwt(username, token) {
-        sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, username)
+    registerSuccessfulLoginForJwt(email, token) {
+        sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, email)
         this.setupAxiosInterceptors(this.createJWTToken(token))
     }
 

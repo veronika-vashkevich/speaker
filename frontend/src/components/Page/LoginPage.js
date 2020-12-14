@@ -9,7 +9,7 @@ class LoginPage extends Component {
         super(props)
 
         this.state = {
-            username: '',
+            email: '',
             password: '',
             hasLoginFailed: false,
             showSuccessMessage: false,
@@ -29,10 +29,10 @@ class LoginPage extends Component {
 
     loginClicked() {
         AuthenticationService
-            .executeJwtAuthenticationService(this.state.username, this.state.password)
+            .executeJwtAuthenticationService(this.state.email, this.state.password)
             .then((response) => {
-                AuthenticationService.registerSuccessfulLoginForJwt(this.state.username, response.data.token)
-                this.props.history.push(`/`)
+                AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token)
+                this.props.history.push(`/home`)
             }).catch(() => {
             this.setState({ showSuccessMessage: false })
             this.setState({ hasLoginFailed: true })
@@ -43,22 +43,23 @@ class LoginPage extends Component {
 
     render() {
         return (
-            <div>
-                <NonAuthenticatedHeader {...this.props}>
-                </NonAuthenticatedHeader>
+            <div className="Home">
+                <NonAuthenticatedHeader {...this.props}/>   
                 <div className="wrapper">
                     <div className="form-wrapper">
                         <div className="container">
-                           {/* <ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
-                           {/*{this.state.hasLoginFailed} && <div className="alert alert-warning">Invalid Credentials</div>*/}
-                           {/* {this.state.showSuccessMessage} && <div>Login Sucessful</div>*/}
-                           {/*<ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
-                            Имя пользователя: <input type="text" placeholder="user name" name="username" value={this.state.username} onChange={this.handleChange} />
+                            {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
+                            {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
+                            {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                            {/*<ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
+                            Имя пользователя: <input type="text" placeholder="user name" name="email" value={this.state.email} onChange={this.handleChange} />
                             <h1></h1>
                             <h1></h1>
                             <h1></h1>
                             Пароль: <input type="password"  placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                            <button className="btn btn-success Header-ExitBtn  btn-primary '" onClick={this.loginClicked}>Войти</button>
+                            <button className="btn btn-success Header-ExitBtn  btn-primary '" onClick={this.loginClicked
+                            
+                            }>Войти</button>
                         </div>
                     </div>
                 </div>

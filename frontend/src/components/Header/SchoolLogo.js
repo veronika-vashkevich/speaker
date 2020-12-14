@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import { Link } from "react-router-dom"
 import {ReactComponent as Logo} from "../../images/logo.svg";
+import logo from '../../images/logo.jpg'
 
 import './Header.scss'
 import cn from "classname";
-const TITLE = 'BigWord'
+
 
 
 export default class  SchoolLogo extends Component {
@@ -15,17 +16,11 @@ export default class  SchoolLogo extends Component {
         } = this.props
 
         return (
-            <div className='Home'>
-                <div className={cn('Header', className)}>
-                    <div className='Home-Header flex-1 d-flex flex-row justify-content-start align-items-center'>
-                        <Logo className='Header-Icon'/>
-                        
-                        <div className='Header-Title'>
-                            {TITLE}
-                        </div>
+                    <div >
+                        <Link  to="/">
+                            <img src={logo} href="/" width="102" height="80" />
+                        </Link>
                     </div>
-                </div>
-            </div>
             
 
         )

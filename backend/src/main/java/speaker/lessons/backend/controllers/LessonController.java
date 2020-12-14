@@ -3,6 +3,7 @@ package speaker.lessons.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import speaker.lessons.backend.annotations.IsCourseOwner;
 import speaker.lessons.backend.dtos.courses.CourseDTO;
@@ -14,7 +15,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
-//@RequestMapping("/lessons")
+@RequestMapping("/lessons")
 public class LessonController  {
 
 //    private final ICourseService courseService;
@@ -37,7 +38,7 @@ public class LessonController  {
 //                .map(this.lessonConverter::createFrom).collect(Collectors.toList()));
 //    }
 
-    @GetMapping("/lessons")
+    @GetMapping("")
     public ResponseEntity<Collection<LessonDTO>> getAllLessons() {
         return ResponseEntity.ok(this.lessonService.getAllLessons().stream()
                 .map(this.lessonConverter::createFrom).collect(Collectors.toList()));
