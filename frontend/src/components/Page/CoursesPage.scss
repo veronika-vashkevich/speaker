@@ -1,5 +1,8 @@
 div.gallery {
-  //margin-right: 10px;
+  padding-top: 2%;
+  position: inherit;
+  
+  //margin-right10 10px;
   //margin-bottom: 10px;
   //border: 1px solid #ccc;
   //display: block;
@@ -14,6 +17,8 @@ div.gallery:hover {
 }
 
 .active {
+  padding-top: 2%;
+  position: inherit;
   background-color: lightblue;
 }
 

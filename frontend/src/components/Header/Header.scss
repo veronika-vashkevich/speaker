@@ -34,18 +34,16 @@
 .Header {
   color: white;
   background-color: white;
-  height: 80px;
+  height: 110px;
   position: fixed;
   align-items: center;
   display: flex;
   //justify-content: space-between;
   width: 100%;
   margin-top: 0px;
-  margin-left: 2%;
-  margin-right: 1%;
-  //overflow-y: scroll;
-  padding-top: 2%;
-  //scroll-padding-top: 70px;
+  margin-left: 0px;
+  margin-right: 0px;
+  padding-top: 0px;
 }
 .Header:active{
   color: #1a63ab;
@@ -66,6 +64,7 @@
 
 .header-btn {
   margin-top: 1%;
+  margin-right: 2%;
 }
 
 .Header-Body {

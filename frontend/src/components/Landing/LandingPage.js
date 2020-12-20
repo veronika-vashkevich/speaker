@@ -100,7 +100,7 @@ export default class LandingPage extends Component {
                                         <Icon className='Section-Icon-Big' />
                                         <span className='Section-Title' >{title}</span>
                                     </Link>
-                                    <button className='Header-ExitBtn btn btn-primary bold' style={{position:"inherit"}}  onClick={() => {
+                                    <button className='Header-ExitBtn btn btn-primary bold'  onClick={() => {
                                         this.redirect(href, selectedCourse, courseId)
                                     }}> ПОСМОТРЕТЬ
                                     </button>

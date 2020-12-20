@@ -60,45 +60,45 @@ export default class Contact extends Component {
     render() {
         return (
             <div className="session container">
-                {/*<div className="container">*/}
-                    <div className="row">
-                        <div className="col-md-12">
-                            <div className="sectionTitle">
-                                <h2 className="title"  style={{margin: "40px"}}>СВЯЗАТЬСЯ СО МНОЙ</h2>
-                                <form id="contact-form" onSubmit={this.submitEmail.bind(this)} method="POST">
-                                    <div style={{width: "100%"}} className="form-group">
-                                        <div className="row">
-                                            <div className="col-md-4">
-                                                <input placeholder="Имя" id="Name" type="text" 
-                                                       className="form-control"
-                                                       required value={this.state.name}
-                                                       onChange={this.handleChange.bind(this)}/>
-                                            </div>
-                                            <div className="col-md-4">
-                                                <input placeholder="Email" id="email" type="email"
-                                                       className="form-control"
-                                                       aria-describedby="emailHelp" 
-                                                       required value={this.state.email}
-                                                       onChange={this.handleChange.bind(this)}/>
-                                            </div>
-                                            <div  className="col-4">
-                                                <input  placeholder="Телефон" id="phone" type="text" className="form-control"
-                                                       required value={this.state.phone}
-                                                       onChange={this.handleChange.bind(this)}/>
-
-                                            </div>
-                                            
-                                            <div className="Contact-me-button"><button type="submit" className="Header-ExitBtn btn btn-primary bold">
-                                                Связаться со мной
-                                            </button></div>
-                                            
+                <div className="row">
+                    <div className="col-md-12">
+                        <div className="sectionTitle">
+                            <h2 className="title">СВЯЗАТЬСЯ СО МНОЙ</h2>
+                            <form id="contact-form" onSubmit={this.submitEmail.bind(this)} method="POST">
+                                <div style={{width: "100%"}} className="form-group">
+                                    <div className="row">
+                                        <div className="col-md-4">
+                                            <input placeholder="Имя" id="Name" type="text"
+                                                   className="form-control"
+                                                   required value={this.state.name}
+                                                   onChange={this.handleChange.bind(this)}/>
                                         </div>
+                                        <div className="col-md-4">
+                                            <input placeholder="Email" id="email" type="email"
+                                                   className="form-control"
+                                                   aria-describedby="emailHelp"
+                                                   required value={this.state.email}
+                                                   onChange={this.handleChange.bind(this)}/>
+                                        </div>
+                                        <div className="col-4">
+                                            <input placeholder="Телефон" id="phone" type="text" className="form-control"
+                                                   required value={this.state.phone}
+                                                   onChange={this.handleChange.bind(this)}/>
+
+                                        </div>
+
+                                        <div className="Contact-me-button">
+                                            <button type="submit" className="Header-ExitBtn btn btn-primary bold">
+                                                Связаться со мной
+                                            </button>
+                                        </div>
+
                                     </div>
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
                     </div>
-                {/*</div>*/}
+                </div>
             </div>
         );
     }

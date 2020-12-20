@@ -120,9 +120,10 @@ export default class CoursesPage extends Component {
 
     render() {
         return (
-            <div className="courses-vertical-container">
+            <div /*className="courses-vertical-container"*/>
                 <NonAuthenticatedHeader {...this.props}/>
 
+                <div className='Home'>
                 <Course
                     classNameValue={`topicContainer ${this.state.selectedCourse == 'beginner' ? 'gallery active' : 'gallery'}`}
                     imgSrc={beginner}
@@ -153,6 +154,7 @@ export default class CoursesPage extends Component {
                     lessons={this.state.advancedLessons}
                     onClicked={this.imageAdvancedClick}/>
 
+            </div>
             </div>
 
         )
