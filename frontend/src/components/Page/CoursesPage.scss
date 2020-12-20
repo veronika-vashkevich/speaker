@@ -1,5 +1,5 @@
 div.gallery {
-  padding-top: 2%;
+  padding-top: 1%;
   position: inherit;
   
   //margin-right10 10px;
@@ -40,4 +40,10 @@ div.desc {
   margin-left: 20px;
   margin-right: 20px;
   width: 100%;
+}
+
+.Empty-block{
+  height: 100px;
+  position: relative;
+  display: block;
 }

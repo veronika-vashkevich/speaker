@@ -24,19 +24,7 @@ export default class Contact extends Component {
     onNameChange(event) {
         this.setState({name: event.target.value})
     }
-
-    onEmailChange(event) {
-        this.setState({email: event.target.value})
-    }
-
-    onSubjectChange(event) {
-        this.setState({subject: event.target.value})
-    }
-
-    onMsgChange(event) {
-        this.setState({message: event.target.value})
-    }
-
+    
     submitEmail(e) {
         e.preventDefault();
         axios({
@@ -59,13 +47,13 @@ export default class Contact extends Component {
 
     render() {
         return (
-            <div className="session container">
-                <div className="row">
-                    <div className="col-md-12">
-                        <div className="sectionTitle">
+            <div className="Contact-me">
+                <div /*className="row">
+                    <div className="col-md-12"*/>
+                        <div /*className="sectionTitle"*/>
                             <h2 className="title">СВЯЗАТЬСЯ СО МНОЙ</h2>
                             <form id="contact-form" onSubmit={this.submitEmail.bind(this)} method="POST">
-                                <div style={{width: "100%"}} className="form-group">
+                                <div style={{width: "100%"}}/* className="form-group"*/>
                                     <div className="row">
                                         <div className="col-md-4">
                                             <input placeholder="Имя" id="Name" type="text"
@@ -97,7 +85,7 @@ export default class Contact extends Component {
                                 </div>
                             </form>
                         </div>
-                    </div>
+                    {/*</div>*/}
                 </div>
             </div>
         );

@@ -34,7 +34,7 @@
 .Header {
   color: white;
   background-color: white;
-  height: 110px;
+  height: 100px;
   position: fixed;
   align-items: center;
   display: flex;
@@ -108,3 +108,25 @@
 }
 
 
+.Course-Header{
+  //position: relative;
+  margin-top: 0%;
+  margin-bottom: 0px;
+  text-align: start;
+  margin-left: 20px;
+  color: #1a63ab;
+  vertical-align: middle;
+  display: flex;
+  justify-content: space-between;
+  width: 600px;
+}
+.Course-Header a{
+  color: #1a63ab;
+}
+.Course-Header a:hover{
+  color: #f8a30a;
+}
+
+.active-course-header{
+  font-weight: bold;
+}

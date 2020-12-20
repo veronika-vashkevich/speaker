@@ -23,7 +23,7 @@ export default class NonAuthenticatedHeader extends Component {
                         <div className="topnav">
                             <a href="/home">Домашняя</a>
                             <a href="/courses">Курсы</a>
-                            <a href="/my-cabinet">Мой кабинет</a>
+                            <a href="/my-lessons">Мой кабинет</a>
                             <a href="/about-us">О нас</a>
                             <a href="/contacts">Контакты</a>
                         </div>

@@ -20,16 +20,17 @@ import service from '../../services/LessonService'
 import { ReactComponent as Search } from '../../images/search.svg'
 import { ReactComponent as Lesson } from '../../images/lessons.svg'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
+import AuthenticationService from "../../services/AuthenticationService";
 
-const TITLE = 'Уроки'
 
-const USER = 'Иванов Иван Иванович'
-
+const USER = 'Иванов Иван Иванович';
+const TITLE = 'efe';
 export default class Lessons extends Component {
 
     state = {
         data: null,
         isLoading: false,
+        title: '',
 
         filter: {
             startDate: null,
@@ -37,12 +38,23 @@ export default class Lessons extends Component {
             pupilName: '',
             onlyMe: false
         }
+    };
+
+    
+    componentDidMount() {
+        let username = AuthenticationService.getLoggedInUserName();
+        if (username==''){
+            this.setState({
+                title: 'У ВАС ПОКА НЕT ЗАНЯТИЙ'
+                     })
+        }else{
+            this.setState({
+                title: 'МОИ ЗАНЯТИЯ'
+            })
+           
+        }
     }
 
-    // componentDidMount() {
-    //     this.load()
-    // }
-    //
     // onChangeFilterField = (name, value) => {
     //     const { filter } = this.state
     //
@@ -92,7 +104,7 @@ export default class Lessons extends Component {
         return (
             <div className='Lessons'>
                 <NonAuthenticatedHeader {...this.props}/>
-                
+                <div className="container">{this.state.title}</div>
                 {/*<Header*/}
                 {/*    title={TITLE}*/}
                 {/*    userName={USER}*/}
@@ -122,14 +134,14 @@ export default class Lessons extends Component {
                                 value={endDate}
                                 dateFormat='dd/MM/yyyy HH:mm'
                                 timeFormat='HH:mm'
-                                placeholder='По'
+                                placeholder='ПО'
                                 className='Lessons-FilterField'
                                 onChange={this.onChangeFilterDateField}
                             />
                             <TextField
                                 name='clientName'
                                 value={clientName}
-                                placeholder='Клиент'
+                                placeholder='КЛЮЧЕВОЕ СЛОВО'
                                 className='Lessons-FilterField'
                                 onChange={this.onChangeFilterField}
                             />

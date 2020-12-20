@@ -1,11 +1,14 @@
 import React, {Component} from 'react'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 import './CoursesPage.scss'
+import '../Landing/LandingPage.scss'
 import Course from "../Course/Course"
 import {ReactComponent as Beginner} from "../../images/beginner.svg";
 import CourseLesson from "../Lessons/CourseLesson"
 import LessonDataService from "../../services/LessonDataService";
 import AuthenticationService from "../../services/AuthenticationService"
+import Contact from "../Contact/Contact";
+import Footer from "../Footer/Footer";
 
 const beginner = require('../../images/beginner.svg');
 const continuer = require('../../images/continue.svg');
@@ -120,41 +123,43 @@ export default class CoursesPage extends Component {
 
     render() {
         return (
-            <div /*className="courses-vertical-container"*/>
+            <div>
                 <NonAuthenticatedHeader {...this.props}/>
 
                 <div className='Home'>
-                <Course
-                    classNameValue={`topicContainer ${this.state.selectedCourse == 'beginner' ? 'gallery active' : 'gallery'}`}
-                    imgSrc={beginner}
-                    desc1="Курс для самых маленьких"
-                    desc2="5-7 лет"
-                    courseName="'НАЧИНАЮЩИЙ'"
-                    selectedCourse="beginner"
-                    lessons={this.state.beginnerLessons}
-                    onClicked={this.imageBeginnerClick}
-                />
-                <Course
-                    classNameValue={`topicContainer ${this.state.selectedCourse == 'continue' ? 'gallery active' : 'gallery'}`}
-                    imgSrc={continuer}
-                    desc1="Продолжение курса"
-                    desc2="8-12 лет"
-                    courseName="'ПРОДОЛЖАЮЩИЙ'"
-                    selectedCourse="continue"
-                    lessons={this.state.continueLessons}
-                    onClicked={this.imageContinueClick}/>
+                    <Course
+                        classNameValue={`topicContainer ${this.state.selectedCourse == 'beginner' ? 'gallery active' : 'gallery'}`}
+                        imgSrc={beginner}
+                        desc1="Курс для самых маленьких"
+                        desc2="5-7 лет"
+                        courseName="'НАЧИНАЮЩИЙ'"
+                        selectedCourse="beginner"
+                        lessons={this.state.beginnerLessons}
+                        onClicked={this.imageBeginnerClick}
+                    />
+                    <Course
+                        classNameValue={`topicContainer ${this.state.selectedCourse == 'continue' ? 'gallery active' : 'gallery'}`}
+                        imgSrc={continuer}
+                        desc1="Продолжение курса"
+                        desc2="8-12 лет"
+                        courseName="'ПРОДОЛЖАЮЩИЙ'"
+                        selectedCourse="continue"
+                        lessons={this.state.continueLessons}
+                        onClicked={this.imageContinueClick}/>
 
-                <Course
-                    classNameValue={`topicContainer ${this.state.selectedCourse == 'advanced' ? 'gallery active' : 'gallery'}`}
-                    imgSrc={advanced}
-                    desc1="Продвинутый курс"
-                    desc2="13-17 лет"
-                    courseName="'ПРОДВИНУТЫЙ'"
-                    selectedCourse="advanced"
-                    lessons={this.state.advancedLessons}
-                    onClicked={this.imageAdvancedClick}/>
-
-            </div>
+                    <Course
+                        classNameValue={`topicContainer ${this.state.selectedCourse == 'advanced' ? 'gallery active' : 'gallery'}`}
+                        imgSrc={advanced}
+                        desc1="Продвинутый курс"
+                        desc2="13-17 лет"
+                        courseName="'ПРОДВИНУТЫЙ'"
+                        selectedCourse="advanced"
+                        lessons={this.state.advancedLessons}
+                        onClicked={this.imageAdvancedClick}/>
+                    <div className="container"></div>
+                    <Contact/>
+                </div>
+                <Footer/>
             </div>
 
         )

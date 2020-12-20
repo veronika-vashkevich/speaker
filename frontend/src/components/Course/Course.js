@@ -29,7 +29,12 @@ export default class Course extends Component {
                         <img src={this.props.imgSrc}/>
                         <div className="desc margin-left">{this.props.desc1}</div>
                         <div className="desc margin-left">{this.props.desc2}</div>
+                        <button className='Header-ExitBtn btn btn-primary margin-left' onClick={() => {
+                            // this.redirect(href, selectedCourse, courseId)
+                        }}> ЗАПИСАТЬСЯ
+                        </button>
                     </a>
+                   
 
 
                     <CourseLesson courseName={this.props.courseName} selectedCourse={this.props.selectedCourse}
