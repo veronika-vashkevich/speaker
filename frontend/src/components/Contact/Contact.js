@@ -59,12 +59,12 @@ export default class Contact extends Component {
 
     render() {
         return (
-            <div className="session">
-                <div className="container">
+            <div className="session container">
+                {/*<div className="container">*/}
                     <div className="row">
                         <div className="col-md-12">
                             <div className="sectionTitle">
-                                <h2 className="title">СВЯЗАТЬСЯ СО МНОЙ</h2>
+                                <h2 className="title"  style={{margin: "40px"}}>СВЯЗАТЬСЯ СО МНОЙ</h2>
                                 <form id="contact-form" onSubmit={this.submitEmail.bind(this)} method="POST">
                                     <div style={{width: "100%"}} className="form-group">
                                         <div className="row">
@@ -98,7 +98,7 @@ export default class Contact extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                {/*</div>*/}
             </div>
         );
     }

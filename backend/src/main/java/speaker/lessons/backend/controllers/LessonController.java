@@ -3,6 +3,7 @@ package speaker.lessons.backend.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import speaker.lessons.backend.annotations.IsCourseOwner;
@@ -15,7 +16,7 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/lessons")
+//@RequestMapping("/lessons")
 public class LessonController  {
 
 //    private final ICourseService courseService;
@@ -38,14 +39,15 @@ public class LessonController  {
 //                .map(this.lessonConverter::createFrom).collect(Collectors.toList()));
 //    }
 
-    @GetMapping("")
-    public ResponseEntity<Collection<LessonDTO>> getAllLessons() {
-        return ResponseEntity.ok(this.lessonService.getAllLessons().stream()
-                .map(this.lessonConverter::createFrom).collect(Collectors.toList()));
+    @GetMapping("/lessons")
+    public Collection<LessonDTO> getAllLessons() {
+        return lessonService.getAllLessons().stream()
+                .map(lesson -> lessonConverter.createFrom(lesson)).collect(Collectors.toList());
     }
-//
+    
+
 //    @GetMapping("/{id}")
-//    public ResponseEntity<CourseDTO> getCourseById(@PathVariable Integer id) {
+//    public ResponseEntity<LessonDTO> getCourseById(@PathVariable Integer id) {
 //        return ResponseEntity.ok(this.courseConverter.createFrom(this.courseService.getCourseById(id)));
 //    }
 //

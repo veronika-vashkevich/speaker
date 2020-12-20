@@ -1,41 +1,60 @@
 .table{
-  width: 100%;
-  margin-right: 0px;
-  margin-top: 0px;
+  width: 90%;
+  height: 10px;
+  margin-left: 30px;
+  table-layout: fixed;
+  //margin-top: 10px;
   text-align: left;
-  display: block;
+  //display: block;
+  border-color: #cccccc;
+  //align-content: flex-end;
+  //margin-left: 40px;
+
+}
+
+.margin-left{
+  margin-left: 10px;
 }
 
 .scroll-pane{
-  width: 70%;
-  height: 800px;
-  margin-right: 0px;
-  text-align: left;
-  overflow: scroll;
-  display: block;
+  width: 90%;
+  //scroll table width 
+  //height: 2px;
+  margin-left: 20px;
+  //text-align: left;
+  //overflow: scroll;
+  //display: block;
+  //padding-top: 10px;
 }
 
 tbody {
-  overflow-y: auto;
+  //this value lte the scroll
+  overflow-y: scroll;
   display: block;
   max-height: 30em;    // For example
+  height: 390px;
+  width: 90%;
+
 }
 
 
 thead {
   display: table;
-  overflow-y: auto;
-  width: 100%;     // Fill the containing table
+  position: -webkit-sticky; /* Safari */
+  position: sticky;
+  width: 90%;     // Fill the containing table
 }
 
 tbody tr{
-  display: table;
-  text-align: left;
-  width: 100%;     // Fill the containing table
+  align: left;
+  width: 90%;     // Fill the containing table
 }
 
 tbody tr th{
-  display: table;
-  text-align: left;
-  width: 100%;     // Fill the containing table
+  padding-right: 20px;
+  //display: table;
+  align: left;
+  width: 90%;     // Fill the containing table
+  border: 1px solid blue;
+
 }

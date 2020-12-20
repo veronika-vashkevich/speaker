@@ -16,6 +16,7 @@ import speaker.lessons.backend.annotations.IsTeacher;
 import speaker.lessons.backend.dtos.courses.CourseConverter;
 import speaker.lessons.backend.dtos.courses.CourseDTO;
 import speaker.lessons.backend.dtos.lesson.LessonConverter;
+import speaker.lessons.backend.dtos.lesson.LessonDTO;
 import speaker.lessons.backend.models.Course;
 import speaker.lessons.backend.services.course.ICourseService;
 import speaker.lessons.backend.services.lesson.ILessonService;
@@ -61,6 +62,14 @@ public class CourseController  {
         );
     }
 
+
+    @GetMapping("/{courseId}/lessons")
+    public Collection<LessonDTO> getAllLessonsByCourseId(@PathVariable Integer courseId) {
+        return lessonService.getAllLessonsByCourseId(courseId).stream()
+                .map(lesson -> lessonConverter.createFrom(lesson)).collect(Collectors.toList());
+    }
+    
+    
     @IsCourseOwner
     @DeleteMapping("/{id}")
     public void deleteCourse(@PathVariable Integer id) {
@@ -81,6 +90,8 @@ public class CourseController  {
         return ResponseEntity.ok(this.courseConverter.createFrom(this.courseService.enrollStudent(id)));
     }
 
+    
+    
 //    @IsCourseOwner
 //    @PostMapping("/{id}/lessons")
 //    public ResponseEntity<LessonDTO> createLesson(@PathVariable Integer id, @RequestBody LessonDTO lessonDTO) {

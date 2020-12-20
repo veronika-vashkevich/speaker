@@ -1,13 +1,19 @@
 .Home {
-  display: flex;
-  flex-direction: column;
+  //display: flex;
+  //flex-direction: column;
   //change here to center
   align-items: center;
-  margin-left: 15px;
+  //margin-top: 5%;
+  padding-top: 7%;
+  position: inherit;
+
+  //padding-top: 65px;
+  //margin-left: 15px;
 }
 
 .Home-Body {
-  flex: 1;
+  position: inherit;
+  //flex: 1;
  
 }
 
@@ -18,12 +24,14 @@
   justify-content: center;
   align-items: center;
   padding: 5% 10%;
+
 }
 
 .SectionNavigation-Item {
   border: 2px solid #f8a30a;
   margin-right: 10px;
   margin-bottom: 10px;
+  position: inherit;
 }
 
 .SectionNavigation-Item-Contact-me {
@@ -41,7 +49,7 @@
   }
   padding: 40px;
   padding-bottom: 40px;
-  position: relative;
+  position: inherit;
 }
 
 .Section-Icon {
@@ -55,14 +63,15 @@
   width: 210px;
   height: 210px;
   fill: #1a63ab;
-  position: relative;
+  position: inherit;
   margin-top: 0 auto;
 }
 .Section-Title {
-  position: absolute;
+  position: inherit;
   bottom: 10px;
   left: 0px;
   width: 100%;
+  margin-top: 14%;
   display: flex;
   flex-direction: column;
   justify-content: center;

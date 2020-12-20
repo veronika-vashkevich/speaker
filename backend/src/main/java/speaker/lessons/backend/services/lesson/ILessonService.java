@@ -9,8 +9,10 @@ import java.util.List;
 
 public interface ILessonService {
 //    Lesson createLesson(Integer courseId, Lesson lesson);
-    List<Lesson> getAllLessonsByUserId();
+//    List<Lesson> getAllLessonsByUserId();
     Collection<Lesson> getAllLessons();
+    Collection<Lesson> getAllLessonsByCourseId(Integer courseId);
+    
 
 //    Lesson reOrderLesson(Integer courseId, Integer lessonId, Integer order);
 }

@@ -44,9 +44,9 @@ public class Lesson  {
     @NotNull
     private String title;
 
-    @ManyToOne(fetch = FetchType.EAGER)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
-    private Course course;
+    private Course course = new Course();
 
     @Column(name = "content")
     private String content;
@@ -58,30 +58,8 @@ public class Lesson  {
     @NotNull
     @Enumerated(EnumType.STRING)
     private LessonType type;
-
-    @Column(name = "date")
-    private Timestamp date;
-    
-    
-    @Column(name = "lesson_number")
-    private int lessonNumber;
-
-    @Column(name = "lessons_left")
-    private int lessonsLeft;
-
-    @Column(name = "lesson_mark")
-    private String lessonMark;
     
     @Column(name = "notes")
     private String notes;
-
-    @Column(name = "paid")
-    private boolean paid;
     
-    @Column(name = "pay_date")
-    private Date payDate;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
 }

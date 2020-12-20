@@ -3,9 +3,14 @@ import { API_URL, JPA_API_URL } from '../Constants'
 
 class LessonDataService {
 
-    retrieveAllLessons() {
-        console.log('executed service')
-        return axios.get(`${API_URL}/lessons`,
+    retrieveAllLessons(username, courseId) {
+        console.log('executed service for course Id ', {courseId});
+        return axios.get(`${API_URL}/courses/${courseId}/lessons`,
+            {
+                headers: {
+                    isAuthRequired: 'false' 
+                }
+            }
         );
     }
 
