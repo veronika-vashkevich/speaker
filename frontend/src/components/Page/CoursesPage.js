@@ -124,7 +124,7 @@ export default class CoursesPage extends Component {
     render() {
         return (
             <div>
-                <NonAuthenticatedHeader {...this.props}/>
+                <NonAuthenticatedHeader selectedLink="courses" {...this.props}/>
 
                 <div className='Home'>
                     <Course

@@ -104,7 +104,7 @@ export default class Lessons extends Component {
 
         return (
             <div className='Lessons'>
-                <NonAuthenticatedHeader {...this.props}/>
+                <NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}/>
                 <div className="container">{this.state.title}</div>
                 {/*<Header*/}
                 {/*    title={TITLE}*/}

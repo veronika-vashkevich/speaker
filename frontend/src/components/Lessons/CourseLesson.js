@@ -27,7 +27,7 @@ export default class CourseLesson extends Component {
             <div className="margin-left table-wrapper">
                 <h1>Программа курса {this.props.courseName}</h1>
                 {/*<table className="table scroll-pane" cellspacing="5">*/}
-                <table >
+                <table>
                     <thead>
                     <tr>
                         <th>Номер урока</th>

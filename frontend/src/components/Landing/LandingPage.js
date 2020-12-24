@@ -89,7 +89,7 @@ export default class LandingPage extends Component {
     render() {
         return (
             <div>
-                <NonAuthenticatedHeader {...this.props}/>
+                <NonAuthenticatedHeader selectedLink="home" /*{...this.props}*//>
 
                 <div className='Home'>
                     <div className="Landing-Text"> {SLOGAN} </div>

@@ -11,7 +11,7 @@ export default class Header extends Component {
             title,
             userName,
             className,
-            renderIcon
+            renderIcon,
         } = this.props
 
         return (
