@@ -1,31 +1,10 @@
-.table{
+table{
   width: 90%;
   height: 10px;
-  margin-left: 30px;
+  margin-left: 0px;
   table-layout: fixed;
-  //margin-top: 10px;
   text-align: left;
-  //display: block;
-  border-color: #cccccc;
   display: table;
-  //align-content: flex-end;
-  //margin-left: 40px;
-
-}
-
-.margin-left{
-  margin-left: 50px;
-}
-
-.scroll-pane{
-  width: 90%;
-  //scroll table width 
-  //height: 2px;
-  margin-left: 20px;
-  //text-align: left;
-  //overflow: scroll;
-  //display: block;
-  //padding-top: 10px;
 }
 
 tbody {
@@ -35,29 +14,25 @@ tbody {
   max-height: 30em;    // For example
   height: 350px;
   width: 90%;
-  position: inherit;
 }
 
 
 thead {
   display: table;
+  align-content: center;
+  margin-bottom: 10px;
   position: -webkit-sticky; /* Safari */
-  //position: sticky;
-  width: 90%;     // Fill the containing table
+  width: 90%;    // Fill the containing table
   position: inherit;
 }
+//
+//tbody tr th {
+//  padding-right: 20px;
+//  display: table;
+//  width: 300px;     // Fill the containing table
+//  border: 1px solid blue;
+//}
 
-tbody tr{
-  align: left;
-  //display: inline-block;
-  width: 90%;     // Fill the containing table
-}
-
-tbody tr th{
-  padding-right: 20px;
-  display: table;
-  //display: table;
-  width: 90%;     // Fill the containing table
-  border: 1px solid blue;
-
+.margin-left{
+  margin-left: 50px;
 }

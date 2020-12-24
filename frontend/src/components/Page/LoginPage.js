@@ -37,8 +37,6 @@ class LoginPage extends Component {
             this.setState({ showSuccessMessage: false })
             this.setState({ hasLoginFailed: true })
         })
-
-
     }
 
     render() {
@@ -57,9 +55,7 @@ class LoginPage extends Component {
                             <h1></h1>
                             <h1></h1>
                             Пароль: <input type="password"  placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                            <button className="btn btn-success Header-ExitBtn  btn-primary '" onClick={this.loginClicked
-                            
-                            }>Войти</button>
+                            <button className="btn btn-success Header-ExitBtn  btn-primary '" onClick={this.loginClicked}>Войти</button>
                         </div>
                     </div>
                 </div>

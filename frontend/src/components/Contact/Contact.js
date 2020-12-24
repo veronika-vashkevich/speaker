@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import axios from 'axios'
 import '../Home/Home.scss'
+import AuthenticationService from "../../services/AuthenticationService";
+import ContactMeService from "../../services/ContactMeService";
 
 export default class Contact extends Component {
     constructor(props) {
@@ -13,16 +15,18 @@ export default class Contact extends Component {
         }
     }
 
-    handleChange(event) {
-        this.setState(
-            {
-                [event.target.name]: event.target.value
-            }
-        )
+    contactMeClicked() {
+        ContactMeService.sendContactMeRequest(this.state.name, this.state.email, this.state.phone);
     }
-
+    onPhoneChange(event) {
+        this.setState({phone: event.target.value})
+    }
     onNameChange(event) {
         this.setState({name: event.target.value})
+    }
+
+    onEmailChange(event) {
+        this.setState({email: event.target.value})
     }
     
     submitEmail(e) {
@@ -59,24 +63,24 @@ export default class Contact extends Component {
                                             <input placeholder="Имя" id="Name" type="text"
                                                    className="form-control"
                                                    required value={this.state.name}
-                                                   onChange={this.handleChange.bind(this)}/>
+                                                   onChange={this.onNameChange.bind(this)}/>
                                         </div>
                                         <div className="col-md-4">
                                             <input placeholder="Email" id="email" type="email"
                                                    className="form-control"
                                                    aria-describedby="emailHelp"
                                                    required value={this.state.email}
-                                                   onChange={this.handleChange.bind(this)}/>
+                                                   onChange={this.onEmailChange.bind(this)}/>
                                         </div>
                                         <div className="col-4">
                                             <input placeholder="Телефон" id="phone" type="text" className="form-control"
                                                    required value={this.state.phone}
-                                                   onChange={this.handleChange.bind(this)}/>
+                                                   onChange={this.onPhoneChange.bind(this)}/>
 
                                         </div>
 
                                         <div className="Contact-me-button">
-                                            <button type="submit" className="Header-ExitBtn btn btn-primary bold">
+                                            <button type="submit" className="Header-ExitBtn btn btn-primary bold" onClick={this.contactMeClicked.bind(this)}>
                                                 Связаться со мной
                                             </button>
                                         </div>

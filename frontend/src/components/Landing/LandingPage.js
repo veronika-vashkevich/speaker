@@ -22,6 +22,7 @@ import NonAuthenticatedHeader from '../Header/NonAuthenticatedHeader'
 import AuthenticationService from "../../services/AuthenticationService";
 import LessonDataService from "../../services/LessonDataService";
 import Footer from "../Footer/Footer";
+import ContactMeService from "../../services/ContactMeService";
 
 // const TITLE = 'BigWord'
 
@@ -73,17 +74,17 @@ export default class LandingPage extends Component {
         });
     }
 
-    contactMeClicked() {
-        AuthenticationService
-            .executeJwtAuthenticationService(this.state.email, this.state.password)
-            .then((response) => {
-                AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token)
-                this.props.history.push(`/home`)
-            }).catch(() => {
-            this.setState({showSuccessMessage: false})
-            this.setState({hasLoginFailed: true})
-        })
-    }
+    // contactMeClicked() {
+    //     ContactMeService
+    //         .sendContactMeRequest(this.state.name, this.state.email, this.state.phone);
+    //     //     .then((response) => {
+    //     //         AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token)
+    //     //         this.props.history.push(`/home`)
+    //     //     }).catch(() => {
+    //     //     this.setState({showSuccessMessage: false})
+    //     //     this.setState({hasLoginFailed: true})
+    //     // })
+    // }
 
     render() {
         return (
@@ -115,8 +116,9 @@ export default class LandingPage extends Component {
                     <hr className="my-4"/>
                     <LandingPupils/>
                     <hr className="my-4"/>
+                    <Footer/>
                 </div>
-                <Footer/>
+                
             </div>
         )
     }

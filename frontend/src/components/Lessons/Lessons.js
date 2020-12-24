@@ -21,6 +21,7 @@ import { ReactComponent as Search } from '../../images/search.svg'
 import { ReactComponent as Lesson } from '../../images/lessons.svg'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 import AuthenticationService from "../../services/AuthenticationService";
+import Footer from "../Footer/Footer";
 
 
 const USER = 'Иванов Иван Иванович';
@@ -231,6 +232,7 @@ export default class Lessons extends Component {
                         />
                     ) : 'Нет данных'}
                 </div>
+                <Footer/>
             </div>
         )
     }
