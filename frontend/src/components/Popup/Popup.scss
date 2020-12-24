@@ -1,0 +1,26 @@
+.popup {
+  position: fixed;
+  width: 60%;
+  height: 60%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  padding-top: 30px;
+  background-color: lightblue;
+  z-index: 1;
+}
+.popup\_inner {
+  position: absolute;
+  left: 25%;
+  right: 25%;
+  //top: 25%;
+  //bottom: 25%;
+  border-radius: 20px;
+  background: white;
+}
+.btn-bot {
+  //position: absolute;
+  margin: 20%;
+}

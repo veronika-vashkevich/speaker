@@ -20,9 +20,9 @@ export default class NonAuthenticatedHeader extends Component {
                 <div className='Header-Body'>
                         <SchoolLogo  style={{position: "fixed"}} {...this.props}/>
                         <div className="topnav">
-                            <a  className={this.props.selectedLink === 'home' ? 'active' : ''} href="/home">Домашняя</a>
-                            <a  className={this.props.selectedLink === 'courses' ? 'active' : ''} href="/courses">Курсы</a>
-                            <a  className={this.props.selectedLink === 'my-lessons' ? 'active' : ''} href="/my-lessons">Мой кабинет</a>
+                            <a  className={this.props.selectedLink === 'home' ? 'active-course-header' : ''} href="/home">Домашняя</a>
+                            <a  className={this.props.selectedLink === 'courses' ? 'active-course-header' : ''} href="/courses">Курсы</a>
+                            <a  className={this.props.selectedLink === 'my-lessons' ? 'active-course-header' : ''} href="/my-lessons">Мой кабинет</a>
                             <a href="/about-us">О нас</a>
                             <a href="/contacts">Контакты</a>
                         </div>

@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { API_URL } from '../Constants'
 
+
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
 class ContactMeService {
@@ -8,6 +9,7 @@ class ContactMeService {
 
 
     sendContactMeRequest(name, email, phone) {
+        console.log("sendContactMe clicked");
         return axios.post(`${API_URL}/contacts/contact-me`, {
             name,
             email,

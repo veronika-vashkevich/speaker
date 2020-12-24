@@ -1,8 +1,8 @@
 import React, {Component} from 'react'
-import axios from 'axios'
 import '../Home/Home.scss'
-import AuthenticationService from "../../services/AuthenticationService";
 import ContactMeService from "../../services/ContactMeService";
+import Popup from '../../components/Popup/Popup';
+
 
 export default class Contact extends Component {
     constructor(props) {
@@ -11,16 +11,21 @@ export default class Contact extends Component {
             name: '',
             email: '',
             subject: '',
-            message: ''
+            phone:'',
+            showPopup: false
         }
     }
 
     contactMeClicked() {
-        ContactMeService.sendContactMeRequest(this.state.name, this.state.email, this.state.phone);
+        console.log(this.state.email)
+        console.log("email from props is")
+            //  ContactMeService.sendContactMeRequest(this.state.name, this.state.email, this.state.phone);
     }
+
     onPhoneChange(event) {
         this.setState({phone: event.target.value})
     }
+
     onNameChange(event) {
         this.setState({name: event.target.value})
     }
@@ -28,25 +33,58 @@ export default class Contact extends Component {
     onEmailChange(event) {
         this.setState({email: event.target.value})
     }
-    
+
+    togglePopup() {
+        this.setState({
+            showPopup: !this.state.showPopup
+        });
+    }
+
     submitEmail(e) {
+        console.log("submitEmail")
+        // e.preventDefault();
+        // axios({
+        //     method: "POST",
+        //     url: "/send",
+        //     data: this.state
+        // }).then((response) => {
+        //     if (response.data.status === 'success') {
+        //         alert("Message Sent.");
+        //         this.resetForm()
+        //     } else if (response.data.status === 'fail') {
+        //         alert("Message failed to send.")
+        //     }
+        // })
+    }
+    handleSubmit(e) {
         e.preventDefault();
-        axios({
+
+        fetch('http://localhost:8080/api/contacts/contact-me', {
             method: "POST",
-            url: "/send",
-            data: this.state
-        }).then((response) => {
-            if (response.data.status === 'success') {
-                alert("Message Sent.");
-                this.resetForm()
-            } else if (response.data.status === 'fail') {
+            body: JSON.stringify(this.state),
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'isAuthRequired': false
+            },
+        }
+        // ).then(
+        //     (response) => (response.json())
+        ).then((response)=> {
+            console.log("Response is ", response );
+            
+            if (response.status === 200) {
+                //alert("Message Sent.");
+                this.togglePopup();
+                this.resetForm();
+            } else if(response.status !== 200) {
                 alert("Message failed to send.")
             }
         })
     }
-
+    
     resetForm() {
-        this.setState({name: '', email: '', subject: '', message: ''})
+        this.setState({name: '', email: '', phone: ''})
     }
 
     render() {
@@ -54,41 +92,51 @@ export default class Contact extends Component {
             <div className="Contact-me">
                 <div /*className="row">
                     <div className="col-md-12"*/>
-                        <div /*className="sectionTitle"*/>
-                            <h2 className="title">СВЯЗАТЬСЯ СО МНОЙ</h2>
-                            <form id="contact-form" onSubmit={this.submitEmail.bind(this)} method="POST">
-                                <div style={{width: "100%"}}/* className="form-group"*/>
-                                    <div className="row">
-                                        <div className="col-md-4">
-                                            <input placeholder="Имя" id="Name" type="text"
-                                                   className="form-control"
-                                                   required value={this.state.name}
-                                                   onChange={this.onNameChange.bind(this)}/>
-                                        </div>
-                                        <div className="col-md-4">
-                                            <input placeholder="Email" id="email" type="email"
-                                                   className="form-control"
-                                                   aria-describedby="emailHelp"
-                                                   required value={this.state.email}
-                                                   onChange={this.onEmailChange.bind(this)}/>
-                                        </div>
-                                        <div className="col-4">
-                                            <input placeholder="Телефон" id="phone" type="text" className="form-control"
-                                                   required value={this.state.phone}
-                                                   onChange={this.onPhoneChange.bind(this)}/>
-
-                                        </div>
-
-                                        <div className="Contact-me-button">
-                                            <button type="submit" className="Header-ExitBtn btn btn-primary bold" onClick={this.contactMeClicked.bind(this)}>
-                                                Связаться со мной
-                                            </button>
-                                        </div>
+                    <div /*className="sectionTitle"*/>
+                        <h2 className="title">СВЯЗАТЬСЯ СО МНОЙ</h2>
+                        <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
+                            <div style={{width: "100%"}}/* className="form-group"*/>
+                                <div className="row">
+                                    <div className="col-md-4">
+                                        <input placeholder="Имя" id="Name" type="text"
+                                               className="form-control"
+                                               required value={this.state.name}
+                                               onChange={this.onNameChange.bind(this)}/>
+                                    </div>
+                                    <div className="col-md-4">
+                                        <input placeholder="Email" id="email" type="email"
+                                               className="form-control"
+                                               aria-describedby="emailHelp"
+                                               required value={this.state.email}
+                                               onChange={this.onEmailChange.bind(this)}/>
+                                    </div>
+                                    <div className="col-4">
+                                        <input placeholder="Телефон" id="phone" type="text" className="form-control"
+                                               required value={this.state.phone}
+                                               onChange={this.onPhoneChange.bind(this)}/>
 
                                     </div>
+
+                                    <div className="Contact-me-button">
+                                        <button type="submit" className="Header-ExitBtn btn btn-primary bold"
+                                            /*onClick={this.contactMeClicked.bind(this) this.togglePopup.bind(this)}*/>
+                                            Связаться со мной
+                                        </button>
+
+                                        {this.state.showPopup ?
+                                            <Popup
+                                                text={"ВАШ EMAIL УСПЕШНО СОХРАНЕН В НАШЕЙ СИСТЕМЕ.\n" +
+                                                "МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИЕ 24 ЧАСОВ"}
+                                                closePopup={this.togglePopup.bind(this)}
+                                            />
+                                            : null
+                                        }
+                                    </div>
+
                                 </div>
-                            </form>
-                        </div>
+                            </div>
+                        </form>
+                    </div>
                     {/*</div>*/}
                 </div>
             </div>

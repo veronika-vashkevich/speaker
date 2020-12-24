@@ -23,6 +23,8 @@ public class ContactsController {
     @PostMapping("/contact-me")
     public ResponseEntity<ContactMeDto> contactMe(@RequestBody ContactMeDto contactMeDto) {
         this.contactService.contactMe(contactMeDto);
+        ResponseEntity response = ResponseEntity.ok(contactMeDto);
+        System.out.println(response.toString());
         return ResponseEntity.ok(contactMeDto);
     }
 }

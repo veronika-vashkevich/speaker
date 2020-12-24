@@ -5,15 +5,10 @@ import CourseHeader from "../Header/CourseHeader";
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import './CoursesPage.scss'
-import {ReactComponent as Advanced} from "../../images/advanced.svg";
 import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
 
-const SECTIONS = [
-    {title: '13-17 лет ПРОДВИНУТЫЙ', href: '/courses/advanced', Icon: Advanced, selectedCourse: "advanced", courseId: 3},
-
-];
 
 const advanced = require('../../images/advanced.svg');
 
@@ -30,9 +25,11 @@ export default class AdvancedCoursePage extends Component {
     }
 
     componentWillMount() {
+        window.scrollTo(0, 0);
+  
         console.log('componentWillMount');
         let username = AuthenticationService.getLoggedInUserName();
-        LessonDataService.retrieveAllLessons(username, 3) .then(
+        LessonDataService.retrieveAllLessons(username, 3).then(
             response => {
                 this.setState({lessons: response.data});
                 console.log("executing refreshLessons(3)...");
@@ -44,11 +41,11 @@ export default class AdvancedCoursePage extends Component {
     render() {
         return (
             <div>
-                <NonAuthenticatedHeader {...this.props}/>
+                <NonAuthenticatedHeader selectedLink="courses" {...this.props}/>
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`topicContainer ${this.state.selectedCourse == 'advanced' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`topicContainer ${this.state.selectedCourse === 'advanced' ? 'gallery active' : 'gallery'}`}
                         imgSrc={advanced}
                         desc1="Продвинутый курс"
                         desc2="13-17 лет"

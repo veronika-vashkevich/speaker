@@ -10,10 +10,6 @@ import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
 import CourseHeader from "../Header/CourseHeader";
 
-const SECTIONS = [
-    {title: '8-12 лет ПРОДОЛЖАЮЩИЙ', href: '/courses/continue', Icon: Continue, selectedCourse: "continue", courseId: 2},
-
-];
 
 const continuer = require('../../images/continue.svg');
 
@@ -30,6 +26,7 @@ export default class BeginnerCoursePage extends Component {
     }
 
     componentWillMount() {
+        window.scrollTo(0, 0);
         console.log('componentWillMount');
         let username = AuthenticationService.getLoggedInUserName();
         LessonDataService.retrieveAllLessons(username, 2) .then(
@@ -44,12 +41,12 @@ export default class BeginnerCoursePage extends Component {
     render() {
         return (
             <div>
-                <NonAuthenticatedHeader {...this.props}/>
+                <NonAuthenticatedHeader  selectedLink="courses"  {...this.props}/>
 
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`topicContainer ${this.state.selectedCourse == 'continue' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`topicContainer ${this.state.selectedCourse === 'continue' ? 'gallery active' : 'gallery'}`}
                         imgSrc={continuer}
                         desc1="Продолжение курс"
                         desc2="8-12 лет"

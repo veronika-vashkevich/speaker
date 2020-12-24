@@ -3,11 +3,8 @@ import React, {Component} from 'react'
 import './LandingPage.scss'
 
 import Contact from "../Contact/Contact";
-import auth from "../Auth/Auth"
 import {Link} from "react-router-dom"
-import {ReactComponent as Logo} from "../../images/logo-2.svg";
 import {ReactComponent as Course} from "../../images/conference.svg";
-import LandingTeam from "../Landing/LandingTeam"
 import LandingPupils from "../Landing/LandingPupils"
 import {ReactComponent as Beginner} from "../../images/beginner.svg";
 import {ReactComponent as Continue} from "../../images/continue.svg";
@@ -19,19 +16,26 @@ import {map} from 'underscore'
 import '../Home/Home.scss'
 
 import NonAuthenticatedHeader from '../Header/NonAuthenticatedHeader'
-import AuthenticationService from "../../services/AuthenticationService";
-import LessonDataService from "../../services/LessonDataService";
 import Footer from "../Footer/Footer";
-import ContactMeService from "../../services/ContactMeService";
-
-// const TITLE = 'BigWord'
 
 const SLOGAN = 'Попробуйте наши лучшие курсы!'
 
 const SECTIONS = [
     {title: '5-7 лет НАЧИНАЮЩИЙ', href: '/courses/beginner', Icon: Beginner, selectedCourse: "beginner", courseId: 1},
-    {title: '8-12 лет ПРОДОЛЖАЮЩИЙ', href: '/courses/continue', Icon: Continue, selectedCourse: "continue", courseId: 2},
-    {title: '13-17 лет ПРОДВИНУТЫЙ', href: '/courses/advanced', Icon: Advanced, selectedCourse: "advanced", courseId: 3},
+    {
+        title: '8-12 лет ПРОДОЛЖАЮЩИЙ',
+        href: '/courses/continue',
+        Icon: Continue,
+        selectedCourse: "continue",
+        courseId: 2
+    },
+    {
+        title: '13-17 лет ПРОДВИНУТЫЙ',
+        href: '/courses/advanced',
+        Icon: Advanced,
+        selectedCourse: "advanced",
+        courseId: 3
+    },
 
 ];
 
@@ -51,11 +55,13 @@ export default class LandingPage extends Component {
             username: '',
             email: '',
             phone: '',
-            showSuccessMessage: false,
+            showSuccessMessage: false
+          
         };
         this.redirect = this.redirect.bind(this)
     }
-
+    
+    
     handleChange(event) {
         this.setState(
             {
@@ -118,7 +124,6 @@ export default class LandingPage extends Component {
                     <hr className="my-4"/>
                     <Footer/>
                 </div>
-                
             </div>
         )
     }
