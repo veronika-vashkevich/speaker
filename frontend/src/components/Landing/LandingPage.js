@@ -94,11 +94,11 @@ export default class LandingPage extends Component {
 
     render() {
         return (
-            <div>
+            <div >
                 <NonAuthenticatedHeader selectedLink="home" /*{...this.props}*//>
 
-                <div className='Home'>
-                    <div className="Landing-Text"> {SLOGAN} </div>
+                <div className="Body" >
+                    <h1 className="Landing-Text"> {SLOGAN} </h1>
                     <ul>
                         <li className='SectionNavigation'>
 

@@ -2,25 +2,52 @@
   position: fixed;
   width: 60%;
   height: 60%;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   right: 0;
   bottom: 0;
   margin: auto;
-  padding-top: 30px;
+  //padding-top: 30px;
   background-color: lightblue;
+  opacity: 1;
   z-index: 1;
 }
+.close {
+  margin-right: 10px;
+  margin-top: 10px;
+}
 .popup\_inner {
-  position: absolute;
+  position: relative;
   left: 25%;
   right: 25%;
-  //top: 25%;
-  //bottom: 25%;
+  top: 25%;
+  bottom: 25%;
   border-radius: 20px;
   background: white;
 }
-.btn-bot {
-  //position: absolute;
-  margin: 20%;
+
+
+.popup\_inner h1 {
+  text-align: center;
 }
+.btn-bot {
+  position: absolute;
+  //left: 25%;
+  //right: 25%;
+  //top: 25%;
+  //bottom: 25%;
+}
+//#close {
+//  float:right;
+//  display:inline-block;
+//  padding:2px 5px;
+//  background:#ccc;
+//}
+//#close:hover {
+//  float:right;
+//  display:inline-block;
+//  padding:2px 5px;
+//  background:#ccc;
+//  color:#fff;
+//}

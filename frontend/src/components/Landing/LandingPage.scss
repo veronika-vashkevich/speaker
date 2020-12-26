@@ -13,3 +13,27 @@
   height: 7rem;
   border-radius: 50%;
 }
+
+
+@media screen and (min-width:750px) {
+  div.gallery{
+    display: flex;
+  }
+
+  .Body {
+    padding-top: 100px;
+  }
+}
+
+@media screen and (max-width:749px){
+  .Landing-Text{
+    font-size: 16px;
+    font-weight: bold;
+  }
+
+  .Body {
+    padding-top: 200px;
+
+  }
+
+}

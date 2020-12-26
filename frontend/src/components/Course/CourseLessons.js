@@ -3,7 +3,7 @@ import moment from 'moment'
 import './CourseLesson.scss'
 import LessonDataService from '../../services/LessonDataService'
 
-export default class CourseLesson extends Component {
+export default class CourseLessons extends Component {
     constructor(props) {
         console.log('constructor');
         super(props);
@@ -24,7 +24,7 @@ export default class CourseLesson extends Component {
     render() {
         console.log('render');
         return (
-            <div className="margin-left table-wrapper">
+            <div className="margin-left">
                 <h1>Программа курса {this.props.courseName}</h1>
                 {/*<table className="table scroll-pane" cellspacing="5">*/}
                 <table>

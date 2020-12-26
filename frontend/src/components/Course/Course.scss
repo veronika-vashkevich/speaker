@@ -1,16 +1,12 @@
 div.gallery {
-  margin-right: 20px;
-  margin-left: 10px;
-  margin-bottom: 0px;
-  margin-top: 30px;
+  margin: 5px auto;
+  padding-bottom: 20px;
   border: 1px solid #ccc;
-  display: flex;
-  float: left;
-  width: 100%;
-  height: 500px;
-  text-align: left;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
 }
-
 
 div.gallery:hover {
   border: 1px solid #777;
@@ -38,9 +34,35 @@ div.desc {
   display: block;
 }
 
-.courses-vertical-container {
-  //display: inline-block;
-  //margin-left: 20px;
-  //width: 100%;
-  //padding-bottom: 40px;
+@media screen and (max-width:749px) {
+  div.gallery img {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    //display: block;
+    //float: left;
+  }
+
+  div.gallery {
+    margin: 200px auto;
+    padding-bottom: 20px;
+    border: 1px solid #ccc;
+    width: 90%;
+    display: flex;
+    //overflow: hidden;
+    //grid-template-columns: 1fr 2fr;
+    //column-gap: 20px;
+  }
+
+  div.desc {
+    padding: 0px;
+    text-align: center;
+    color: #1a63ab;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: 50px;
+    display: block;
+  }
 }

@@ -3,12 +3,12 @@ import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-import './CoursesPage.scss'
-import {ReactComponent as Continue} from "../../images/continue.svg";
 import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
 import CourseHeader from "../Header/CourseHeader";
+import '../../components/Home/Home.scss'
+import "../Course/CoursesPage.scss"
 
 
 const continuer = require('../../images/continue.svg');
@@ -43,10 +43,10 @@ export default class BeginnerCoursePage extends Component {
             <div>
                 <NonAuthenticatedHeader  selectedLink="courses"  {...this.props}/>
 
-                <div className='Home'>
+                <div className='Home' >
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`topicContainer ${this.state.selectedCourse === 'continue' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery active' : 'gallery'}`}
                         imgSrc={continuer}
                         desc1="Продолжение курс"
                         desc2="8-12 лет"

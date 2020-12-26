@@ -6,17 +6,18 @@
 
 
 .topnav a {
-  float: left;
   display: block;
-  color: #1a63ab;
-  text-align: center;
-  font-size: 20px;
-  padding: 14px 16px;
-  text-decoration: none;
-  margin-left: auto;
-  margin-right: auto;
-  vertical-align: middle;
+  //float: left;
+  //color: #1a63ab;
+  //text-align: center;
+  //font-size: 20px;
+  //padding: 14px 16px;
+  //text-decoration: none;
+  //margin-left: auto;
+  //margin-right: auto;
+  //vertical-align: middle;
 }
+
 .topnav a:link {
   color: #dc3545;
 }
@@ -45,26 +46,25 @@
 .Header {
   color: white;
   background-color: white;
-  height: 100px;
   position: fixed;
-  align-items: center;
-  display: flex;
-  //justify-content: space-between;
   width: 100%;
   margin-top: 0;
   margin-left: 2px;
   margin-right: 0;
   padding-top: 0;
   z-index: 99999999;
+  //align-items: center;
+  //display: flex;
+  //justify-content: space-between;
+  //height: 100px;
 }
-//.Header:link{
-//   color: #1a63ab;
-// }
+
 
 
 .Header-ExitBtn {
   border-width: 1px solid white;
   vertical-align: middle;
+  //float: left;
 }
 
 .header-btn {
@@ -78,6 +78,27 @@
   justify-content: space-between;
 }
 
+.Header-Body div {
+  text-align: start;
+  padding-left: 6px;
+  padding-top: 5px;
+  float: left;
+}
+
+
+.topnav a {
+  float: left;
+  display: block;
+  color: #1a63ab;
+  line-height: 0.9;
+  text-align: center;
+  font-size: 20px;
+  padding: 14px 16px;
+  text-decoration: none;
+  margin-left: auto;
+  margin-right: auto;
+  vertical-align: middle;
+}
 
 
 .Header-Icon {
@@ -103,21 +124,9 @@
   margin-right: 20px;
 }
 
-
-.Course-Header{
-  //position: relative;
-  margin-top: 0%;
-  margin-bottom: 0px;
-  text-align: start;
-  margin-left: 20px;
-  color: #1a63ab;
-  vertical-align: middle;
-  display: flex;
-  justify-content: space-between;
-  width: 600px;
-}
 .Course-Header a{
   color: #1a63ab;
+  padding-left: 40px;
 }
 
 .Course-Header a:hover{
@@ -127,3 +136,102 @@
 .active-course-header{
   font-weight: bold;
 }
+
+.Course-Header{
+  margin: 0 40px 0 40px;
+  padding-right: 40px;
+  color: #1a63ab;
+  display: flex;
+  justify-content: center;
+  //vertical-align: middle;
+  //width: 600px;
+}
+//
+//@media screen and (min-width:750px) {
+//  .Header-Body {
+//    width: 100%;
+//    display: flex;
+//    justify-content: space-between;
+//  }
+//  .Header {
+//    vertical-align: middle;
+//    display: flex;
+//    justify-content: space-between;
+//    //width: 600px;
+//  }
+//}
+
+
+  @media screen and (max-width:749px) {
+    .Header {
+      color: white;
+      background-color: white;
+      overflow: hidden;
+      position: fixed;
+      width: 100%;
+      margin-top: 0;
+      margin-left: 2px;
+      margin-right: 0;
+      padding-top: 0;
+      z-index: 99999999;
+    }
+    
+    .header-btn {
+      margin-top: 0%;
+      margin-right: 2%;
+    }
+
+    .Header-ExitBtn {
+      border-width: 1px solid white;
+      vertical-align: middle;
+      font-size: 10px;
+    }
+  
+    .topnav a {
+      //float: left;
+      //display: flex;
+      color: #1a63ab;
+      text-align: center;
+      font-size: 10px;
+      //padding: 14px 16px;
+      text-decoration: none;
+      margin-left: auto;
+      margin-right: auto;
+      //vertical-align: middle;
+    }
+
+    .topnav {
+      overflow: hidden;
+      //display: flex;
+      margin: 0 auto;
+      vertical-align: middle;
+    }
+
+    .Course-Header{
+      //position: relative;
+      margin-top: 40%;
+
+      text-align: start;
+      padding-left: 40px;
+      padding-right: 40px;
+      color: #1a63ab;
+      //vertical-align: middle;
+      display: flex;
+      //justify-content: space-between;
+      //width: 600px;
+    }
+
+    .Header-Body {
+      width: 100%;
+      justify-content: space-between;
+    }
+    
+    .Header-Body div {
+      text-align: start;
+      padding-left: 6px;
+      padding-top: 5px;
+      float: left;
+    }
+    
+    
+  }

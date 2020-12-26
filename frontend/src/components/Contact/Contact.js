@@ -13,6 +13,9 @@ export default class Contact extends Component {
             subject: '',
             phone:'',
             showPopup: false
+        };
+        this.props ={
+            text: 'СВЯЗАТЬСЯ СО МНОЙ'
         }
     }
 
@@ -90,10 +93,11 @@ export default class Contact extends Component {
     render() {
         return (
             <div className="Contact-me">
+                
                 <div /*className="row">
                     <div className="col-md-12"*/>
-                    <div /*className="sectionTitle"*/>
-                        <h2 className="title">СВЯЗАТЬСЯ СО МНОЙ</h2>
+                    <div >
+                        <h2 className="title">{this.state.text}</h2>
                         <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
                             <div style={{width: "100%"}}/* className="form-group"*/>
                                 <div className="row">
@@ -120,7 +124,7 @@ export default class Contact extends Component {
                                     <div className="Contact-me-button">
                                         <button type="submit" className="Header-ExitBtn btn btn-primary bold"
                                             /*onClick={this.contactMeClicked.bind(this) this.togglePopup.bind(this)}*/>
-                                            Связаться со мной
+                                            СВЯЗАТЬСЯ СО МНОЙ
                                         </button>
 
                                         {this.state.showPopup ?
@@ -137,7 +141,6 @@ export default class Contact extends Component {
                             </div>
                         </form>
                     </div>
-                    {/*</div>*/}
                 </div>
             </div>
         );

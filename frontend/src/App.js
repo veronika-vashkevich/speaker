@@ -16,7 +16,7 @@ import Lessons from './components/Lessons/Lessons'
 import LandingPage from "./components/Landing/LandingPage";
 import AppLayout from "./components/Layout/AppLayout"
 import LoginPage from "./components/Page/LoginPage";
-import CoursesPage from "./components/Page/CoursesPage";
+import CoursesPage from "./components/Course/CoursesPage";
 import BeginnerCoursePage from "./components/Page/BiginnerCoursePage"
 import ContinueCoursePage from "./components/Page/ContinueCoursePage";
 import AdvancedCoursePage from "./components/Page/AdvancedCoursePage";

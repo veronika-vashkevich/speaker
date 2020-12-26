@@ -3,7 +3,7 @@ import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-import './CoursesPage.scss'
+import '../Course/CoursesPage.scss'
 import {ReactComponent as Beginner} from "../../images/beginner.svg";
 import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
@@ -46,7 +46,7 @@ export default class BeginnerCoursePage extends Component {
                     <div className='Home'>
                         <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                         <Course
-                            classNameValue={`topicContainer ${this.state.selectedCourse === 'beginner' ? 'gallery active' : 'gallery'}`}
+                            classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery active' : 'gallery'}`}
                             imgSrc={beginner}
                             desc1="Курс для самых маленьких"
                             desc2="5-7 лет"

@@ -10,13 +10,17 @@ table {
   background:white;
   border-radius:6px;
   overflow-y:scroll;
-  //max-width:800px;
   display:block;
-  height: 400px;
-  margin:0 0;
+  height: 80%;
+  margin:0 auto;
   position:relative;
   text-align: left;
-  width:90%;
+  width: 90%;
+  //max-width:800px;
+}
+
+tbody {
+  width: 80%;
 }
 
 table, th, td {
@@ -37,4 +41,26 @@ th {
   //width:90%;
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
+}
+
+@media screen and (max-width:749px) {
+  h1 {
+    font-size: 10px;
+  }
+
+  table {
+    border-spacing: 1;
+    border-collapse: collapse;
+    background:white;
+    border-radius:6px;
+    overflow-y:scroll;
+    display:block;
+    //height: 80%;
+    margin:0 auto;
+    position:relative;
+    text-align: left;
+    width: 90%;
+    //max-width:800px;
+  }
+  
 }

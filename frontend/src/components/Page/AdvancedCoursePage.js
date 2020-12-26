@@ -4,7 +4,7 @@ import CourseHeader from "../Header/CourseHeader";
 
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-import './CoursesPage.scss'
+import '../Course/CoursesPage.scss'
 import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
@@ -45,7 +45,7 @@ export default class AdvancedCoursePage extends Component {
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`topicContainer ${this.state.selectedCourse === 'advanced' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery active' : 'gallery'}`}
                         imgSrc={advanced}
                         desc1="Продвинутый курс"
                         desc2="13-17 лет"
@@ -54,7 +54,7 @@ export default class AdvancedCoursePage extends Component {
                         lessons={this.state.lessons}
                     />
                     <div className="container"></div>
-                    <Contact/>
+                    <Contact />
                 </div>
                 <Footer/>
             </div>
