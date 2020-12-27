@@ -8,6 +8,9 @@
   color: #1a63ab;
 }
 
+.team {
+  align-content: center;
+}
 .team img {
   width: 7rem;
   height: 7rem;
@@ -22,6 +25,9 @@
 
   .Body {
     padding-top: 100px;
+    margin:0; 
+    height:100%;
+    position: relative
   }
 }
 
@@ -33,6 +39,8 @@
 
   .Body {
     padding-top: 200px;
+    height:100%;
+    position: relative
 
   }
 

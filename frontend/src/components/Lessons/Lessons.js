@@ -99,13 +99,13 @@ export default class Lessons extends Component {
                                         className='Lessons-FilterField'
                                         onChange={this.onChangeFilterField}
                                     />
-                                    <CheckboxField
-                                        name='onlyMe'
-                                        label='Только я'
-                                        value={onlyMe}
-                                        className='Lessons-FilterField'
-                                        onChange={this.onChangeFilterField}
-                                    />
+                                    {/*<CheckboxField*/}
+                                    {/*    name='onlyMe'*/}
+                                    {/*    label='Только я'*/}
+                                    {/*    value={onlyMe}*/}
+                                    {/*    className='Lessons-FilterField'*/}
+                                    {/*    onChange={this.onChangeFilterField}*/}
+                                    {/*/>*/}
                                     <Button
                                         className='Lessons-SearchBtn'
                                         onClick={this.onSearch}>
@@ -187,7 +187,6 @@ export default class Lessons extends Component {
                         </div>
                     </div>
                 </div>
-                
                 <Footer/>
             </div>
         )

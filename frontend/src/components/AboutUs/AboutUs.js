@@ -1,7 +1,4 @@
 import React, {Component} from "react";
-// import './Course.scss'
-import "../../components/Header/Header.scss"
-import  "../../components/Course/CoursesPage.scss"
 import  "./AboutUs.scss"
 
 
@@ -34,18 +31,16 @@ export default class AboutUs extends Component {
     }
     render() {
         return (
-            <div className="content-wrap">
-                <div className="project-item">
+            <div className="content-wrap-about">
+               
                     {/*<img src="images/project-courses.jpg" alt="Lynda & LinkedIn Learning course list">*/}
-                        <h3>Lynda / LinkedIn Learning Courses</h3>
-                        <div>Developed content and instruction for various CSS and front-end focused web development
-                            courses including CSS Essential Training, Getting Your Website Online, Design Systems &
-                            Architectures and more.</div>
-                        <a className="btn"
+                        <div className="project-item-about">Mariya Stankevich</div>
+                        <div className="project-item-about">Speak Mast Courses</div>
+                        <div className="project-item-about">A passionate teacher!</div>
+                        <a className="btn btn-primary-about"
                            href="https://www.linkedin.com/learning/instructors/christina-truong?u=2125562"
-                           target="_blank">Follow us</a>
+                           target="_blank">Follow me</a>
                         {/*<a className="btn" href="https://www.lynda.com/Christina-Truong/7842227-1.html">Lynda.com</a>*/}
-                </div>
             </div>
 
         )

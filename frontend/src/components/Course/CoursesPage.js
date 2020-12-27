@@ -124,7 +124,7 @@ export default class CoursesPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="position-relative">
                 {/*<NonAuthenticatedHeader selectedLink="courses" {...this.props}/>*/}
 
                 { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" /*{...this.props}*//> : <div></div> }
@@ -161,7 +161,9 @@ export default class CoursesPage extends Component {
                     <div className="container"></div>
                     <Contact/>
                 </div>
-                <Footer/>
+                <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
+                    <Footer />
+                </div>
             </div>
 
         )

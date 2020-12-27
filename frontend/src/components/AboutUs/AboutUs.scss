@@ -1,16 +1,15 @@
-.content-wrap {
-  max-width: 800px;
-  width: 85%;
+.content-wrap-about {
+  width: 90%;
   margin: 0 auto;
-  padding: 100px;
+  padding-top: 100px;
+  padding-bottom: 100px;
+  color: #1a63ab;
 }
 
 .project-item {
   overflow: hidden;
-  //display: grid;
-  //grid-template-columns: 1fr 2fr;
-  //column-gap: 20px;
 }
+
 .project-item h3 {
   margin-top: 0;
   margin-bottom: 100px;
@@ -25,14 +24,41 @@
     float: left;
     margin-right: 20px;
   }
-
-  .job-item {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-    column-gap: 20px;
-  }
+  
   .contact-list {
     display: flex;
     justify-content: center;
   }
+  
+}
+
+.btn-primary-about {
+  background-color: #f8a30a;
+  border-color: white;
+  color: #1a63ab;
+}
+
+@media screen and (max-width:750px){
+  .project-item-about{
+    overflow: hidden;
+    align-content: center;
+    flex: 1 1 50%;
+    padding-bottom: 30px;
+    color: #1a63ab;
+  }
+
+  .job-item {
+   flex: 0 0 50%;width: 90%;
+  }
+
+  .content-wrap-about {
+    //max-width: 800px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    padding-top: 200px;
+  }
+
+  
 }

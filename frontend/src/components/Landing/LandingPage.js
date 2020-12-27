@@ -99,9 +99,8 @@ export default class LandingPage extends Component {
 
     render() {
         return (
-            <div >
+            <div className="position-relative" >
                 { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="home" /*{...this.props}*//> : <div></div> }
-
                 <div className="Body" >
                     <h1 className="Landing-Text"> {SLOGAN} </h1>
                     <ul>
@@ -127,7 +126,9 @@ export default class LandingPage extends Component {
                     <hr className="my-4"/>
                     <LandingPupils/>
                     <hr className="my-4"/>
-                    <Footer/>
+                </div>
+                <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
+                    <Footer />
                 </div>
             </div>
         )

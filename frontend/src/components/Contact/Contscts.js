@@ -32,7 +32,7 @@ export default class Contacts extends Component {
     }
     render() {
         return (
-            <div className="content-wrap">
+            <div className="content-wrap-contacts">
                 <div className="project-item">
                     {/*<img src="images/project-courses.jpg" alt="Lynda & LinkedIn Learning course list">*/}
                     <div>Email:</div>
