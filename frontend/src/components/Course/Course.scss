@@ -8,12 +8,14 @@ div.gallery {
   column-gap: 20px;
 }
 
-div.gallery:hover {
-  border: 1px solid #777;
-}
-
-.active {
-  background-color: lightblue;
+div.gallery-courses {
+  margin: 5px auto;
+  padding-bottom: 20px;
+  border: 1px solid #ccc;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
 }
 
 div.gallery img {
@@ -23,6 +25,28 @@ div.gallery img {
   width: 350px;
   height: 350px;
 }
+
+div.gallery-courses img{
+  margin-top: 20px;
+  margin-right: 50px;
+  margin-left: 20px;
+  width: 350px;
+  height: 350px;
+}
+
+.padding-top {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+div.gallery:hover {
+  border: 1px solid #777;
+}
+
+.active {
+  background-color: lightblue;
+}
+
 
 div.desc {
   padding: 0px;
@@ -34,19 +58,18 @@ div.desc {
   display: block;
 }
 
-@media screen and (max-width:749px) {
+@media screen and (max-width:768px) {
   div.gallery img {
     margin-top: 20px;
     margin-right: 50px;
     margin-left: 20px;
     width: 200px;
     height: 200px;
-    //display: block;
-    //float: left;
+    align-content: center;
   }
-
+    
   div.gallery {
-    margin: 200px auto;
+    margin: 30px auto;
     padding-bottom: 20px;
     border: 1px solid #ccc;
     width: 90%;
@@ -55,14 +78,63 @@ div.desc {
     //grid-template-columns: 1fr 2fr;
     //column-gap: 20px;
   }
+  
+  div.gallery-courses {
+    margin: 90px auto;
+    padding-bottom: 20px;
+    border: 1px solid #ccc;
+    width: 90%;
+    display: block;
+  }
 
+  div.gallery-courses img {
+    //margin: 0 auto;
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    align-content: center;
+    //display: block;
+    //float: left;
+  }
+  
+  
   div.desc {
     padding: 0px;
     text-align: center;
     color: #1a63ab;
-    margin-top: 5px;
-    margin-bottom: 5px;
-    margin-left: 50px;
+    margin: 0 auto;
     display: block;
+  }
+}
+
+
+@media screen and (min-width: 1024px){
+  //div.gallery-courses {
+  //  margin: 5px auto;
+  //  padding-bottom: 20px;
+  //  border: 1px solid #ccc;
+  //  width: 90%;
+  //  display: block;
+  //}
+
+  div.gallery-courses img {
+    margin-top: 20px;
+    margin-right: 50px;
+    margin-left: 20px;
+    width: 350px;
+    height: 350px;
+    align-content: center;
+  }
+  
+  .margin-left {
+    margin: 0px;
+  }
+  
+  div.desc{
+    align-content: center;
+    margin: 0 auto;
+    text-align: center;
   }
 }

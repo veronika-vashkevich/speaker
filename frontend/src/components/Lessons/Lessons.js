@@ -4,13 +4,13 @@ import {Button, Form} from 'reactstrap'
 import Moment from 'react-moment'
 
 import './Lessons.scss'
+import '../../components/Home/Home.scss'
 import '../../components/Course/CoursesPage.scss'
 
 import Table from '../Table/Table'
 import Loader from '../Loader/Loader'
 import TextField from '../Form/TextField/TextField'
 import DateField from '../Form/DateField/DateField'
-import CheckboxField from '../Form/CheckboxField/CheckboxField'
 
 import {ReactComponent as Search} from '../../images/search.svg'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
@@ -63,11 +63,9 @@ export default class Lessons extends Component {
         } = this.state
 
         return (
-            <div >
+            <div>
                 { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="my-lessons" /*{...this.props}*//> : <div></div> }
-
-                {/*<NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}/>*/}
-                <div className=/*"content-wrap*/ "container">{this.state.title}
+                <div className=/*"content-wrap*/ "Home-my-cabinet">{this.state.title}
                     <div className="Lessons">
                         <div className='Lessons-Body'>
                             <div className='Lessons-Filter'>

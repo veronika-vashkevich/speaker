@@ -54,10 +54,11 @@ export default class AdvancedCoursePage extends Component {
                         selectedCourse="advanced"
                         lessons={this.state.lessons}
                     />
-                    <div className="container"></div>
                     <Contact />
                 </div>
-                <Footer/>
+                <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
+                    <Footer />
+                </div>
             </div>
         )
     }

@@ -3,13 +3,13 @@
   margin-left: 2px;
   padding-top: 8%;
   width: 100%;
-  //padding-top: 65px;
-  //margin-left: 15px;
-  //display: flex;
-  //flex-direction: column;
-  //change here to center
-  //margin-top: 5%;
-  //position: inherit;
+}
+
+.Home-my-cabinet {
+  align-items: center;
+  margin-left: 2px;
+  padding-top: 8%;
+  width: 100%;
 }
 
 .Home-Body {
@@ -92,11 +92,49 @@
   width: 95%;
 }
 
-@media screen and (max-width: 749px){
+@media screen and (max-width: 768px){
   .Contact-me {
     //margin-top: 3em;
-    margin: 0 auto;
+    //margin: 0 auto;
     padding-bottom: 100px;
+    padding-top: 0px;
     width: 95%;
   }
 }
+
+@media screen and (max-width:414px) {
+  .Home {
+    align-items: center;
+    margin-left: 2px;
+    padding-top: 10%;
+    width: 100%;
+  }
+
+  .Home-my-cabinet {
+    align-items: center;
+    margin-left: 2px;
+    padding-top: 40%;
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 415px) and (max-width:616px) {
+  
+}
+
+//
+//@media screen and (min-width: 415px) and (max-width:748px) {
+//  .Home {
+//    align-items: center;
+//    margin-left: 2px;
+//    padding-top: 10%;
+//    width: 100%;
+//  }
+//
+//  .Home-my-cabinet {
+//    align-items: center;
+//    margin-left: 2px;
+//    padding-top: 40%;
+//    width: 100%;
+//  }
+//}

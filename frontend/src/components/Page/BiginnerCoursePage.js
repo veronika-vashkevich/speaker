@@ -3,8 +3,6 @@ import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
-import '../Course/CoursesPage.scss'
-import {ReactComponent as Beginner} from "../../images/beginner.svg";
 import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
@@ -56,10 +54,11 @@ export default class BeginnerCoursePage extends Component {
                             lessons={this.state.lessons}
                             // onClicked={this.imageBeginnerClick}
                         />
-                        <div className="container"></div>
                         <Contact/>
                     </div>
-                    <Footer/>
+                    <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
+                        <Footer />
+                    </div>
                 </div>
             )
         }

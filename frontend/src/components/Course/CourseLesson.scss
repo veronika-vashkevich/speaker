@@ -1,5 +1,5 @@
 //
-.margin-left{
+.margin-left {
   margin-left: 50px;
 }
 
@@ -10,13 +10,13 @@ table thead {
 table {
   border-spacing: 1;
   border-collapse: collapse;
-  background:white;
-  border-radius:6px;
-  overflow-y:scroll;
-  display:block;
+  background: white;
+  border-radius: 6px;
+  overflow-y: scroll;
+  display: block;
   height: 80%;
-  margin:0 auto;
-  position:relative;
+  margin: 0 auto;
+  position: relative;
   text-align: left;
   width: 90%;
   //max-width:800px;
@@ -27,9 +27,9 @@ tbody {
 }
 
 table, th, td {
-  border-left: 1px  solid darkgrey;
-  border-right: 1px  solid darkgrey;
-  border-bottom: 1px  solid darkgrey;;
+  border-left: 1px solid darkgrey;
+  border-right: 1px solid darkgrey;
+  border-bottom: 1px solid darkgrey;;
 }
 
 
@@ -40,13 +40,13 @@ th, td {
 
 
 th {
-  background:#FFED86;
+  background: #FFED86;
   //width:90%;
   position: sticky;
   top: 0; /* Don't forget this, required for the stickiness */
 }
 
-@media screen and (max-width:749px) {
+@media screen and (max-width: 768px) {
   h1 {
     font-size: 10px;
   }
@@ -54,16 +54,47 @@ th {
   table {
     border-spacing: 1;
     border-collapse: collapse;
-    background:white;
-    border-radius:6px;
-    overflow-y:scroll;
-    display:block;
+    background: white;
+    border-radius: 6px;
+    overflow-y: scroll;
+    display: block;
     //height: 80%;
-    margin:0 auto;
-    position:relative;
+    margin: 0 auto;
+    position: relative;
     text-align: left;
     width: 90%;
+    max-height: 300px;
     //max-width:800px;
   }
-  
+
+  .margin-left {
+    margin-left: 0px;
+  }
+
+  .margin-left h1 {
+    font-weight: bold;
+    font-size: 14px;
+    padding-top: 10px;
+  }
+  table, th, td {
+    border-left: 1px solid darkgrey;
+    border-right: 1px solid darkgrey;
+    border-bottom: 1px solid darkgrey;;
+  }
+
+  th, td {
+    padding: 0.22rem;
+    padding-left: 10px;
+    font-size: 12px;
+  }
+
+}
+
+@media screen and (min-width: 1024px) {
+  .margin-left {
+    margin: 0px;
+  }
+  .margin-left h1 {
+    padding-top: 10px;
+  }
 }

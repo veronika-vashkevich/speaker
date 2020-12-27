@@ -58,6 +58,7 @@
 
 @media screen and (max-width: 740px){
   .Lessons {
+    margin-top: 10%;
     align-items: center;
   }
 
@@ -82,5 +83,12 @@
     margin-top: 5px;
     line-height: 1;
     background-color: #039BE5;
+  }
+}
+
+@media screen and (min-width:400px) {
+  .Lessons {
+    margin-top: 0%;
+    align-items: center;
   }
 }

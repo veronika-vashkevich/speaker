@@ -134,7 +134,6 @@ export default class Contact extends Component {
                                         : null
                                     }
                                 </div>
-
                             </div>
                         </div>
                     </form>

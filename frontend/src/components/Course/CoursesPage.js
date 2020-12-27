@@ -1,11 +1,8 @@
 import React, {Component} from 'react'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
-import './CoursesPage.scss'
-import '../Landing/LandingPage.scss'
 import Course from "../Course/Course"
 import '../../components/Header/Header.scss'
 import {ReactComponent as Beginner} from "../../images/beginner.svg";
-import CourseLessons from "../Course/CourseLessons"
 import LessonDataService from "../../services/LessonDataService";
 import AuthenticationService from "../../services/AuthenticationService"
 import Contact from "../Contact/Contact";
@@ -130,7 +127,7 @@ export default class CoursesPage extends Component {
                 { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" /*{...this.props}*//> : <div></div> }
                 <div className='Home'>
                     <Course
-                        classNameValue={`${this.state.selectedCourse == 'beginner' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse == 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={beginner}
                         desc1="Курс для самых маленьких"
                         desc2="5-7 лет"
@@ -140,7 +137,7 @@ export default class CoursesPage extends Component {
                         onClicked={this.imageBeginnerClick}
                     />
                     <Course
-                        classNameValue={`${this.state.selectedCourse == 'continue' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse == 'continue' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={continuer}
                         desc1="Продолжение курса"
                         desc2="8-12 лет"
@@ -150,7 +147,7 @@ export default class CoursesPage extends Component {
                         onClicked={this.imageContinueClick}/>
 
                     <Course
-                        classNameValue={`${this.state.selectedCourse == 'advanced' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse == 'advanced' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={advanced}
                         desc1="Продвинутый курс"
                         desc2="13-17 лет"
@@ -158,7 +155,6 @@ export default class CoursesPage extends Component {
                         selectedCourse="advanced"
                         lessons={this.state.advancedLessons}
                         onClicked={this.imageAdvancedClick}/>
-                    <div className="container"></div>
                     <Contact/>
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>

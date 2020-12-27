@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Course.scss'
-import "../../components/Header/Header.scss"
+// import "../../components/Header/Header.scss"
 import CourseLessons from "./CourseLessons";
 import EnrollPopup from "../Popup/EnrollPopup";
 import Popup from "../Popup/Popup";
@@ -35,7 +35,6 @@ export default class Course extends Component {
     }
     render() {
         return (
-            <div>
                 <div
                     onClick={this.props.onClicked}
                     className={this.props.classNameValue}>
@@ -44,7 +43,7 @@ export default class Course extends Component {
                         <img src={this.props.imgSrc}/>
                         <div className="desc margin-left">{this.props.desc1}</div>
                         <div className="desc margin-left">{this.props.desc2}</div>
-                        <button className='Header-ExitBtn btn btn-primary margin-left' onClick={() => {
+                        <button className='Header-ExitBtn btn btn-primary margin-left padding-top' onClick={() => {
                              this.togglePopup()
                         }}> ЗАПИСАТЬСЯ
                         </button>
@@ -60,7 +59,6 @@ export default class Course extends Component {
                                    lessons={this.props.lessons}/>
 
                 </div>
-            </div>
 
         )
     }

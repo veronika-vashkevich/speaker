@@ -28,17 +28,6 @@
 }
 
 
-//
-//.topnav a:active{
-//  text-decoration: none;
-//  color: Black;
-//  background-color: orange;
-//}
-
-//.active {
-//  font-weight: bold;
-//}
-
 .nav-link {
   font-size: 20px;
 }
@@ -58,7 +47,6 @@
   //justify-content: space-between;
   //height: 100px;
 }
-
 
 
 .Header-ExitBtn {
@@ -124,114 +112,140 @@
   margin-right: 20px;
 }
 
-.Course-Header a{
+.Course-Header a {
   color: #1a63ab;
   padding-left: 40px;
 }
 
-.Course-Header a:hover{
+.Course-Header a:hover {
   color: #f8a30a;
 }
 
-.active-course-header{
+.active-course-header {
   font-weight: bold;
 }
 
-.Course-Header{
+.Course-Header {
   margin: 0 40px 0 40px;
   padding-right: 40px;
+
   color: #1a63ab;
   display: flex;
   justify-content: center;
-  //vertical-align: middle;
-  //width: 600px;
 }
-//
-//@media screen and (min-width:750px) {
-//  .Header-Body {
-//    width: 100%;
-//    display: flex;
-//    justify-content: space-between;
-//  }
-//  .Header {
-//    vertical-align: middle;
-//    display: flex;
-//    justify-content: space-between;
-//    //width: 600px;
-//  }
-//}
 
 
-  @media screen and (max-width:749px) {
-    .Header {
-      color: white;
-      background-color: white;
-      overflow: hidden;
-      position: fixed;
-      width: 100%;
-      margin-top: 0;
-      margin-left: 2px;
-      margin-right: 0;
-      padding-top: 0;
-      z-index: 99999999;
-    }
-    
-    .header-btn {
-      margin-top: 0%;
-      margin-right: 2%;
-    }
 
-    .Header-ExitBtn {
-      border-width: 1px solid white;
-      vertical-align: middle;
-      font-size: 10px;
-    }
-  
-    .topnav a {
-      //float: left;
-      //display: flex;
-      color: #1a63ab;
-      text-align: center;
-      font-size: 10px;
-      //padding: 14px 16px;
-      text-decoration: none;
-      margin-left: auto;
-      margin-right: auto;
-      //vertical-align: middle;
-    }
-
-    .topnav {
-      overflow: hidden;
-      //display: flex;
-      margin: 0 auto;
-      vertical-align: middle;
-    }
-
-    .Course-Header{
-      //position: relative;
-      margin-top: 40%;
-
-      text-align: start;
-      padding-left: 40px;
-      padding-right: 40px;
-      color: #1a63ab;
-      //vertical-align: middle;
-      display: flex;
-      //justify-content: space-between;
-      //width: 600px;
-    }
-
-    .Header-Body {
-      width: 100%;
-      justify-content: space-between;
-    }
-    
-    .Header-Body div {
-      text-align: start;
-      padding-left: 6px;
-      padding-top: 5px;
-      float: left;
-    }
-    
-    
+@media screen and (max-width: 749px) {
+  .Header {
+    color: white;
+    background-color: white;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 2px;
+    margin-right: 0;
+    padding-top: 0;
+    z-index: 99999999;
   }
+
+  .header-btn {
+    margin-top: 0%;
+    margin-right: 2%;
+  }
+
+
+  .Header-ExitBtn {
+    border-width: 1px solid white;
+    align-content: start;
+    text-decoration: none;
+    vertical-align: middle;
+    display: inline-block;
+    margin-right: 5px;
+    font-size: 12px;
+  }
+
+  .topnav a {
+    color: #1a63ab;
+    text-align: center;
+    font-size: 12px;
+    margin: 0 0;
+    padding: 5px;
+    text-decoration: none;
+  }
+
+  .topnav {
+    overflow: hidden;
+    //display: flex;
+    margin: 0 auto;
+    vertical-align: middle;
+  }
+
+  .Course-Header {
+    margin-top: 30%;
+    float: flex;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #1a63ab;
+    display: flex;
+    font-size: 10px;
+  }
+
+  .Header-Body {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .Header-Body div {
+    text-align: start;
+    padding-left: 6px;
+    padding-top: 5px;
+    float: left;
+  }
+
+  .active-course-header {
+    font-weight: bold;
+    margin: 0;
+  }
+
+  .Course-Header a {
+    color: #1a63ab;
+    padding-left: 10px;
+  }
+
+}
+
+@media screen and (max-height: 360px) and (max-width: 640px){
+  .Course-Header {
+    margin-top: 5%;
+    float: flex;
+    text-align: center;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #1a63ab;
+    display: flex;
+    font-size: 10px;
+  }
+}
+
+@media screen and (max-width: 414px) {
+  .Header {
+    color: white;
+    max-width: 380px;
+    background-color: white;
+    overflow: hidden;
+    position: fixed;
+    width: 100%;
+    margin-top: 0;
+    margin-left: 2px;
+    margin-right: 0;
+    padding-top: 0;
+    z-index: 99999999;
+  }
+
+  .topnav a {
+    text-align: left;
+  }
+}

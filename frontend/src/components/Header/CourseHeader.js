@@ -1,9 +1,6 @@
 import React, {Component} from 'react'
 
-import cn from 'classname'
-
 import './Header.scss'
-import Course from "../Course/Course";
 
 export default class CourseHeader extends Component {
     constructor(props) {
