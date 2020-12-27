@@ -17,6 +17,7 @@ import '../Home/Home.scss'
 
 import NonAuthenticatedHeader from '../Header/NonAuthenticatedHeader'
 import Footer from "../Footer/Footer";
+import AuthenticationService from "../../services/AuthenticationService";
 
 const SLOGAN = 'Попробуйте наши лучшие курсы!'
 
@@ -91,11 +92,15 @@ export default class LandingPage extends Component {
     //     //     this.setState({hasLoginFailed: true})
     //     // })
     // }
+    componentWillMount() {
+        let user = AuthenticationService.getLoggedInUserName();
+        console.log("username is ", user)
+    }
 
     render() {
         return (
             <div >
-                <NonAuthenticatedHeader selectedLink="home" /*{...this.props}*//>
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="home" /*{...this.props}*//> : <div></div> }
 
                 <div className="Body" >
                     <h1 className="Landing-Text"> {SLOGAN} </h1>

@@ -56,7 +56,6 @@ export default class Course extends Component {
                         />
                         : null
                     }
-
                     <CourseLessons courseName={this.props.courseName} selectedCourse={this.props.selectedCourse}
                                    lessons={this.props.lessons}/>
 

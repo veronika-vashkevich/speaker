@@ -23,8 +23,8 @@ export default class NonAuthenticatedHeader extends Component {
                             <a  className={this.props.selectedLink === 'home' ? 'active-course-header' : ''} href="/home">Домашняя</a>
                             <a  className={this.props.selectedLink === 'courses' ? 'active-course-header' : ''} href="/courses">Курсы</a>
                             <a  className={this.props.selectedLink === 'my-lessons' ? 'active-course-header' : ''} href="/my-lessons">Мой кабинет</a>
-                            <a href="/about-us">О нас</a>
-                            <a href="/contacts">Контакты</a>
+                            <a  className={this.props.selectedLink === 'about-us' ? 'active-course-header' : ''} href="/about-us">О нас</a>
+                            <a className={this.props.selectedLink === 'contacts' ? 'active-course-header' : ''} href="/contacts">Контакты</a>
                         </div>
                         <div className="header-btn">
                             <button className='Header-ExitBtn btn btn-primary bold ' onClick={() => { this.props.history.push("/login");}} >Войти

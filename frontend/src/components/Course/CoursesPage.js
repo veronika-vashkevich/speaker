@@ -125,8 +125,9 @@ export default class CoursesPage extends Component {
     render() {
         return (
             <div>
-                <NonAuthenticatedHeader selectedLink="courses" {...this.props}/>
+                {/*<NonAuthenticatedHeader selectedLink="courses" {...this.props}/>*/}
 
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" /*{...this.props}*//> : <div></div> }
                 <div className='Home'>
                     <Course
                         classNameValue={`${this.state.selectedCourse == 'beginner' ? 'gallery active' : 'gallery'}`}

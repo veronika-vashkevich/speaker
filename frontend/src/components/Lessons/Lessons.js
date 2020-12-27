@@ -64,8 +64,10 @@ export default class Lessons extends Component {
 
         return (
             <div >
-                <NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}/>
-                <div className="content-wrap container">{this.state.title}
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="my-lessons" /*{...this.props}*//> : <div></div> }
+
+                {/*<NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}/>*/}
+                <div className=/*"content-wrap*/ "container">{this.state.title}
                     <div className="Lessons">
                         <div className='Lessons-Body'>
                             <div className='Lessons-Filter'>
@@ -186,7 +188,6 @@ export default class Lessons extends Component {
                     </div>
                 </div>
                 
-               
                 <Footer/>
             </div>
         )
