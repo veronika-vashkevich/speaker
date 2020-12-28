@@ -29,7 +29,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain) throws ServletException, IOException {
         try {
-            if(!Boolean.valueOf(request.getHeader("isAuthRequired"))){
+            if(request.getHeader("isAuthRequired") != null && !Boolean.valueOf(request.getHeader("isAuthRequired"))){
                 logger.info("Call without authentication");
             }
             else{

@@ -1,6 +1,6 @@
 create table enrollments
 (
-    ID            serial primary key,
+    id            serial primary key,
     course_name     int       not null,
     user_id       int       not null,
     foreign key (course_id) references courses (id),

@@ -1,6 +1,6 @@
 create table user_authority
 (
-    ID           serial primary key,
-    USER_ID      int references user_account (ID),
-    AUTHORITY_ID int references authority (ID)
+    id           serial primary key,
+    user_id      int references user_account (ID),
+    authority_id int references authority (ID)
 )

@@ -8,7 +8,7 @@ class LessonDataService {
         return axios.get(`${API_URL}/courses/${courseId}/lessons`,
             {
                 headers: {
-                    isAuthRequired: 'false' 
+                    isAuthRequired: 'true' 
                 }
             }
         );

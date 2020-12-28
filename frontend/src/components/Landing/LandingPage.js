@@ -16,6 +16,7 @@ import {map} from 'underscore'
 import '../Home/Home.scss'
 
 import NonAuthenticatedHeader from '../Header/NonAuthenticatedHeader'
+import AuthenticatedHeader from '../Header/AuthenticatedHeader'
 import Footer from "../Footer/Footer";
 import AuthenticationService from "../../services/AuthenticationService";
 
@@ -56,19 +57,38 @@ export default class LandingPage extends Component {
             username: '',
             email: '',
             phone: '',
+            loggedUser: '',
             showSuccessMessage: false
-          
+
         };
-        this.redirect = this.redirect.bind(this)
+        this.redirect = this.redirect.bind(this);
+        // let hasReloaded = localStorage.getItem('hasReloaded')
+        //
+        // if (!hasReloaded) {
+        //     console.log('funciton triggered')
+        //     localStorage.setItem('hasReloaded', true)
+        //     window.location.reload()
+        // }
     }
-    
-    
+
+
     handleChange(event) {
         this.setState(
             {
                 [event.target.name]: event.target.value
             }
         )
+    }
+    
+
+    
+    componentWillMount() {
+        console.log("/home")
+        let user = AuthenticationService.getLoggedInUserName();
+        this.setState({
+            loggedUser: user
+        });
+        console.log("username is ", user)
     }
 
     redirect(href, selectedCourse, courseId) {
@@ -81,27 +101,12 @@ export default class LandingPage extends Component {
         });
     }
 
-    // contactMeClicked() {
-    //     ContactMeService
-    //         .sendContactMeRequest(this.state.name, this.state.email, this.state.phone);
-    //     //     .then((response) => {
-    //     //         AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token)
-    //     //         this.props.history.push(`/home`)
-    //     //     }).catch(() => {
-    //     //     this.setState({showSuccessMessage: false})
-    //     //     this.setState({hasLoginFailed: true})
-    //     // })
-    // }
-    componentWillMount() {
-        let user = AuthenticationService.getLoggedInUserName();
-        console.log("username is ", user)
-    }
-
     render() {
         return (
-            <div className="position-relative" >
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="home" /*{...this.props}*//> : <div></div> }
-                <div className="Body" >
+            <div className="position-relative">
+                {this.state.loggedUser === '' ? <NonAuthenticatedHeader selectedLink="home" {...this.props}/> :
+                    <AuthenticatedHeader selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
+                <div className="Body">
                     <h1 className="Landing-Text"> {SLOGAN} </h1>
                     <ul>
                         <li className='SectionNavigation'>
@@ -120,7 +125,6 @@ export default class LandingPage extends Component {
 
                             ))}
                         </li>
-
                     </ul>
                     <Contact/>
                     <hr className="my-4"/>
@@ -128,11 +132,9 @@ export default class LandingPage extends Component {
                     <hr className="my-4"/>
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
-                    <Footer />
+                    <Footer/>
                 </div>
             </div>
         )
     }
-
-
 }

@@ -3,18 +3,21 @@ import React, { Component } from 'react'
 import cn from 'classname'
 import './Header.scss'
 import SchoolLogo from './SchoolLogo'
+import AuthenticationService from "../../services/AuthenticationService";
 
 
 
-export default class NonAuthenticatedHeader extends Component {
+export default class AuthenticatedHeader extends Component {
 
 
     render () {
         const {
             className,
-            selectedLink
+            selectedLink,
+            loggedUser
          } = this.props;
-        
+
+        const isUserLoggedIn = AuthenticationService.isUserLoggedIn();
         return (
             <header className={cn('Header', className)}>
                 <div className='Header-Body'>
@@ -26,12 +29,13 @@ export default class NonAuthenticatedHeader extends Component {
                             <a  className={this.props.selectedLink === 'about-us' ? 'active-course-header' : ''} href="/about-us">О нас</a>
                             <a className={this.props.selectedLink === 'contacts' ? 'active-course-header' : ''} href="/contacts">Контакты</a>
                         </div>
+                        <div  className="header-btn" style={{color: "black"}}>{this.props.loggedUser}</div>
                         <div className="header-btn">
-                            <button className='Header-ExitBtn btn btn-primary bold' onClick={() => { this.props.history.push("/login")}} >Войти
+                            <button className='Header-ExitBtn btn btn-primary bold' onClick={() => {AuthenticationService.logout(); this.props.history.push("/courses")}} >Выйти
                             </button>
-                            <button className='Header-ExitBtn btn btn-primary bold'>
-                                Зарегистрироваться
-                            </button>
+                            {/*<button className='Header-ExitBtn btn btn-primary bold'>*/}
+                            {/*    Зарегистрироваться*/}
+                            {/*</button>*/}
                         </div>
                 </div>
             </header>

@@ -34,15 +34,10 @@ export default class Contacts extends Component {
         return (
             <div className="content-wrap-contacts">
                 <div className="project-item">
-                    {/*<img src="images/project-courses.jpg" alt="Lynda & LinkedIn Learning course list">*/}
                     <div>Email:</div>
                     <div>marie.stankevich.10@gmail.com</div>
                     <div>WhatsApp / Viber:</div>
                     <div> +375 44 53 45 678</div>
-                    {/*<a className="btn"*/}
-                    {/*    href="https://www.linkedin.com/learning/instructors/christina-truong?u=2125562"*/}
-                    {/*    target="_blank">LinkedIn Learning</a>*/}
-                    {/*<a className="btn" href="https://www.lynda.com/Christina-Truong/7842227-1.html">Lynda.com</a>*/}
                 </div>
             </div>
 

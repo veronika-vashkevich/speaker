@@ -7,6 +7,7 @@ import LessonDataService from "../../services/LessonDataService";
 import AuthenticationService from "../../services/AuthenticationService"
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
+import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 
 const beginner = require('../../images/beginner.svg');
 const continuer = require('../../images/continue.svg');
@@ -31,7 +32,8 @@ export default class CoursesPage extends Component {
             advancedLessons: [],
             selectedCourse: 'beginner',
             courseId: 1,
-            courseName: "\"НАЧИНАЮЩИЙ\""
+            courseName: "\"НАЧИНАЮЩИЙ\"",
+            loggedUser: ''
         };
         this.imageBeginnerClick = this.imageBeginnerClick.bind(this);
         this.imageContinueClick = this.imageContinueClick.bind(this);
@@ -77,7 +79,11 @@ export default class CoursesPage extends Component {
     componentWillMount() {
         console.log('componentWillMount');
         this.refreshAllLessons();
-        console.log(this.state);
+        let loggedUser = AuthenticationService.getLoggedInUserName();
+        this.setState({
+            loggedUser: loggedUser
+        });
+        console.log('loggedUser', loggedUser );
     }
 
     imageBeginnerClick() {
@@ -124,7 +130,8 @@ export default class CoursesPage extends Component {
             <div className="position-relative">
                 {/*<NonAuthenticatedHeader selectedLink="courses" {...this.props}/>*/}
 
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" /*{...this.props}*//> : <div></div> }
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" /*{...this.props}*//> :
+                    <AuthenticatedHeader selectedLink="courses" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className='Home'>
                     <Course
                         classNameValue={`${this.state.selectedCourse == 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}

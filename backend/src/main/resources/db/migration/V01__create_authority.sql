@@ -1,6 +1,6 @@
 create table authority
 (
-    ID   serial primary key,
+    id   serial primary key,
     name varchar(32) unique
 );
 

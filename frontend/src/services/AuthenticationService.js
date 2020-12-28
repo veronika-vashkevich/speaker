@@ -6,11 +6,11 @@ export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 class AuthenticationService {
 
     executeBasicAuthenticationService(email, password) {
-        return axios.get(`${API_URL}/basicauth`,
+        return axios.get(`${API_URL}/auth`,
             // return axios.get(`/basicauth`,
             { headers: { authorization: this.createBasicAuthToken(email, password) } })
     }
-
+    
     executeJwtAuthenticationService(email, password) {
         return axios.post(`${API_URL}/auth/login`, {
         // return axios.post(`${API_URL}/login`, {
@@ -41,7 +41,9 @@ class AuthenticationService {
 
 
     logout() {
+        console.log("logout clicked")
         sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
+        console.log("USER_NAME_SESSION_ATTRIBUTE_NAME is",sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME) )
     }
 
     isUserLoggedIn() {
@@ -52,7 +54,7 @@ class AuthenticationService {
 
     getLoggedInUserName() {
         let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
-        if (user === null) return ''
+        if (user === null) return '';
         return user
     }
 

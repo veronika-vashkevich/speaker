@@ -1,5 +1,5 @@
 create table lessons(
-    ID serial primary key,
+    id serial primary key,
     course_id integer references courses(ID),
     order_index integer,
     title varchar(255),

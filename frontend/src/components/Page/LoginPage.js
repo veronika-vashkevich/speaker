@@ -1,6 +1,9 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import AuthenticationService from '../../services/AuthenticationService.js'
 import './LoginPage.scss'
+import Footer from "../Footer/Footer";
+import SchoolLogo from "../Header/SchoolLogo";
+import '../../components/Header/Header.scss'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 
 class LoginPage extends Component {
@@ -21,8 +24,7 @@ class LoginPage extends Component {
     handleChange(event) {
         this.setState(
             {
-                [event.target.name]
-                    : event.target.value
+                [event.target.name]: event.target.value
             }
         )
     }
@@ -31,34 +33,58 @@ class LoginPage extends Component {
         AuthenticationService
             .executeJwtAuthenticationService(this.state.email, this.state.password)
             .then((response) => {
-                AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token)
-                this.props.history.push(`/home`)
+                AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token);
+                if (response.status === 200) {
+                    console.log("response", response);
+                    this.setState({hasLoginFailed: false});
+                }
+                this.props.history.push(`/`)
             }).catch(() => {
-            this.setState({ showSuccessMessage: false })
-            this.setState({ hasLoginFailed: true })
+            this.setState({showSuccessMessage: false});
+            this.setState({hasLoginFailed: true});
+            console.log("error");
         })
     }
 
     render() {
         return (
-            <div className="Home">
-                <NonAuthenticatedHeader {...this.props}/>   
-                <div className="wrapper">
-                    <div className="form-wrapper">
-                        <div className="container">
-                            {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
-                            {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                            {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                            {/*<ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
-                            Имя пользователя: <input type="text" placeholder="user name" name="email" value={this.state.email} onChange={this.handleChange} />
-                            <h1></h1>
-                            <h1></h1>
-                            <h1></h1>
-                            Пароль: <input type="password"  placeholder="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                            <button className="btn btn-success Header-ExitBtn  btn-primary '" onClick={this.loginClicked}>Войти</button>
+            <div /*className="position-relative"*/>
+                {/*<LoginForm />*/}
+                <NonAuthenticatedHeader />
+                {this.state.hasLoginFailed && <div className=" alert alert-warning">Имя пользователя или пароль неверные</div>}
+                    <div className="grid-container">
+                        {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
+                        {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                        <div className="grid-item-left">
+                            Имя пользователя:
                         </div>
+                        <div className="grid-item-right">
+                            <input type="text" placeholder="user name" name="email"
+                                   value={this.state.email} onChange={this.handleChange}/>
+                        </div>
+                        <div className="grid-item-left">
+                            Пароль:
+                        </div>
+                        <div className="grid-item-right">
+                            <input type="password" placeholder="password" name="password"
+                                   value={this.state.password} onChange={this.handleChange}/>
+                        </div>
+
+                        {/*<ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
+                        
                     </div>
+                   <div className="buttons">
+                       <button  className="btn btn-success Header-ExitBtn  btn-primary enter-btn"
+                               onClick={this.loginClicked}>Войти
+                       </button>
+                   </div>
+                <div className="buttons">
+                    <button className="btn btn-success Header-ExitBtn  btn-primary enter-btn"
+                            onClick={this.loginClicked}>Я забыл пароль
+                    </button>
                 </div>
+                   
+                <Footer/>
             </div>
 
 
