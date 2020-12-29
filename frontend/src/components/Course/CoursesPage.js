@@ -128,9 +128,7 @@ export default class CoursesPage extends Component {
     render() {
         return (
             <div className="position-relative">
-                {/*<NonAuthenticatedHeader selectedLink="courses" {...this.props}/>*/}
-
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" /*{...this.props}*//> :
+                { this.state.loggedUser === ''? <NonAuthenticatedHeader selectedLink="courses" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="courses" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className='Home'>
                     <Course

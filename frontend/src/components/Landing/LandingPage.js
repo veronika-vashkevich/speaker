@@ -106,7 +106,7 @@ export default class LandingPage extends Component {
             <div className="position-relative">
                 {this.state.loggedUser === '' ? <NonAuthenticatedHeader selectedLink="home" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
-                <div className="Body">
+                <div className="Home Body">
                     <h1 className="Landing-Text"> {SLOGAN} </h1>
                     <ul>
                         <li className='SectionNavigation'>

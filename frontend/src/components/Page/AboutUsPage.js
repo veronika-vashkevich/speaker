@@ -15,7 +15,7 @@ export default class AboutUsPage extends Component {
     render() {
         return (
             <div>
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="about-us" /*{...this.props}*//> : <div></div> }
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="about-us" {...this.props}/> : <div></div> }
                 <AboutUs/>
                 <Footer/>
             </div>

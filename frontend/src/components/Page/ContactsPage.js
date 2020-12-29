@@ -14,7 +14,7 @@ export default class ContactsPage extends Component {
     render() {
         return (
             <div>
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="contacts" /*{...this.props}*//> : <div></div> }
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="contacts" {...this.props}/> : <div></div> }
                 {/*<NonAuthenticatedHeader selectedLink="contacts" {...this.props}/>*/}
                 <Contacts/>
                 <Footer/>

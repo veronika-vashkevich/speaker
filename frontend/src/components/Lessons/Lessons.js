@@ -64,7 +64,7 @@ export default class Lessons extends Component {
 
         return (
             <div>
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="my-lessons" /*{...this.props}*//> : <div></div> }
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}vercel/> : <div></div> }
                 <div className=/*"content-wrap*/ "Home-my-cabinet">{this.state.title}
                     <div className="Lessons">
                         <div className='Lessons-Body'>
