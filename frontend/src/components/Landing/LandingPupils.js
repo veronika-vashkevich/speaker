@@ -13,7 +13,8 @@ const LandingPupils = (): React.Node => {
                 </Col>
             </Row>
             <Row>
-                <Col md={{ span:12, offset:0 }} className="team w-50 d-flex flex-wrap">
+                {/*<Col md={{ span:12, offset:0 }} className="team w-50 d-flex flex-wrap">*/}
+                <Col md={{ span:12, offset:0 }} className="team d-flex flex-wrap">
                     <TeamProfile name={'Victor USA'} />
                     <TeamProfile name={'Dmitrii Spain'} />
                     <TeamProfile name={'Olga Italy'} />

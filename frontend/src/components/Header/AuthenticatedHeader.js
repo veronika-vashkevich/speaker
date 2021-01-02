@@ -31,7 +31,11 @@ export default class AuthenticatedHeader extends Component {
                         </div>
                         <div  className="header-btn" style={{color: "black"}}>{this.props.loggedUser}</div>
                         <div className="header-btn">
-                            <button className='Header-ExitBtn btn btn-primary bold' onClick={() => {AuthenticationService.logout(); this.props.history.push("/home")}} >Выйти
+                            <button className='Header-ExitBtn btn btn-primary bold' onClick={() => {AuthenticationService.logout();
+                           // this.props.history.pushState(null, '/home');
+                            this.props.history.push("/home")}
+                           // this.context.history.push("/home")}
+                            } >Выйти
                             </button>
                             {/*<button className='Header-ExitBtn btn btn-primary bold'>*/}
                             {/*    Зарегистрироваться*/}

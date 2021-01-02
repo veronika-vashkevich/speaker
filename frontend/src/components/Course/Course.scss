@@ -67,7 +67,7 @@ div.desc {
     height: 200px;
     align-content: center;
   }
-    
+
   div.gallery {
     margin: 30px auto;
     padding-bottom: 20px;
@@ -78,7 +78,7 @@ div.desc {
     //grid-template-columns: 1fr 2fr;
     //column-gap: 20px;
   }
-  
+
   div.gallery-courses {
     //margin: 90px auto;
     padding-bottom: 20px;
@@ -98,8 +98,8 @@ div.desc {
     //display: block;
     //float: left;
   }
-  
-  
+
+
   div.desc {
     padding: 0px;
     text-align: center;
@@ -127,14 +127,31 @@ div.desc {
     height: 350px;
     align-content: center;
   }
-  
+
   .margin-left {
     margin: 0;
   }
-  
+
   div.desc{
     align-content: center;
     margin: 0 auto;
     text-align: center;
+  }
+}
+
+/* ----------- iPhone 4 and 4S ----------- */
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+  .active {
+    padding-top: 0;
+  }
+
+  div.gallery-courses img {
+    margin-left: 0;
+    margin-right: 0;
   }
 }

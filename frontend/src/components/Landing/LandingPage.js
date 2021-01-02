@@ -19,6 +19,8 @@ import NonAuthenticatedHeader from '../Header/NonAuthenticatedHeader'
 import AuthenticatedHeader from '../Header/AuthenticatedHeader'
 import Footer from "../Footer/Footer";
 import AuthenticationService from "../../services/AuthenticationService";
+import CustomSlider from "../Feedback/CustomSlider";
+
 
 const SLOGAN = 'Попробуйте наши лучшие курсы!'
 
@@ -62,13 +64,6 @@ export default class LandingPage extends Component {
 
         };
         this.redirect = this.redirect.bind(this);
-        // let hasReloaded = localStorage.getItem('hasReloaded')
-        //
-        // if (!hasReloaded) {
-        //     console.log('funciton triggered')
-        //     localStorage.setItem('hasReloaded', true)
-        //     window.location.reload()
-        // }
     }
 
 
@@ -79,9 +74,9 @@ export default class LandingPage extends Component {
             }
         )
     }
-    
 
-    
+
+
     componentWillMount() {
         console.log("/home")
         let user = AuthenticationService.getLoggedInUserName();
@@ -105,7 +100,7 @@ export default class LandingPage extends Component {
         return (
             <div className="position-relative">
                 {this.state.loggedUser === '' ? <NonAuthenticatedHeader selectedLink="home" {...this.props}/> :
-                    <AuthenticatedHeader selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
+                    <AuthenticatedHeader /*history={this.props.history} */  selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className="Home Body">
                     <h1 className="Landing-Text"> {SLOGAN} </h1>
                     <ul>
@@ -128,8 +123,10 @@ export default class LandingPage extends Component {
                     </ul>
                     <Contact/>
                     <hr className="my-4"/>
-                    <LandingPupils/>
-                    <hr className="my-4"/>
+                    {/*<Feedback/>*/}
+                    <CustomSlider/>
+                    {/*<LandingPupils/>*/}
+                    {/*<hr className="my-4"/>*/}
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
                     <Footer/>

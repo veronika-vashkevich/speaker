@@ -99,20 +99,20 @@ export default class Contact extends Component {
                     <form id="contact-form" onSubmit={this.handleSubmit.bind(this)} method="POST">
                         <div style={{width: "100%"}}/* className="form-group"*/>
                             <div className="row">
-                                <div className="col-md-4">
+                                <div className="col-md-4"  style={{paddingTop: "15px"}}>
                                     <input placeholder="Имя" id="Name" type="text"
                                            className="form-control"
                                            required value={this.state.name}
                                            onChange={this.onNameChange.bind(this)}/>
                                 </div>
-                                <div className="col-md-4">
+                                <div className="col-md-4"  style={{paddingTop: "15px"}}>
                                     <input placeholder="Email" id="email" type="email"
                                            className="form-control"
                                            aria-describedby="emailHelp"
                                            required value={this.state.email}
                                            onChange={this.onEmailChange.bind(this)}/>
                                 </div>
-                                <div className="col-4">
+                                <div className="col-md-4" style={{paddingTop: "15px"}}>
                                     <input placeholder="Телефон" id="phone" type="text" className="form-control"
                                            required value={this.state.phone}
                                            onChange={this.onPhoneChange.bind(this)}/>

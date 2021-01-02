@@ -24,12 +24,12 @@
     float: left;
     margin-right: 20px;
   }
-  
+
   .contact-list {
     display: flex;
     justify-content: center;
   }
-  
+
 }
 
 .btn-primary-about {
@@ -55,10 +55,30 @@
     //max-width: 800px;
     width: 90%;
     margin: 0 auto;
-    display: flex;  
+    display: flex;
     flex-direction: column;
     //padding-top: 200px;
   }
+}
 
-  
+/* ----------- iPhone 4 and 4S ----------- */
+/* Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2)
+and (orientation: landscape) {
+  .content-wrap-contacts {
+    max-width: 800px;
+    width: 85%;
+    margin: 0 auto;
+    padding-top: 30px;
+  }
+  .content-wrap-about {
+    padding-top: 20px;
+  }
+
+  .project-item-about{
+    padding-bottom: 5px;
+  }
 }

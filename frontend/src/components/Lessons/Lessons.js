@@ -16,6 +16,7 @@ import {ReactComponent as Search} from '../../images/search.svg'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 import AuthenticationService from "../../services/AuthenticationService";
 import Footer from "../Footer/Footer";
+import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 
 
 const USER = 'Иванов Иван Иванович';
@@ -31,7 +32,8 @@ export default class Lessons extends Component {
             endDate: null,
             pupilName: '',
             onlyMe: false
-        }
+        },
+        loggedUser: ''
     };
 
 
@@ -43,12 +45,14 @@ export default class Lessons extends Component {
             })
         } else {
             this.setState({
-                title: 'МОИ ЗАНЯТИЯ'
+                title: 'МОИ ЗАНЯТИЯ',
+                loggedUser: username    
             })
 
         }
+
     }
-    
+
 
     render() {
         const {
@@ -64,7 +68,8 @@ export default class Lessons extends Component {
 
         return (
             <div>
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}vercel/> : <div></div> }
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="my-lessons" {...this.props}vercel/> :
+                    <AuthenticatedHeader  selectedLink="my-lessons" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className=/*"content-wrap*/ "Home-my-cabinet">{this.state.title}
                     <div className="Lessons">
                         <div className='Lessons-Body'>
