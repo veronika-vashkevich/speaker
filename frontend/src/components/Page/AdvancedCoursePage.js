@@ -8,6 +8,7 @@ import '../Course/CoursesPage.scss'
 import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
+import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 
 
 const advanced = require('../../images/advanced.svg');
@@ -20,18 +21,19 @@ export default class AdvancedCoursePage extends Component {
             lessons: [],
             selectedCourse: "advanced",
             courseId: 3,
-            courseName: "\"ПРОДВИНУТЫЙ\""
+            courseName: "\"ПРОДВИНУТЫЙ\"",
+            loggedUser: ''
         };
     }
 
     componentWillMount() {
         window.scrollTo(0, 0);
-  
+
         console.log('componentWillMount');
         let username = AuthenticationService.getLoggedInUserName();
         LessonDataService.retrieveAllLessons(username, 3).then(
             response => {
-                this.setState({lessons: response.data});
+                this.setState({lessons: response.data, loggedUser: username });
                 console.log("executing refreshLessons(3)...");
                 console.log("lessons for advanced)...", this.state.lessons);
             }
@@ -41,7 +43,8 @@ export default class AdvancedCoursePage extends Component {
     render() {
         return (
             <div>
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" {...this.props}/> : <div></div> }
+                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" {...this.props}/> :
+                    <AuthenticatedHeader  selectedLink="courses" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course

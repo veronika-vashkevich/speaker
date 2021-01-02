@@ -7,6 +7,7 @@ import LessonDataService from "../../services/LessonDataService";
 import Course from "../Course/Course";
 import AuthenticationService from "../../services/AuthenticationService";
 import CourseHeader from "../Header/CourseHeader";
+import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 
 
 const beginner = require('../../images/beginner.svg');
@@ -19,7 +20,8 @@ export default class BeginnerCoursePage extends Component {
             lessons: [],
             selectedCourse: "beginner",
             courseId: 1,
-            courseName: "\"НАЧИНАЮЩИЙ\""
+            courseName: "\"НАЧИНАЮЩИЙ\"",
+            loggedUser: ''
         };
     }
 
@@ -33,13 +35,17 @@ export default class BeginnerCoursePage extends Component {
                 console.log("executing refreshLessons(1)...");
                 console.log("lessons for beginner)...", this.state.lessons);
             }
-        )
+        );
+        this.setState({
+            loggedUser: username
+        });
     }
 
         render() {
             return (
                 <div>
-                    { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" {...this.props}/> : <div></div> }
+                    { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader selectedLink="courses" {...this.props}/> :
+                        <AuthenticatedHeader  selectedLink="courses" loggedUser={this.state.loggedUser} {...this.props}/>}
 
                     <div className='Home'>
                         <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
