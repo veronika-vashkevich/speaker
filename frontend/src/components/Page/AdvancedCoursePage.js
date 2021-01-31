@@ -48,7 +48,7 @@ export default class AdvancedCoursePage extends Component {
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery-courses active' : 'gallery'}`}
                         imgSrc={advanced}
                         desc1="Продвинутый курс"
                         desc2="13-17 лет"

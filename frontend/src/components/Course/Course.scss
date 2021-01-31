@@ -9,7 +9,7 @@ div.gallery {
 }
 
 div.gallery-courses {
-  margin: 5px auto;
+  margin: 40px auto;
   padding-bottom: 20px;
   border: 1px solid #ccc;
   width: 90%;
@@ -20,18 +20,17 @@ div.gallery-courses {
 
 div.gallery img {
   margin-top: 20px;
-  margin-right: 50px;
-  margin-left: 20px;
-  width: 350px;
-  height: 350px;
+  width: 300px;
+  height: 300px;
 }
 
 div.gallery-courses img{
   margin-top: 20px;
-  margin-right: 50px;
-  margin-left: 20px;
-  width: 350px;
-  height: 350px;
+  //margin-right: 50px;
+  //margin-left: 20px;
+  width: 300px;
+  height: 300px;
+  //padding-left: 50px;
 }
 
 .padding-top {
@@ -49,23 +48,22 @@ div.gallery:hover {
 
 
 div.desc {
-  padding: 0px;
-  text-align: left;
+  padding: 0;
+  text-align: center;
   color: #1a63ab;
   margin-top: 5px;
   margin-bottom: 5px;
-  margin-left: 50px;
   display: block;
 }
 
 @media screen and (max-width:768px) {
   div.gallery img {
-    margin-top: 20px;
-    margin-right: 50px;
-    margin-left: 20px;
+
     width: 200px;
     height: 200px;
     align-content: center;
+    float: none;
+    margin: 5px auto;
   }
 
   div.gallery {
@@ -90,8 +88,8 @@ div.desc {
   div.gallery-courses img {
     //margin: 0 auto;
     margin-top: 20px;
-    margin-right: 50px;
-    margin-left: 20px;
+    //margin-right: 50px;
+    //margin-left: 20px;
     width: 200px;
     height: 200px;
     align-content: center;
@@ -121,10 +119,10 @@ div.desc {
 
   div.gallery-courses img {
     margin-top: 20px;
-    margin-right: 50px;
-    margin-left: 20px;
-    width: 350px;
-    height: 350px;
+    //margin-right: 50px;
+    //margin-left: 20px;
+    width: 300px;
+    height: 300px;
     align-content: center;
   }
 
@@ -153,5 +151,60 @@ and (orientation: landscape) {
   div.gallery-courses img {
     margin-left: 0;
     margin-right: 0;
+  }
+}
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+  div.gallery-courses img{
+    width: 200px;
+    height: 200px;
+  }
+
+  div.gallery a{
+    justify-content: center;
+  }
+
+
+  table{
+    height: 70%;
+  }
+  div.gallery {
+    padding-left: 5px;
+  }
+  div.gallery img {
+    margin-top: 20px;
+    //margin-right: 50px;
+    //margin-left: 20px;
+    width: 200px;
+    height: 200px;
+    float: none;
+  }
+
+  div.desc {
+    text-align: center;
+    margin-left: 5px;
   }
 }

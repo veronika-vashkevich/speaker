@@ -22,7 +22,7 @@ import AuthenticationService from "../../services/AuthenticationService";
 import CustomSlider from "../Feedback/CustomSlider";
 
 
-const SLOGAN = 'Попробуйте наши лучшие курсы!'
+const SLOGAN = 'Попробуйте наши лучшие курсы!';
 
 const SECTIONS = [
     {title: '5-7 лет НАЧИНАЮЩИЙ', href: '/courses/beginner', Icon: Beginner, selectedCourse: "beginner", courseId: 1},

@@ -1,0 +1,119 @@
+.Lessons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.Lessons-HeaderBody {
+  max-width: 1300px;
+}
+
+.Lessons-Body {
+  margin-top: 2%;
+  flex: 1;
+  max-width: 1300px;
+  min-width: 700px;
+}
+
+.Lessons-Filter {
+  margin-top: 40px;
+}
+
+.Lessons-FilterForm {
+  display: flex;
+  justify-content: center;
+}
+
+.Lessons-FilterField {
+  margin-left: 12px;
+}
+
+
+.Lessons-SearchBtn {
+  height: 35px;
+  margin-left: 12px;
+  line-height: 1;
+  background-color: #039BE5;
+}
+
+.Lessons-SearchBtnIcon {
+  height: 20px;
+  width: 20px;
+  fill: white;
+
+}
+
+.container{
+  position: relative;
+  //margin-top: 3%;
+  padding: 100px;
+  //justify-content: center;
+  align-items: center;
+  //font-size: 20px;
+  color:  #f8a30a;;
+  font-weight: bold;
+
+}
+
+
+@media screen and (max-width: 740px){
+  .Lessons {
+    //margin-top: 10%;
+    align-items: center;
+  }
+
+  .Lessons-HeaderBody {
+    //max-width: 1300px;
+  }
+
+  .Lessons-Body {
+    margin-top: 2%;
+    max-width: 1300px;
+    min-width: 700px;
+  }
+
+  .Lessons-FilterForm {
+    display: block;
+
+  }
+
+  .Lessons-SearchBtn {
+    height: 35px;
+    margin-left: 12px;
+    margin-top: 5px;
+    line-height: 1;
+    background-color: #039BE5;
+  }
+}
+
+@media screen and (min-width:400px) {
+  .Lessons {
+    margin-top: 0;
+    align-items: center;
+  }
+}
+
+/* ----------- iPhone 4 and 4S ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 320px)
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {
+  .Lessons {
+    height: 100px;
+    align-items: center;
+  }
+
+  .Lessons-Body {
+    //margin-top: 2%;
+    max-width: 300px;
+  }
+
+  .Lessons-Filter {
+    margin-top: 2px;
+  }
+  .form-group {
+    margin-bottom: 2px;
+  }
+}

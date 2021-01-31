@@ -58,15 +58,15 @@ export default class CoursesPage extends Component {
             .then(
                 response => {
                     console.log(response);
-                    if (courseId == 1) {
+                    if (courseId === 1) {
                         this.setState({beginnerLessons: response.data});
                         console.log("executing refreshLessons(1)...");
                         console.log("lessons for beginner)...", this.state.beginnerLessons);
-                    } else if (courseId == 2) {
+                    } else if (courseId === 2) {
                         this.setState({continueLessons: response.data});
                         console.log("executing refreshLessons(2)...");
                         console.log("lessons for continue)...", this.state.continueLessons);
-                    } else if (courseId == 3) {
+                    } else if (courseId === 3) {
                         this.setState({advancedLessons: response.data});
                         console.log("executing refreshLessons(3)...");
                         console.log("lessons for advanced)...", this.state.advancedLessons);
@@ -132,7 +132,7 @@ export default class CoursesPage extends Component {
                     <AuthenticatedHeader selectedLink="courses" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className='Home'>
                     <Course
-                        classNameValue={`${this.state.selectedCourse == 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}
+                        classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={beginner}
                         desc1="Курс для самых маленьких"
                         desc2="5-7 лет"
@@ -142,7 +142,7 @@ export default class CoursesPage extends Component {
                         onClicked={this.imageBeginnerClick}
                     />
                     <Course
-                        classNameValue={`${this.state.selectedCourse == 'continue' ? 'gallery-courses active' : 'gallery-courses'}`}
+                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={continuer}
                         desc1="Продолжение курса"
                         desc2="8-12 лет"
@@ -152,7 +152,7 @@ export default class CoursesPage extends Component {
                         onClicked={this.imageContinueClick}/>
 
                     <Course
-                        classNameValue={`${this.state.selectedCourse == 'advanced' ? 'gallery-courses active' : 'gallery-courses'}`}
+                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={advanced}
                         desc1="Продвинутый курс"
                         desc2="13-17 лет"

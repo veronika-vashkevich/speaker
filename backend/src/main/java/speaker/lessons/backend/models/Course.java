@@ -1,5 +1,6 @@
 package speaker.lessons.backend.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -44,7 +45,7 @@ public class Course {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
     private Integer id;
-    
+
     @Column(name = "name", nullable = false)
     @NotNull
     @Size(min = 4, max = 32)
@@ -61,21 +62,21 @@ public class Course {
     @Column(name = "modified_date")
     @LastModifiedDate
     private Date modifiedDate;
-    
+
     @Column(name = "number_of_lessons", nullable = false)
     private String numberOfLessons;
 
     @Column(name = "lessons_per_week", nullable = false)
     private String lessonsPerWeek;
 
-    @OneToMany(mappedBy = "course")
-    private Set<Enrollment> students = new HashSet<>();
+//    @OneToMany(mappedBy = "course")
+//    private Set<Enrollment> students = new HashSet<>();
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User owner;
-
+    @Column(name = "user_id", nullable = false)
+    private int userId;
+//
     @OneToMany(mappedBy = "course")
+    @JsonIgnoreProperties("course")
     @OrderBy("orderIndex asc")
     private List<Lesson> lessons = new ArrayList<>();
 }

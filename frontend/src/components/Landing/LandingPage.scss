@@ -30,7 +30,7 @@ ul {
 
   .Body {
     padding-top: 100px;
-    margin:0; 
+    margin:0;
     height:100%;
     position: relative
   }
@@ -49,4 +49,35 @@ ul {
 
   }
 
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+  div.gallery img{
+    width: 200px;
+    height: 200px;
+  }
 }

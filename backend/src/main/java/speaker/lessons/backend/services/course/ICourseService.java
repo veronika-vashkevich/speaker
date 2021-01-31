@@ -6,6 +6,7 @@ import java.util.Collection;
 
 public interface ICourseService {
     Collection<Course> getAllCourses();
+    Collection<Course> getAllCoursesByUserId();
 
     Course getCourseById(Integer id);
 

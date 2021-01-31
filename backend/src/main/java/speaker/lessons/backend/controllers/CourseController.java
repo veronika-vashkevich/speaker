@@ -43,11 +43,20 @@ public class CourseController  {
         this.lessonService = lessonService;
     }
 
+    @IsTeacher
     @GetMapping("/all")
-    public ResponseEntity<Collection<CourseDTO>> getAllCourses() {
-        return ResponseEntity.ok(this.courseService.getAllCourses().stream()
-                .map(this.courseConverter::createFrom).collect(Collectors.toList()));
+    public ResponseEntity<Collection<Course>> getAllCoursesByOwnerId() {
+
+
+        return ResponseEntity.ok(this.courseService.getAllCoursesByUserId());
     }
+
+
+//    @GetMapping("/all")
+//    public ResponseEntity<Collection<CourseDTO>> getAllCourses() {
+//        return ResponseEntity.ok(this.courseService.getAllCourses().stream()
+//                .map(this.courseConverter::createFrom).collect(Collectors.toList()));
+//    }
 
     @GetMapping("/{id}")
     public ResponseEntity<CourseDTO> getCourseById(@PathVariable Integer id) {
@@ -68,8 +77,8 @@ public class CourseController  {
         return lessonService.getAllLessonsByCourseId(courseId).stream()
                 .map(lesson -> lessonConverter.createFrom(lesson)).collect(Collectors.toList());
     }
-    
-    
+
+
     @IsCourseOwner
     @DeleteMapping("/{id}")
     public void deleteCourse(@PathVariable Integer id) {
@@ -90,8 +99,8 @@ public class CourseController  {
         return ResponseEntity.ok(this.courseConverter.createFrom(this.courseService.enrollStudent(id)));
     }
 
-    
-    
+
+
 //    @IsCourseOwner
 //    @PostMapping("/{id}/lessons")
 //    public ResponseEntity<LessonDTO> createLesson(@PathVariable Integer id, @RequestBody LessonDTO lessonDTO) {

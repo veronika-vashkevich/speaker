@@ -10,6 +10,7 @@ import speaker.lessons.backend.models.Course;
 import speaker.lessons.backend.models.authorization.AuthorityType;
 import speaker.lessons.backend.models.authorization.User;
 import speaker.lessons.backend.models.generic.BaseEntity;
+import speaker.lessons.backend.repositories.CourseRepository;
 import speaker.lessons.backend.repositories.UserRepository;
 import speaker.lessons.backend.security.UserPrincipal;
 
@@ -23,10 +24,12 @@ import java.util.stream.Collectors;
 public class SecurityService implements ISecurityService {
 
     private final UserRepository userRepository;
+    private final CourseRepository courseRepository;
     private final Logger logger = LoggerFactory.getLogger(SecurityService.class);
 
-    public SecurityService(UserRepository userRepository) {
+    public SecurityService(UserRepository userRepository, CourseRepository courseRepository) {
         this.userRepository = userRepository;
+        this.courseRepository = courseRepository;
     }
 
     @Override
@@ -84,7 +87,7 @@ public class SecurityService implements ISecurityService {
         User user = userRepository.getOne(userId);
         logger.info("isCourseOwner: user '{}' with for userId={} knocks at the door.", user.getName(), userId);
 
-        Set<Course> courses = user.getCourses();
+       Set<Course> courses = (Set<Course>) courseRepository.getAllCoursesByUserId(userId);
 
         logger.info(
                 "isCourseTeacher: {}'s set of courses is {}.",

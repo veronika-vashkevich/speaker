@@ -1,6 +1,6 @@
 
 .margin-left {
-  margin-left: 50px;
+  //margin-left: 50px;
 }
 
 table thead {
@@ -90,11 +90,44 @@ th {
 
 }
 
-@media screen and (min-width: 1024px) {
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+  .margin-left table{
+    height: 70%;
+  }
+  .margin-left h1{
+    font-size: 16px;
+  }
   .margin-left {
-    margin: 0;
+    margin-left: 0;
   }
-  .margin-left h1 {
-    padding-top: 10px;
+
+  tbody tr td {
+    font-size: 12px;
   }
+
 }

@@ -1,4 +1,5 @@
 import React from 'react'
+import 'whatwg-fetch';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
 
@@ -7,7 +8,6 @@ import {createBrowserHistory} from 'history'
 
 import './index.scss'
 import App from './App'
-import LandingPage from './components/Landing/LandingPage'
 import * as serviceWorker from './serviceWorker';
 
 axios.defaults.baseURL = 'http://localhost:8080/api';
@@ -23,7 +23,7 @@ ReactDOM.render(
     (<BrowserRouter>
             <App />
     </BrowserRouter>
-      
+
         /*<Router history={history}>*/
         /*    <App/>*/
         /*</Router>*/
@@ -31,4 +31,4 @@ ReactDOM.render(
     , document.getElementById('root')
 );
 
-// serviceWorker.unregister();
+ serviceWorker.unregister();

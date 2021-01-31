@@ -12,7 +12,7 @@ import {ProtectedRoute} from "./components/Routes/ProtectedRoute";
 import './App.scss';
 
 import Home from './components/Home/Home'
-import Lessons from './components/Lessons/Lessons'
+import MyCabinet from './components/My-cabinet/MyCabinet'
 import LandingPage from "./components/Landing/LandingPage";
 import AppLayout from "./components/Layout/AppLayout"
 import LoginPage from "./components/Page/LoginPage";
@@ -25,19 +25,19 @@ import ContactsPage from "./components/Page/ContactsPage";
 
 
 class App extends Component {
-    
+
     render() {
         // const { history } = this.props
 
         return (
-            
+
             <div className="App">
                 <Switch>
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/app" component={AppLayout} />
                     <Route exact path="/login" component={LoginPage} />
                     <Route exact path="/home" component={LandingPage} />
-                    <Route exact path="/my-lessons" component={Lessons} />
+                    <Route exact path="/my-cabinet" component={MyCabinet} />
                     <Route exact path="/courses" component={CoursesPage} />
                     <Route exact path="/courses/beginner" component={BeginnerCoursePage} />
                     <Route exact path="/courses/continue" component={ContinueCoursePage} />

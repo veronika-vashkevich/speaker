@@ -50,7 +50,7 @@ export default class BeginnerCoursePage extends Component {
                 <div className='Home' >
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery-courses active' : 'gallery'}`}
                         imgSrc={continuer}
                         desc1="Продолжение курс"
                         desc2="8-12 лет"

@@ -18,7 +18,7 @@ public class BaseEntity {
     @Column(name = "name")
     @NotNull
     private String name;
-    
+
     @Column(name = "phone")
     private String phone;
 

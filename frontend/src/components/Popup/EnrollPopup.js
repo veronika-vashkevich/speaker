@@ -90,7 +90,7 @@ class EnrollPopup extends React.Component {
                                                    required value={this.state.email}
                                                    onChange={this.onEmailChange.bind(this)}/>
                                         </div>
-                                        <div className="col-4">
+                                        <div className="col-md-4">
                                             <input placeholder="Телефон" id="phone" type="text" className="form-control"
                                                    required value={this.state.phone}
                                                    onChange={this.onPhoneChange.bind(this)}/>

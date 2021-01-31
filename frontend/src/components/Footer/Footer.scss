@@ -1,6 +1,6 @@
 .footer {
 
-  position: absolute;
+  position: relative;
   text-align: center;
   width: 100%;
   bottom: 0;
@@ -22,6 +22,41 @@
     right: 0;
     height:40px;
     font-size: 10px;
-    
+
+  }
+}
+
+/* ----------- iPhone X ----------- */
+
+/* Portrait and Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3) {
+
+}
+
+/* Portrait */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: portrait) {
+
+}
+
+/* Landscape */
+@media only screen
+and (min-device-width: 375px)
+and (max-device-width: 812px)
+and (-webkit-min-device-pixel-ratio: 3)
+and (orientation: landscape) {
+
+  .footer {
+    font-size: 12px;
+  }
+
+  .Landing-Text{
+    font-size: 18px;
   }
 }

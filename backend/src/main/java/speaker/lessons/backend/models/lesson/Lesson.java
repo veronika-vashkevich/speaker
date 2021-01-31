@@ -30,7 +30,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Lesson  {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -46,6 +46,7 @@ public class Lesson  {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "course_id", nullable = false)
+    @JsonIgnoreProperties("lessons")
     private Course course = new Course();
 
     @Column(name = "content")
@@ -58,8 +59,8 @@ public class Lesson  {
     @NotNull
     @Enumerated(EnumType.STRING)
     private LessonType type;
-    
+
     @Column(name = "notes")
     private String notes;
-    
+
 }

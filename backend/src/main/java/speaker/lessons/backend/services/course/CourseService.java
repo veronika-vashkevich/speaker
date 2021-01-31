@@ -23,9 +23,9 @@ public class CourseService implements ICourseService {
     private final EnrollmentRepository enrollmentRepository;
 
     @Autowired
-    public CourseService(CourseRepository courseRepository, 
-                         UserRepository userRepository, 
-                         ISecurityService securityService, 
+    public CourseService(CourseRepository courseRepository,
+                         UserRepository userRepository,
+                         ISecurityService securityService,
                          EnrollmentRepository enrollmentRepository) {
         this.courseRepository = courseRepository;
         this.userRepository = userRepository;
@@ -35,6 +35,14 @@ public class CourseService implements ICourseService {
 
     public Collection<Course> getAllCourses() {
         return this.courseRepository.findAll();
+    }
+
+    public Collection<Course> getAllCoursesByUserId() {
+        int userId = securityService.getCurrentUser()
+                .orElseThrow(() -> new CourseException("Trying to get current user returned Optional.empty()."))
+                .getId();
+
+        return this.courseRepository.getAllCoursesByUserId(userId);
     }
 
     @Override
@@ -52,7 +60,7 @@ public class CourseService implements ICourseService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new CourseException(String.format("Failed to find user with id=%d.", userId)));
 
-        course.setOwner(user);
+        //course.setUser(user);
         return courseRepository.save(course);
     }
 
@@ -70,12 +78,12 @@ public class CourseService implements ICourseService {
     @Override
     @Transactional
     public Course updateCourse(Course course) {
-        User owner = courseRepository
+        int userId = courseRepository
                 .findById(course.getId())
                 .orElseThrow(() -> new CourseException("Course cannot be not found."))
-                .getOwner();
+                .getUserId();
 
-        course.setOwner(owner);
+        course.setUserId(userId);
         return courseRepository.save(course);
     }
 
@@ -95,7 +103,7 @@ public class CourseService implements ICourseService {
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new CourseException(String.format("Failed to find user with id=%d.", userId)));
 
-        if (course.getOwner().getId() == userId) {
+        if (course.getUserId() == userId) {
             throw new CourseException("You are the owner of the course!" +
                     " You cannot enlist to your own course! Who would teach it? :P");
         }

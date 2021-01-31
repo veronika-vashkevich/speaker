@@ -33,7 +33,7 @@ class LoginPage extends Component {
         AuthenticationService
             .executeJwtAuthenticationService(this.state.email, this.state.password)
             .then((response) => {
-                AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.token);
+                AuthenticationService.registerSuccessfulLoginForJwt(this.state.email, response.data.accessToken);
                 if (response.status === 200) {
                     console.log("response", response);
                     this.setState({hasLoginFailed: false});
@@ -71,7 +71,7 @@ class LoginPage extends Component {
                         </div>
 
                         {/*<ShowLoginSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
-                        
+
                     </div>
                    <div className="buttons">
                        <button  className="btn btn-success Header-ExitBtn  btn-primary enter-btn"
@@ -83,7 +83,7 @@ class LoginPage extends Component {
                             onClick={this.loginClicked}>Я забыл пароль
                     </button>
                 </div>
-                   
+
                 <Footer/>
             </div>
 
