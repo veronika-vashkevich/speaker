@@ -55,6 +55,9 @@ public class Lesson  {
     @Column(name = "url")
     private String url;
 
+    @Column(name = "ppt_update_url")
+    private String pptUpdateUrl;
+
     @Column(name = "media_type")
     @NotNull
     @Enumerated(EnumType.STRING)

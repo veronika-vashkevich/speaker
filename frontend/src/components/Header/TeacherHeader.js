@@ -21,7 +21,15 @@ export default class TeacherHeader extends Component {
         return (
                     <div className="Teacher-Header">
                         <a  className={this.props.selectedLink === 'teacher-courses' ? 'active-course-header' : ''} /*href="/teacher-courses"*/>Ваши Курсы</a>
-                        {/*<a  className={this.props.selectedLink === 'teacher-lessons' ? 'active-course-header' : ''} href="/teacher-lessons">Уроки</a>*/}
+                        <div style={{position: "absolute", right: "30px", display: "inline"}}>
+                            <button className='Header-ExitBtn btn btn-primary bold' >
+                                Изменить урок
+                            </button>
+                            <button className='Header-ExitBtn btn btn-primary bold' >
+                                Обновить урок
+                            </button>
+                        </div>
+
                     </div>
         )
     }

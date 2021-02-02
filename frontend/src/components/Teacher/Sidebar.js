@@ -5,17 +5,39 @@ import Divider from "@material-ui/core/Divider";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import Collapse from "@material-ui/core/Collapse";
+import { makeStyles } from '@material-ui/core/styles';
+import "./Sidebar.scss"
 
 
-function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
+const useStyles = makeStyles((theme) => ({
+    root: {
+        width: '100%',
+        maxWidth: 360,
+        backgroundColor: theme.palette.background.paper,
+    },
+}));
+
+
+function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, ...rest }) {
+    console.log("SideBar item index", index);
+    const [selectedIndex, setSelectedIndex] = React.useState(index);
+    console.log("selectedIndex", selectedIndex);
+
+    const handleListItemClick = (event, index) => {
+        setSelectedIndex(index);
+    };
+
     const [collapsed, setCollapsed] = React.useState(true);
-    const { label, items, onClick: onClickProp } = item;
+    const { label, items, id, onClick: onClickProp } = item;
 
     function toggleCollapse() {
         setCollapsed(prevValue => !prevValue);
     }
 
     function onClick(e) {
+        // handleListItemClick(e, index);
+         console.log('selectedIndex from function', selectedIndex);
+
         if (Array.isArray(items)) {
             toggleCollapse();
         }
@@ -45,13 +67,12 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
                 onClick={onClick}
                 button
                 dense
+                selected={selectedIndex === index}
                 {...rest}
             >
-                <div
-                    style={{ paddingLeft: depth * depthStep }}
-                    className="sidebar-item-content"
-                >
-                    <div className="sidebar-item-text">{label}</div>
+                <div style={{ paddingLeft: depth * depthStep}}
+                     className="sidebar-item-content">
+                    <div className="sidebar-item-text" >{label}</div>
                 </div>
                 {expandIcon}
             </ListItem>
@@ -79,8 +100,10 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, ...rest }) {
 }
 
 function Sidebar({ items, depthStep, depth, expanded }) {
+    const classes = useStyles();
     return (
-        <div className="sidebar">
+        <div className={"sidebar"}>
+    {/*<div className={classes.root}>*/}
             <List disablePadding dense>
                 {items.map((sidebarItem, index) => (
                     <React.Fragment key={`${sidebarItem.name}${index}`}>
@@ -92,6 +115,7 @@ function Sidebar({ items, depthStep, depth, expanded }) {
                                 depth={depth}
                                 expanded={expanded}
                                 item={sidebarItem}
+                                // index={index}
                             />
                         )}
                     </React.Fragment>

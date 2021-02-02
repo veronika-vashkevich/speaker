@@ -6,8 +6,6 @@ import {API_URL} from "../Constants";
 class CourseDataService {
 
     fetchTeacherCourses(username) {
-        console.log('fetchTeacherCourses');
-        console.log("token is ", sessionStorage.getItem('token' ));
         axios.interceptors.request.use(
             (config) => {
 
