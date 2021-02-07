@@ -9,7 +9,7 @@ var thisTemp;
 
 function onClick(e, item) {
     console.log("item is ", item);
-    thisTemp.setState({pptSrc: item.lessonUrl, pptUpdateUrl: item.pptUpdateUrl, item: item});
+    thisTemp.setState({pptSrc: item.lessonUrl, pptUpdateUrl: item.pptUpdateUrl, item: item, selected: item.lessonId});
     localStorage.setItem('pptSrc', item.lessonUrl);
 }
 
@@ -25,7 +25,8 @@ export default class TeacherCourses extends Component {
             pptUpdateUrl: '',
             currentCourse: '',
             currentLesson: '',
-            item: ''
+            item: '',
+            selected: ''
         };
         thisTemp = this;
         this.fetchTeacherCourses = this.fetchTeacherCourses.bind(this);
@@ -46,6 +47,8 @@ export default class TeacherCourses extends Component {
     refreshLessonClicked() {
         console.log("executing refreshLessonClicked...");
         localStorage.setItem('item', this.state.item);
+        const { items } = this.state;
+
         window.location.reload();
         console.log("after refresh")
     }
@@ -88,6 +91,7 @@ export default class TeacherCourses extends Component {
 
             items_2.push({
                 name: this.state.teacherCourses[i].name,
+                selector: "course",
                 label: this.state.teacherCourses[i].name,
                 id: this.state.teacherCourses[i].id,
                 items: lessons
@@ -116,7 +120,7 @@ export default class TeacherCourses extends Component {
                     </div>
                 </div>
                 <div className="teacher-grid-container">
-                    <Sidebar items={items_2}/>
+                    <Sidebar items={items_2} selectedItem={this.state.selected}/>
                     <div>
                         <iframe
                             src={this.state.pptSrc}

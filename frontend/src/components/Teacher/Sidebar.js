@@ -17,32 +17,24 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-
-function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, ...rest }) {
-    console.log("SideBar item index", index);
-    const [selectedIndex, setSelectedIndex] = React.useState(index);
-    console.log("selectedIndex", selectedIndex);
-
-    const handleListItemClick = (event, index) => {
-        setSelectedIndex(index);
-    };
+const items_2 = [];
+function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selectedItem, ...rest }) {
 
     const [collapsed, setCollapsed] = React.useState(true);
-    const { label, items, id, onClick: onClickProp } = item;
+    const { label, items, onClick: onClickProp } = item;
 
     function toggleCollapse() {
         setCollapsed(prevValue => !prevValue);
     }
 
     function onClick(e) {
-        // handleListItemClick(e, index);
-         console.log('selectedIndex from function', selectedIndex);
 
         if (Array.isArray(items)) {
             toggleCollapse();
         }
         if (onClickProp) {
             onClickProp(e, item);
+
         }
     }
 
@@ -60,6 +52,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, ...rest
         );
     }
 
+    console.log("selectedItem = ", selectedItem);
     return (
         <>
             <ListItem
@@ -67,7 +60,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, ...rest
                 onClick={onClick}
                 button
                 dense
-                selected={selectedIndex === index}
+                // selected={selectedIndex === index}
                 {...rest}
             >
                 <div style={{ paddingLeft: depth * depthStep}}
@@ -88,6 +81,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, ...rest
                                         depth={depth + 1}
                                         depthStep={depthStep}
                                         item={subItem}
+                                        selected={ selectedItem === subItem.lessonId}
                                     />
                                 )}
                             </React.Fragment>
@@ -99,7 +93,8 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, ...rest
     );
 }
 
-function Sidebar({ items, depthStep, depth, expanded }) {
+function Sidebar({ items, depthStep, depth, expanded, selectedItem }) {
+    // console.log("selected", selected);
     const classes = useStyles();
     return (
         <div className={"sidebar"}>
@@ -115,7 +110,7 @@ function Sidebar({ items, depthStep, depth, expanded }) {
                                 depth={depth}
                                 expanded={expanded}
                                 item={sidebarItem}
-                                // index={index}
+                                selectedItem={selectedItem}
                             />
                         )}
                     </React.Fragment>
