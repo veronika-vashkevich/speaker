@@ -1,14 +1,12 @@
 import React, {Component} from "react";
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 import Footer from "../Footer/Footer";
-import AboutUs from "../AboutUs/AboutUs";
 import AuthenticationService from "../../services/AuthenticationService";
 import AuthenticatedHeader from "../Header/AuthenticatedHeader";
-import TeacherCourses from "../Teacher/TeacherCourses";
 import CourseDataService from "../../services/CourseDataService";
-import { Input } from 'react-bootstrap';
 
-let startIndex=0;
+
+let startIndex = 0;
 
 export default class CreateLessonPage extends Component {
     constructor(props) {
@@ -27,8 +25,24 @@ export default class CreateLessonPage extends Component {
         };
         this.fetchTeacherCourses = this.fetchTeacherCourses.bind(this);
         this.calculateNumberOfLessons = this.calculateNumberOfLessons.bind(this);
+        this.goBackCLicked = this.goBackCLicked.bind(this);
+        this.redirect = this.redirect.bind(this);
     }
 
+    redirect(href) {
+        // return <Redirect to={{
+        //     pathname: href,
+        //     state: { stateName: "test"}
+        // }} />;
+        // let history = useHistory();
+        // console.log("this is redirect");
+        // console.log("selectedCourse is ", selectedCourse);
+        // console.log("courseId is ", courseId);
+        this.props.history.push({
+            pathname: href,
+            state: { stateName: "test"}
+        });
+    }
 
     fetchTeacherCourses() {
         console.log("fetchTeacherCourses()...");
@@ -38,27 +52,25 @@ export default class CreateLessonPage extends Component {
                 response => {
 
                     this.setState({
-                        teacherCourses: response.data});
-                    if(startIndex === 0)
-                    {this.setState({
-                        selectedCourse: this.state.teacherCourses[0].id,
-                        lessonNumber: this.state.teacherCourses[0].lessons.length + 1
+                        teacherCourses: response.data
                     });
-                        startIndex++;}
-                    //
-                    // console.log("teacherCourses = ", this.state.teacherCourses);
-                    // console.log("selectedCourse = ", this.state.selectedCourse);
-                    // console.log("lessonNumber = ", this.state.lessonNumber)
+                    if (startIndex === 0) {
+                        this.setState({
+                            selectedCourse: this.state.teacherCourses[0].id,
+                            lessonNumber: this.state.teacherCourses[0].lessons.length + 1
+                        });
+                        startIndex++;
+                    }
 
                 }
             );
     }
 
-    calculateNumberOfLessons(event){
+    calculateNumberOfLessons(event) {
 
         for (let i = 0; i < this.state.teacherCourses.length; i++) {
 
-            if(this.state.teacherCourses[i].id == event.target.value) {
+            if (this.state.teacherCourses[i].id == event.target.value) {
                 this.setState({
                     lessonNumber: this.state.teacherCourses[i].lessons.length + 1
                 });
@@ -67,6 +79,7 @@ export default class CreateLessonPage extends Component {
     }
 
     componentWillMount() {
+        startIndex = 0;
         let user = AuthenticationService.getLoggedInUserName();
         console.log("startIndex", startIndex);
         this.fetchTeacherCourses();
@@ -76,12 +89,12 @@ export default class CreateLessonPage extends Component {
     }
 
     handleChange = (event) => {
-        console.log("selected...");
-         console.log("event.target.value", event.target.value);
-        this.setState({ selectedCourse: event.target.value });
-        console.log("selectedCourse1 ", this.state.selectedCourse);
         this.calculateNumberOfLessons(event);
     };
+
+    goBackCLicked(){
+        this.redirect("/my-cabinet")
+    }
 
 
     render() {
@@ -91,15 +104,16 @@ export default class CreateLessonPage extends Component {
 
         return (
             <div>
-                { AuthenticationService.getLoggedInUserName() === ''? <NonAuthenticatedHeader  selectedLink="my-cabinet" {...this.props}/> :
-                    <AuthenticatedHeader  selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
+                {AuthenticationService.getLoggedInUserName() === '' ?
+                    <NonAuthenticatedHeader selectedLink="my-cabinet" {...this.props}/> :
+                    <AuthenticatedHeader selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <label>
                     Выберите курс :
                     <select value={this.state.value} onChange={this.handleChange}>
                         {optionTemplate}
                     </select>
                 </label>
-                <div >
+                <div>
                     Lessons ordinal: {this.state.lessonNumber}
                 </div>
                 <div style={{display: "grid"}} className="grid-container">
@@ -115,6 +129,12 @@ export default class CreateLessonPage extends Component {
                     </div>
 
                 </div>
+                <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
+                    Создать урок
+                </button>
+                <button className='Header-ExitBtn btn btn-primary bold' onClick={this.goBackCLicked}>
+                    Go back to courses
+                </button>
                 <Footer/>
             </div>
         )
