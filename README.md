@@ -16,3 +16,13 @@ Make ppts public:
 2. File -> Publish to the web
 3. Choose size because it will have  same size on react component
 4. Insert url to database
+
+
+brew add react-input-component
+
+
+Reainsatll all dependencies
+rm -rf node_modules
+rm package-lock.json
+npm cache clean 
+npm install

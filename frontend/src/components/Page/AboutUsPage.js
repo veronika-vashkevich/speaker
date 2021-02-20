@@ -33,6 +33,4 @@ export default class AboutUsPage extends Component {
             </div>
         )
     }
-
-
 }

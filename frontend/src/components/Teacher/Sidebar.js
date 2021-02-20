@@ -6,6 +6,8 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import ExpandLessIcon from "@material-ui/icons/ExpandLess";
 import Collapse from "@material-ui/core/Collapse";
 import { makeStyles } from '@material-ui/core/styles';
+import { BrowserRouter as Router, Route, useHistory } from "react-router-dom";
+
 import "./Sidebar.scss"
 
 
@@ -19,6 +21,8 @@ const useStyles = makeStyles((theme) => ({
 
 const items_2 = [];
 function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selectedItem, ...rest }) {
+
+    let history = useHistory();
 
     const [collapsed, setCollapsed] = React.useState(true);
     const { label, items, onClick: onClickProp } = item;
@@ -94,6 +98,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selecte
 }
 
 function Sidebar({ items, depthStep, depth, expanded, selectedItem }) {
+    let history = useHistory();
     // console.log("selected", selected);
     const classes = useStyles();
     return (
