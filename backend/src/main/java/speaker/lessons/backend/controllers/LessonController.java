@@ -2,9 +2,12 @@ package speaker.lessons.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import speaker.lessons.backend.dtos.lesson.LessonConverter;
 import speaker.lessons.backend.dtos.lesson.LessonDTO;
+import speaker.lessons.backend.models.lesson.Lesson;
 import speaker.lessons.backend.services.lesson.ILessonService;
 
 import java.util.Collection;
@@ -39,6 +42,13 @@ public class LessonController {
         return lessonService.getAllLessons().stream().map(lesson -> lessonConverter.createFrom(lesson))
                 .collect(Collectors.toList());
     }
+
+
+    @PostMapping("/lessons/create")
+    public Lesson createLesson( @RequestBody  LessonDTO lessonDTO) {
+        return lessonService.createLesson(lessonDTO);
+    }
+
 
     //    @GetMapping("/{id}")
     //    public ResponseEntity<LessonDTO> getCourseById(@PathVariable Integer id) {

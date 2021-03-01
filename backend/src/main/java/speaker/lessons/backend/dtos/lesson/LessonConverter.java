@@ -20,6 +20,8 @@ public class LessonConverter implements IDTOConverter<LessonDTO, Lesson> {
         lesson.setTitle(dto.getTitle());
         lesson.setUrl(dto.getUrl());
         lesson.setType(dto.getType());
+        lesson.setCourse(dto.getCourse());
+        lesson.setPptUpdateUrl(dto.getPptUpdateUrl());
         return lesson;
     }
 }

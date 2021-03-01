@@ -4,6 +4,7 @@ import Footer from "../Footer/Footer";
 import AuthenticationService from "../../services/AuthenticationService";
 import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 import CourseDataService from "../../services/CourseDataService";
+import LessonDataService from "../../services/LessonDataService";
 
 
 let startIndex = 0;
@@ -20,27 +21,52 @@ export default class CreateLessonPage extends Component {
             item: '',
             stateName: '',
             selectedCourse: '',
-            lessonNumber: ''
+            lessonNumber: '',
+            lessonTitle: ''
 
         };
         this.fetchTeacherCourses = this.fetchTeacherCourses.bind(this);
         this.calculateNumberOfLessons = this.calculateNumberOfLessons.bind(this);
         this.goBackCLicked = this.goBackCLicked.bind(this);
         this.redirect = this.redirect.bind(this);
+        this.handleLessonTitleChange = this.handleLessonTitleChange.bind(this);
+        this.createLessonClicked = this.createLessonClicked.bind(this);
+    }
+
+    handleLessonTitleChange(event) {
+    this.setState(
+        {
+            [event.target.name]: event.target.value
+        }
+    )
+    }
+
+
+    createLessonClicked() {
+        console.log("createLessonClicked() ...");
+        console.log("lesson title is ", this.state.lessonTitle)
+        if(this.state.lessonTitle === ''){
+            alert("Пожалуйста, введите название урока перед созданием!")
+        }
+        LessonDataService
+            .createLesson(this.state.selectedCourse, this.state.lessonNumber, this.state.lessonTitle)
+            .then((response) => {
+                if (response.status === 200) {
+                    console.log("response", response);
+                    this.setState({hasLoginFailed: false});
+                }
+                this.props.history.push(`/my-cabinet`)
+            }).catch(() => {
+            this.setState({showSuccessMessage: false});
+            this.setState({hasLoginFailed: true});
+            console.log("error");
+        })
     }
 
     redirect(href) {
-        // return <Redirect to={{
-        //     pathname: href,
-        //     state: { stateName: "test"}
-        // }} />;
-        // let history = useHistory();
-        // console.log("this is redirect");
-        // console.log("selectedCourse is ", selectedCourse);
-        // console.log("courseId is ", courseId);
         this.props.history.push({
             pathname: href,
-            state: { stateName: "test"}
+            state: {stateName: "test"}
         });
     }
 
@@ -92,7 +118,7 @@ export default class CreateLessonPage extends Component {
         this.calculateNumberOfLessons(event);
     };
 
-    goBackCLicked(){
+    goBackCLicked() {
         this.redirect("/my-cabinet")
     }
 
@@ -107,34 +133,41 @@ export default class CreateLessonPage extends Component {
                 {AuthenticationService.getLoggedInUserName() === '' ?
                     <NonAuthenticatedHeader selectedLink="my-cabinet" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
-                <label>
-                    Выберите курс :
-                    <select value={this.state.value} onChange={this.handleChange}>
-                        {optionTemplate}
-                    </select>
-                </label>
-                <div>
-                    Lessons ordinal: {this.state.lessonNumber}
-                </div>
-                <div style={{display: "grid"}} className="grid-container">
+                <div style={{marginTop: "10px"}} className="grid-container">
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-
+                    <div className="grid-item-left">
+                        <label>
+                            Выберите курс :
+                        </label>
+                    </div>
+                    <div className="grid-item-right">
+                        <select value={this.state.value} onChange={this.handleChange}>
+                            {optionTemplate}
+                        </select>
+                    </div>
+                    <div className="grid-item-left">
+                        Номер урока:
+                    </div>
+                    <div className="grid-item-right">
+                        {this.state.lessonNumber}
+                    </div>
                     <div className="grid-item-left">
                         Название урока:
                     </div>
                     <div className="grid-item-right">
-                        <input type="text" placeholder="lesson title" name="lessonTitle"
+                        <input type="text" /*placeholder="lesson title"*/ name="lessonTitle"
                             // value={this.state.email}
-                               onChange={this.handleChange}/>
+                               onChange={this.handleLessonTitleChange}/>
                     </div>
-
                 </div>
-                <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
-                    Создать урок
-                </button>
-                <button className='Header-ExitBtn btn btn-primary bold' onClick={this.goBackCLicked}>
-                    Go back to courses
-                </button>
+                <div  style={{marginTop: "10px"}}>
+                    <button className='Header-ExitBtn btn btn-primary bold' onClick={this.createLessonClicked}>
+                        Создать урок
+                    </button>
+                    <button className='Header-ExitBtn btn btn-primary bold' onClick={this.goBackCLicked}>
+                        Вернуться к курсам
+                    </button>
+                </div>
                 <Footer/>
             </div>
         )

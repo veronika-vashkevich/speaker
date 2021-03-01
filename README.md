@@ -26,3 +26,8 @@ rm -rf node_modules
 rm package-lock.json
 npm cache clean 
 npm install
+
+
+kill process
+lsof -i -P -n | grep LISTEN   (get process PID)
+kill -9 95106

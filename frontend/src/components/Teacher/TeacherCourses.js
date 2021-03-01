@@ -2,7 +2,6 @@ import React, {Component}  from "react";
 import "./TeacherCourses.scss"
 import AuthenticationService from "../../services/AuthenticationService";
 import CourseDataService from "../../services/CourseDataService"
-import {BrowserRouter as Router, Route, Switch, useHistory, Redirect} from "react-router-dom";
 import { withRouter } from "react-router-dom";
 import Sidebar from "./Sidebar";
 
@@ -10,8 +9,13 @@ var thisTemp;
 
 function onClick(e, item) {
     console.log("item is ", item);
+    thisTemp.setState({pptSrc: item.lessonUrl, pptUpdateUrl: item.pptUpdateUrl, item: item, selected: item.lessonId, selectedCourse: item.courseId});
+}
+
+
+function selectLesson(item) {
+    console.log("item is ", item);
     thisTemp.setState({pptSrc: item.lessonUrl, pptUpdateUrl: item.pptUpdateUrl, item: item, selected: item.lessonId});
-    localStorage.setItem('pptSrc', item.lessonUrl);
 }
 
 class TeacherCourses extends Component {
@@ -24,11 +28,13 @@ class TeacherCourses extends Component {
             loggedUser: '',
             pptSrc: '',
             pptUpdateUrl: '',
-            currentCourse: '',
+            selectedCourse: '',
             currentLesson: '',
             item: '',
             selected: '',
-            refreshClicked: ''
+            refreshClicked: '',
+            key: 0,
+            customCollapsed: false
         };
         thisTemp = this;
         this.fetchTeacherCourses = this.fetchTeacherCourses.bind(this);
@@ -51,8 +57,9 @@ class TeacherCourses extends Component {
 
 
     refreshLessonClicked(e) {
-        this.setState({pptSrc: this.state.pptSrc + 1});
-
+        this.setState({ key: Math.random() });
+        console.log("key", this.state.key);
+        console.log("course", this.state.currentCourse)
     }
 
     redirect(href) {
@@ -88,8 +95,6 @@ class TeacherCourses extends Component {
     componentWillMount() {
         this.fetchTeacherCourses();
         console.log("currentLesson", this.state.pptSrc);
-        localStorage.setItem("item", this.state.item);
-        console.log("item after refresh  ", localStorage.getItem("item"));
     }
 
     render() {
@@ -106,17 +111,17 @@ class TeacherCourses extends Component {
                     lessonId: this.state.teacherCourses[i].lessons[j].id,
                     lessonUrl: this.state.teacherCourses[i].lessons[j].url,
                     pptUpdateUrl: this.state.teacherCourses[i].lessons[j].pptUpdateUrl,
+                    expanded:'',
                     onClick
                 });
             }
-            // console.log("lessons", lessons);
-
 
             items_2.push({
                 name: this.state.teacherCourses[i].name,
                 selector: "course",
                 label: this.state.teacherCourses[i].name,
                 id: this.state.teacherCourses[i].id,
+                collapsedCourse: this.state.teacherCourses[i].id != this.state.selectedCourse,
                 items: lessons
             });
             items_2.push("divider");
@@ -133,22 +138,22 @@ class TeacherCourses extends Component {
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
                             Изменить презентацию
                         </button>
+                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.refreshLessonClicked}>
+                            Обновить презентацию
+                        </button>
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
                             Изменить название урока
-                        </button>
-                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.refreshLessonClicked}>
-                            Обновить изменения
                         </button>
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.createLessonClicked}>
                             Создать урок
                         </button>
-                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
+                        <button className='Header-ExitBtn btnselectedItem btn-primary bold' onClick={this.changeLessonClicked}>
                             Удалить урок
                         </button>
                     </div>
                 </div>
-                <div className="teacher-grid-container">
-                    <Sidebar items={items_2} selectedItem={this.state.selected}/>
+                <div className="teacher-grid-container" key={this.state.key}>
+                    <Sidebar items={items_2} selectedItem={this.state.selected} selectedCourse={this.state.selectedCourse} />
 
                     <div>
                         <iframe

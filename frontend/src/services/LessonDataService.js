@@ -8,7 +8,7 @@ class LessonDataService {
         return axios.get(`${API_URL}/courses/${courseId}/lessons`,
             {
                 headers: {
-                    isAuthRequired: 'true' 
+                    isAuthRequired: 'true'
                 }
             }
         );
@@ -36,11 +36,32 @@ class LessonDataService {
         return axios.put(`${JPA_API_URL}/users/${name}/todos/${id}`, todo);
     }
 
-    createLesson(Lesson) {
+    createLesson(courseId, orderIndex, title) {
         //console.log('executed service')
-        return axios.post(`${API_URL}/Lessons`, Lesson);
+        return axios.post(`${API_URL}/lessons/create`, {
+            courseId,
+            orderIndex,
+            title
+        });
     }
 
+//     try {
+//     yield put(CourseActions.loading(true));
+//     const response = yield call(axios.post, `/courses/${courseID}/lessons`, {
+//         title,
+//         content,
+//         url,
+//         type: lessonType,
+//     });
+//     if (response.status === 200) {
+//     yield put(CourseActions.createLessonSuccess());
+// }
+// yield put(CourseActions.loading(false));
+// yield call(history.push, AppRoutes.COURSE.DETAILS(courseID));
+// } catch (error) {
+//     yield put(CourseActions.loading(false));
+//     yield put(CourseActions.createLessonFailure());
+// }
 }
 
 export default new LessonDataService

@@ -19,22 +19,25 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-const items_2 = [];
+
 function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selectedItem, ...rest }) {
 
     let history = useHistory();
 
-    const [collapsed, setCollapsed] = React.useState(true);
-    const { label, items, onClick: onClickProp } = item;
+
+
+    const { label, items, collapsedCourse, onClick: onClickProp } = item;
+    const [collapsed, setCollapsed] = React.useState(collapsedCourse);
 
     function toggleCollapse() {
         setCollapsed(prevValue => !prevValue);
     }
 
     function onClick(e) {
-
+        console.log('collapsed', collapsed);
         if (Array.isArray(items)) {
             toggleCollapse();
+            console.log("toggle");
         }
         if (onClickProp) {
             onClickProp(e, item);
@@ -56,7 +59,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selecte
         );
     }
 
-    console.log("selectedItem = ", selectedItem);
+    // console.log("selectedItem = ", selectedItem);
     return (
         <>
             <ListItem
@@ -73,7 +76,8 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selecte
                 </div>
                 {expandIcon}
             </ListItem>
-            <Collapse in={!collapsed} timeout="auto" unmountOnExit>
+
+            <Collapse in={!collapsed } timeout="auto" unmountOnExit>
                 {Array.isArray(items) ? (
                     <List disablePadding dense>
                         {items.map((subItem, index) => (
@@ -86,6 +90,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selecte
                                         depthStep={depthStep}
                                         item={subItem}
                                         selected={ selectedItem === subItem.lessonId}
+                                        selectedCourse={subItem.courseId}
                                     />
                                 )}
                             </React.Fragment>
@@ -97,7 +102,7 @@ function SidebarItem({ depthStep = 10, depth = 0, expanded, item, index, selecte
     );
 }
 
-function Sidebar({ items, depthStep, depth, expanded, selectedItem }) {
+function Sidebar({ items, depthStep, depth, expanded, selectedItem, selectedCourse }) {
     let history = useHistory();
     // console.log("selected", selected);
     const classes = useStyles();
@@ -116,6 +121,7 @@ function Sidebar({ items, depthStep, depth, expanded, selectedItem }) {
                                 expanded={expanded}
                                 item={sidebarItem}
                                 selectedItem={selectedItem}
+                                selectedCourse={selectedCourse}
                             />
                         )}
                     </React.Fragment>

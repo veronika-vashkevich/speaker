@@ -10,7 +10,8 @@ import java.util.Optional;
 
 @Repository
 public interface LessonRepository extends JpaRepository<Lesson, Integer> {
-    
+
     List<Lesson> getAllLessonsByCourseId(Integer courseId);
-    
+    Lesson save(Lesson lesson);
+
 }

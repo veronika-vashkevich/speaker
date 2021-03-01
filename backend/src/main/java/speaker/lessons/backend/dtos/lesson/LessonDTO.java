@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import speaker.lessons.backend.dtos.courses.PersonDTO;
+import speaker.lessons.backend.models.Course;
 import speaker.lessons.backend.models.lesson.Lesson;
 import speaker.lessons.backend.models.lesson.LessonType;
 import speaker.lessons.backend.dtos.BaseDTO;
@@ -19,7 +20,10 @@ public class LessonDTO extends BaseDTO {
     private String title;
     private String content;
     private String url;
+    private String pptUpdateUrl;
     private LessonType type;
+    private Course course;
+    private Integer courseId;
     private Set<PersonDTO> students = new HashSet<>();
 
     public LessonDTO(Lesson lesson) {
@@ -29,5 +33,8 @@ public class LessonDTO extends BaseDTO {
         this.content = lesson.getContent();
         this.url = lesson.getUrl();
         this.type = lesson.getType();
+        this.course = lesson.getCourse();
+        this.courseId = lesson.getCourse().getId();
+        this.pptUpdateUrl = lesson.getPptUpdateUrl();
     }
 }
