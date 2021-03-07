@@ -2,8 +2,11 @@ package speaker.lessons.backend.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import speaker.lessons.backend.dtos.lesson.LessonConverter;
 import speaker.lessons.backend.dtos.lesson.LessonDTO;
@@ -50,6 +53,15 @@ public class LessonController {
     }
 
 
+    @PostMapping("/lessons/delete/{lessonId}")
+    public void deleteLesson( @PathVariable Integer lessonId) {
+        lessonService.deleteLesson(lessonId);
+    }
+
+    @PutMapping("/lessons/update/{lessonId}")
+    public void updateLesson(@PathVariable Integer lessonId, @RequestBody LessonDTO lessonDto){
+        lessonService.updateLesson(lessonId, lessonDto.getTitle());
+    }
     //    @GetMapping("/{id}")
     //    public ResponseEntity<LessonDTO> getCourseById(@PathVariable Integer id) {
     //        return ResponseEntity.ok(this.courseConverter.createFrom(this.courseService.getCourseById(id)));

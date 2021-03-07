@@ -26,14 +26,8 @@ class LessonDataService {
         return axios.get(`${API_URL}/Lessons/start`, { params });
     }
 
-    deleteLesson(name, Lesson) {
-        //console.log('executed service')
-        return axios.delete(`${API_URL}/Lessons/${Lesson}`);
-    }
-
-    updateLesson(name, id, todo) {
-        //console.log('executed service')
-        return axios.put(`${JPA_API_URL}/users/${name}/todos/${id}`, todo);
+    updateLesson(lessonId, title) {
+        return axios.put(`${API_URL}/lessons/update/${lessonId}`, {title});
     }
 
     createLesson(courseId, orderIndex, title) {
@@ -45,23 +39,11 @@ class LessonDataService {
         });
     }
 
-//     try {
-//     yield put(CourseActions.loading(true));
-//     const response = yield call(axios.post, `/courses/${courseID}/lessons`, {
-//         title,
-//         content,
-//         url,
-//         type: lessonType,
-//     });
-//     if (response.status === 200) {
-//     yield put(CourseActions.createLessonSuccess());
-// }
-// yield put(CourseActions.loading(false));
-// yield call(history.push, AppRoutes.COURSE.DETAILS(courseID));
-// } catch (error) {
-//     yield put(CourseActions.loading(false));
-//     yield put(CourseActions.createLessonFailure());
-// }
+    deleteLesson(lessonId) {
+        return axios.post(`${API_URL}/lessons/delete/${lessonId}`, {
+            lessonId
+        });
+    }
 }
 
 export default new LessonDataService

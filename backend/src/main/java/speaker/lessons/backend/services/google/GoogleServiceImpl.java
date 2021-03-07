@@ -78,6 +78,11 @@ public class GoogleServiceImpl implements GoogleService {
     }
 
     @Override
+    public void deletePptByUrl(String pptUrl){
+
+    };
+
+    @Override
     public String createViewPptUrl(String presentationId) {
         return "https://docs.google.com/presentation/d/"+presentationId+"/preview";
     }

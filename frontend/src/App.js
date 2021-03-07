@@ -5,7 +5,8 @@ import {
     Switch,
     Redirect,
     BrowserRouter,
-    withRouter
+    withRouter,
+    useHistory
 } from "react-router-dom"
 import {ProtectedRoute} from "./components/Routes/ProtectedRoute";
 
@@ -18,6 +19,8 @@ import AppLayout from "./components/Layout/AppLayout"
 import LoginPage from "./components/Page/LoginPage";
 import AboutUsPage from "./components/Page/AboutUsPage"
 import CreateLessonPage from "./components/Page/CreateLessonPage"
+import DeleteLessonPage from "./components/Page/DeleteLessonPage"
+import UpdateLessonPage from "./components/Page/UpdateLessonPage"
 import CoursesPage from "./components/Course/CoursesPage";
 import BeginnerCoursePage from "./components/Page/BiginnerCoursePage"
 import ContinueCoursePage from "./components/Page/ContinueCoursePage";
@@ -45,7 +48,10 @@ class App extends Component {
                     <Route exact path="/courses/advanced" component={AdvancedCoursePage} />
                     <Route exact path="/about-us" component={AboutUsPage} />
                     <Route exact path="/my-cabinet/create-lesson" component={CreateLessonPage} />
-                    <Route exact path="/contacts" component={ContactsPage} />
+                    <Route exact path="/my-cabinet/delete-lesson" component={DeleteLessonPage} />
+                    <Route exact path="/my-cabinet/delete-lesson" render={(props) => <DeleteLessonPage {...props} item={this.item}/>}  />
+                    <Route exact path="/my-cabinet/update-lesson" render={(props) => <UpdateLessonPage {...props} item={this.item}/>}  />
+                    {/*<Route exact path="/contacts" component={ContactsPage} />*/}
                     <ProtectedRoute exact path="/app" component={AppLayout} />
                     <Route path="*"component={() => "404 NOT FOUND"} />
                 </Switch>

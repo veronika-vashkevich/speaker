@@ -6,12 +6,10 @@ import speaker.lessons.backend.models.lesson.Lesson;
 import java.util.Collection;
 
 public interface ILessonService {
-//    Lesson createLesson(Integer courseId, Lesson lesson);
-//    List<Lesson> getAllLessonsByUserId();
+
     Collection<Lesson> getAllLessons();
     Collection<Lesson> getAllLessonsByCourseId(Integer courseId);
     Lesson createLesson(LessonDTO lessonDTO);
-
-
-//    Lesson reOrderLesson(Integer courseId, Integer lessonId, Integer order);
+    void deleteLesson( Integer lessonId);
+    void updateLesson(Integer lessonId, String lessonTitle);
 }

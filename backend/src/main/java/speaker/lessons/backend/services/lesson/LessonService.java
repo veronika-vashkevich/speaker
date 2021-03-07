@@ -1,6 +1,7 @@
 package speaker.lessons.backend.services.lesson;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import speaker.lessons.backend.controllers.exceptions.course.CourseException;
 import speaker.lessons.backend.dtos.lesson.LessonConverter;
 import speaker.lessons.backend.dtos.lesson.LessonDTO;
@@ -12,7 +13,6 @@ import speaker.lessons.backend.repositories.LessonRepository;
 import speaker.lessons.backend.services.google.GoogleService;
 import speaker.lessons.backend.services.security.ISecurityService;
 
-import javax.swing.text.html.Option;
 import java.util.Collection;
 import java.util.Comparator;
 import java.util.List;
@@ -27,25 +27,13 @@ public class LessonService implements ILessonService {
     private final LessonConverter lessonConverter;
     private final GoogleService googleService;
 
-    public LessonService(LessonRepository lessonRepository,
-                         ISecurityService securityService,
-                         LessonConverter lessonConverter,
-                         CourseRepository courseRepository,
-                         GoogleService googleService) {
+    public LessonService(LessonRepository lessonRepository, ISecurityService securityService, LessonConverter lessonConverter, CourseRepository courseRepository, GoogleService googleService) {
         this.lessonRepository = lessonRepository;
         this.securityService = securityService;
         this.lessonConverter = lessonConverter;
         this.courseRepository = courseRepository;
         this.googleService = googleService;
     }
-
-    //    @Override
-    //    public List<Lesson> getAllLessonsByUserId(){
-    //        Integer userId = securityService.getCurrentUser()
-    //                .orElseThrow(() -> new CourseException("Trying to get current user returned Optional.empty()."))
-    //                .getId();
-    //        return this.lessonRepository.findAllLessonsByUserId(userId);
-    //    }
 
     @Override
     public Collection<Lesson> getAllLessonsByCourseId(Integer courseId) {
@@ -55,8 +43,7 @@ public class LessonService implements ILessonService {
     }
 
     class SortByOrderIndex implements Comparator<Lesson> {
-        // Used for sorting in ascending order of
-        // roll number
+
         public int compare(Lesson a, Lesson b) {
             return a.getOrderIndex() - b.getOrderIndex();
         }
@@ -64,39 +51,58 @@ public class LessonService implements ILessonService {
 
     @Override
     public Lesson createLesson(LessonDTO lessonDto) {
-        if(userOwnsCourse(lessonDto)){
+        if (userOwnsCourse(lessonDto.getCourseId())) {
             Optional<Course> course = this.courseRepository.findById(lessonDto.getCourseId());
             lessonDto.setCourse(course.get());
             enrichLessonDtoWithPptUrls(lessonDto);
 
             return this.lessonRepository.save(lessonConverter.createFrom(lessonDto));
-        }
-        else throw new IllegalArgumentException("User does not own the course");
+        } else
+            throw new IllegalArgumentException("User does not own the course");
 
-    };
+    }
 
-    private boolean userOwnsCourse(LessonDTO lessonDTO){
+    ;
+
+    @Override
+    public void deleteLesson( Integer lessonId) {
+        Lesson lesson = lessonRepository.findById(lessonId).orElseThrow(RuntimeException::new);
+        if (userOwnsCourse(lesson.getCourse().getId())) {
+            this.lessonRepository.deleteById(lessonId);
+        } else
+            throw new IllegalArgumentException("User does not own the course");
+    }
+
+    @Override
+    @Transactional
+    public void updateLesson(Integer lessonId, String lessonTitle){
+        Lesson lesson = lessonRepository.findById(lessonId).orElseThrow(RuntimeException::new);
+        if (userOwnsCourse(lesson.getCourse().getId())) {
+            this.lessonRepository.updateLessonTitle(lessonId, lessonTitle);
+        } else
+            throw new IllegalArgumentException("User does not own the course");
+    }
+
+    private boolean userOwnsCourse(Integer courseId) {
         Integer userId = securityService.getCurrentUser()
-                        .orElseThrow(() -> new CourseException("Trying to get current user returned Optional.empty()."))
-                        .getId();
-                return this.courseRepository.getAllCoursesByUserId(userId)
-                        .stream().map(Course::getId)
-                        .collect(Collectors.toList())
-                        .contains(lessonDTO.getCourseId());
+                .orElseThrow(() -> new CourseException("Trying to get current user returned Optional.empty()."))
+                .getId();
+        return this.courseRepository.getAllCoursesByUserId(userId).stream().map(Course::getId)
+                .collect(Collectors.toList()).contains(courseId);
     }
 
     public Collection<Lesson> getAllLessons() {
         return this.lessonRepository.findAll();
     }
 
-    private LessonDTO enrichLessonDtoWithPptUrls(LessonDTO lessonDTO){
+    private LessonDTO enrichLessonDtoWithPptUrls(LessonDTO lessonDTO) {
         String pptUrl = googleService.createPptUrl(lessonDTO);
         lessonDTO.setUrl(googleService.createViewPptUrl(pptUrl));
         lessonDTO.setPptUpdateUrl(googleService.crateUpdatePptUrl(pptUrl));
         lessonDTO.setType(LessonType.IMAGE);
         lessonDTO.setContent(lessonDTO.getTitle());
 
-         return  lessonDTO;
+        return lessonDTO;
     }
 
     //    @Override
