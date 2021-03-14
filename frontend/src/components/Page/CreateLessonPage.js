@@ -5,6 +5,7 @@ import AuthenticationService from "../../services/AuthenticationService";
 import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 import CourseDataService from "../../services/CourseDataService";
 import LessonDataService from "../../services/LessonDataService";
+import TeacherCabinetHeader from "../Teacher/TeacherCabinetHeader";
 
 
 let startIndex = 0;
@@ -133,6 +134,10 @@ export default class CreateLessonPage extends Component {
                 {AuthenticationService.getLoggedInUserName() === '' ?
                     <NonAuthenticatedHeader selectedLink="my-cabinet" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
+
+                <div /*className="grid-item-left-teacher"*/>
+                    <TeacherCabinetHeader className="Teacher-Header" selectedCourse="courses"/>
+                </div>
                 <div style={{marginTop: "10px"}} className="grid-container">
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                     <div className="grid-item-left">

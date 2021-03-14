@@ -34,6 +34,8 @@ kill -9 95106
 
 
 test student user
+http://localhost:8080/api/auth/register
+
 {
     "name":"test-student",
     "email":"test-student@gmail.com",

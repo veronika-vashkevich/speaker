@@ -18,6 +18,7 @@ import LandingPage from "./components/Landing/LandingPage";
 import AppLayout from "./components/Layout/AppLayout"
 import LoginPage from "./components/Page/LoginPage";
 import AboutUsPage from "./components/Page/AboutUsPage"
+import CreateCoursePage from "./components/Page/CreateCoursePage"
 import CreateLessonPage from "./components/Page/CreateLessonPage"
 import DeleteLessonPage from "./components/Page/DeleteLessonPage"
 import UpdateLessonPage from "./components/Page/UpdateLessonPage"
@@ -47,6 +48,7 @@ class App extends Component {
                     <Route exact path="/courses/continue" component={ContinueCoursePage} />
                     <Route exact path="/courses/advanced" component={AdvancedCoursePage} />
                     <Route exact path="/about-us" component={AboutUsPage} />
+                    <Route exact path="/my-cabinet/create-course" component={CreateCoursePage} />
                     <Route exact path="/my-cabinet/create-lesson" component={CreateLessonPage} />
                     <Route exact path="/my-cabinet/delete-lesson" component={DeleteLessonPage} />
                     <Route exact path="/my-cabinet/delete-lesson" render={(props) => <DeleteLessonPage {...props} item={this.item}/>}  />

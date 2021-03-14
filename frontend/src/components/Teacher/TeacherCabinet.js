@@ -4,15 +4,21 @@ import AuthenticationService from "../../services/AuthenticationService";
 import CourseDataService from "../../services/CourseDataService"
 import {withRouter} from "react-router-dom";
 import Sidebar from "./Sidebar";
-import { createBrowserHistory } from "history";
+import {createBrowserHistory} from "history";
 import TeacherCabinetHeader from "../Teacher/TeacherCabinetHeader";
 
 var thisTemp;
-const withRefresh = createBrowserHistory({ forceRefresh: true });
+const withRefresh = createBrowserHistory({forceRefresh: true});
 
 function onClick(e, item) {
     console.log("item is ", item);
-    thisTemp.setState({pptSrc: item.lessonUrl, pptUpdateUrl: item.pptUpdateUrl, item: item, selected: item.lessonId, selectedCourse: item.courseId});
+    thisTemp.setState({
+        pptSrc: item.lessonUrl,
+        pptUpdateUrl: item.pptUpdateUrl,
+        item: item,
+        selected: item.lessonId,
+        selectedCourse: item.courseId
+    });
 }
 
 
@@ -46,6 +52,7 @@ class TeacherCabinet extends Component {
         this.createLessonClicked = this.createLessonClicked.bind(this);
         this.updateLessonClicked = this.updateLessonClicked.bind(this);
         this.deleteLessonClicked = this.deleteLessonClicked.bind(this);
+        this.createCourseClicked = this.createCourseClicked.bind(this);
         this.redirect = this.redirect.bind(this);
     }
 
@@ -59,25 +66,29 @@ class TeacherCabinet extends Component {
         }
 
     }
-    createLessonClicked(){
+    createCourseClicked(){
+        this.redirect("/my-cabinet/create-course")
+
+    }
+    createLessonClicked() {
         this.redirect("/my-cabinet/create-lesson")
     }
 
-    updateLessonClicked(){
+    updateLessonClicked() {
         this.redirect("/my-cabinet/update-lesson")
     }
 
-    deleteLessonClicked(){
-            this.redirect("/my-cabinet/delete-lesson")
+    deleteLessonClicked() {
+        this.redirect("/my-cabinet/delete-lesson")
     }
 
     refreshLessonClicked(e) {
-        this.setState({ key: Math.random() });
+        this.setState({key: Math.random()});
         console.log("key", this.state.key);
     }
 
     redirect(href) {
-        if (this.state.item === "") {
+        if (this.state.item === "" && !(href.substring(12, 25) === "create-course")) {
             alert("Пожалуйста, сначала выберите курс.")
         } else {
             this.props.history.push({
@@ -121,7 +132,7 @@ class TeacherCabinet extends Component {
                     lessonId: this.state.teacherCourses[i].lessons[j].id,
                     lessonUrl: this.state.teacherCourses[i].lessons[j].url,
                     pptUpdateUrl: this.state.teacherCourses[i].lessons[j].pptUpdateUrl,
-                    expanded:'',
+                    expanded: '',
                     onClick
                 });
             }
@@ -139,13 +150,17 @@ class TeacherCabinet extends Component {
 
         return (
             <div>
-                <TeacherCabinetHeader className="Teacher-Header" selectedCourse="courses"/>
-                <div className="Teacher-Header">
-                    {/*<a className={this.props.selectedLink === 'teacher-courses' ? 'active-course-header' : ''}>Ваши*/}
-                    {/*    Курсы</a>*/}
-                    <p> Курс: {this.state.item.courseTitle}</p>
-                    <p> Урок: {this.state.item.label}</p>
-                    <div style={{position: "absolute", right: "30px", display: "inline"}}>
+                <div /*className="teacher-grid-container"*/>
+                    <div /*className="grid-item-left-teacher"*/>
+                        <TeacherCabinetHeader className="Teacher-Header" selectedCourse="courses"/>
+                    </div>
+                    <div style={{position: "absolute", right: "5px", display: "inline"}}>
+                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.createCourseClicked}>
+                            Создать курс
+                        </button>
+                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
+                            Удалить курс
+                        </button>
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
                             Изменить презентацию
                         </button>
@@ -163,8 +178,15 @@ class TeacherCabinet extends Component {
                         </button>
                     </div>
                 </div>
+                {/*<div className="grid-item-right" style={{paddingTop: "10px"}}>*/}
+                {/*    <div className="Teacher-Header">*/}
+                {/*        <p> Курс: {this.state.item.courseTitle}</p>*/}
+                {/*        <p> Урок: {this.state.item.label}</p>*/}
+                {/*    </div>*/}
+                {/*</div>*/}
                 <div className="teacher-grid-container" key={this.state.key}>
-                    <Sidebar items={items_2} selectedItem={this.state.selected} selectedCourse={this.state.selectedCourse} />
+                    <Sidebar items={items_2} selectedItem={this.state.selected}
+                             selectedCourse={this.state.selectedCourse}/>
 
                     <div>
                         <iframe
@@ -176,7 +198,14 @@ class TeacherCabinet extends Component {
                             mozallowfullscreen="true"
                             frameBorder="0"
                             webkitallowfullscreen="true"></iframe>
+                        <div className="grid-item-right" style={{paddingTop: "10px"}}>
+                            <div className="Teacher-Header">
+                                <p> Курс: {this.state.item.courseTitle}</p>
+                                <p> Урок: {this.state.item.label}</p>
+                            </div>
+                        </div>
                     </div>
+
                 </div>
             </div>
         )
