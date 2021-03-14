@@ -142,17 +142,17 @@ export default class CreateLessonPage extends Component {
                 <div style={{marginTop: "10px"}} className="grid-container">
                     {this.state.showSuccessMessage && <div>Login Sucessful</div>}
                     <div className="grid-item-left">
-                        <label>
+                        {/*<label>*/}
                             Курс :
-                        </label>
+                        {/*</label>*/}
                     </div>
-                        <div className="grid-item-right">
+                        <div className="grid-item-left">
                             {this.state.courseTitle}
                         </div>
                     <div className="grid-item-left">
                         Урок:
                     </div>
-                    <div className="grid-item-right">
+                    <div className="grid-item-left">
                         {this.state.lessonTitle}
                     </div>
                 </div>

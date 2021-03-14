@@ -9,27 +9,21 @@ class AuthenticationService {
     executeBasicAuthenticationService(email, password) {
         console.log("executeBasicAuthenticationService");
         return axios.get(`${API_URL}/auth`,
-            // return axios.get(`/basicauth`,
             { headers: { authorization: this.createBasicAuthToken(email, password) } })
     }
 
     executeJwtAuthenticationService(email, password) {
         return axios.post(`${API_URL}/auth/login`, {
-        // return axios.post(`${API_URL}/login`, {
             email,
             password
         })
     }
 
     createBasicAuthToken(email, password) {
-        console.log("createBasicAuthToken");
         return 'Basic ' + window.btoa(email + ":" + password)
     }
 
     registerSuccessfulLogin(email, password) {
-        //let basicAuthHeader = 'Basic ' +  window.btoa(email + ":" + password)
-        //console.log('registerSuccessfulLogin')
-        console.log("registerSuccessfulLogin");
         sessionStorage.setItem(USER_NAME_SESSION_ATTRIBUTE_NAME, email)
         this.setupAxiosInterceptors(this.createBasicAuthToken(email, password))
     }
@@ -42,16 +36,12 @@ class AuthenticationService {
     }
 
     createJWTToken(token) {
-        console.log("createJWTToken");
-        console.log("token from createJWTToken() function", token);
         return 'Bearer ' + token
     }
 
 
     logout() {
-        console.log("logout clicked")
         sessionStorage.removeItem(USER_NAME_SESSION_ATTRIBUTE_NAME);
-        console.log("USER_NAME_SESSION_ATTRIBUTE_NAME is",sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME) )
     }
 
     isUserLoggedIn() {
@@ -61,13 +51,19 @@ class AuthenticationService {
     }
 
     getLoggedInUserName() {
-        // console.log("getLoggedInUserName()")
         let user = sessionStorage.getItem(USER_NAME_SESSION_ATTRIBUTE_NAME)
         if (user === null) return '';
-        // console.log("user " + user)
         return user
     }
 
+
+    getUserAuthority(email){
+        console.log("getUserAuthority...", email)
+        return axios.get(`${API_URL}/auth/authority`,{
+            params: {
+            email: email
+        }})
+    }
 
 
     setupAxiosInterceptors(token) {

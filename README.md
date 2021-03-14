@@ -31,3 +31,13 @@ npm install
 kill process
 lsof -i -P -n | grep LISTEN   (get process PID)
 kill -9 95106
+
+
+test student user
+{
+    "name":"test-student",
+    "email":"test-student@gmail.com",
+    "password":"test-student",
+    "authority":"STUDENT"
+}
+

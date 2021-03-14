@@ -17,6 +17,7 @@ import speaker.lessons.backend.repositories.UserRepository;
 import speaker.lessons.backend.security.JwtTokenProvider;
 
 import javax.transaction.Transactional;
+import java.util.Set;
 
 @Service
 @Transactional
@@ -68,11 +69,21 @@ public class UserService implements IUserService {
         if (authority != AuthorityType.STUDENT) {
             Authority studentAuthority = authorityRepository.findByName(AuthorityType.STUDENT)
                     .orElseThrow(() -> new AppException("User authority not found."));
-
-            user.getUserAuthorities().add(new UserAuthority(user, studentAuthority));
+//
+//            user.getUserAuthorities().add(new UserAuthority(user, studentAuthority));
         }
-        user.getUserAuthorities().add(new UserAuthority(user, userAuthority));
+//        user.getUserAuthorities().add(new UserAuthority(user, userAuthority));
 
         userRepository.save(user);
+    }
+
+    @Override
+    public Authority getUserAuthorityBy(String email) {
+        int authorityId =  userRepository.findByEmail(email)
+                .orElseThrow(RuntimeException::new)
+                .getAuthorityId();
+
+        return authorityRepository.findById(authorityId).get();
+
     }
 }

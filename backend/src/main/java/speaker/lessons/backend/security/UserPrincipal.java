@@ -53,7 +53,7 @@ public class UserPrincipal implements UserDetails {
                 user.getAccountExpired(),
                 user.getAccountLocked(),
                 user.getCredentialsExpired(),
-                user.getEnabled(),
+                user.getEnabled() ,
                 authorities
         );
     }

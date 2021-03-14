@@ -10,4 +10,6 @@ import java.util.Optional;
 @Repository
 public interface AuthorityRepository extends JpaRepository<Authority, Integer> {
     Optional<Authority> findByName(AuthorityType name);
+
+    Optional<Authority> findById(int id);
 }

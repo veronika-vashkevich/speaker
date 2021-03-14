@@ -9,7 +9,8 @@ import AuthenticationService from "../../services/AuthenticationService";
 import Footer from "../Footer/Footer";
 import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 import EmptyCabinet from "./EmptyCabinet";
-import TeacherCourses from "../../components/Teacher/TeacherCourses"
+import TeacherCabinet from "../Teacher/TeacherCabinet"
+import StudentCabinet from "../Student/StudentCabinet"
 
 export default class MyCabinet extends Component {
 
@@ -17,6 +18,7 @@ export default class MyCabinet extends Component {
         data: null,
         isLoading: false,
         title: '',
+        authority: '',
         filter: {
             startDate: null,
             endDate: null,
@@ -35,15 +37,23 @@ export default class MyCabinet extends Component {
                 title: 'У ВАС ПОКА НЕT ЗАНЯТИЙ'
             })
         } else {
+            AuthenticationService.getUserAuthority(username)
+                .then(
+                    response => {
+                        this.setState({authority: response.data});
+                    }
+                );
+            console.log("authority", this.state.authority);
             this.setState({
                 title: 'МОИ ЗАНЯТИЯ',
                 loggedUser: username
             })
 
         }
-
     }
-
+    componentWillMount() {
+        console.log("authority", this.state.authority);
+    }
 
     render() {
         return (
@@ -51,15 +61,22 @@ export default class MyCabinet extends Component {
                 {AuthenticationService.getLoggedInUserName() === '' ?
                     <NonAuthenticatedHeader selectedLink="my-cabinet" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
+
                 <div className="Home">
-                    {AuthenticationService.getLoggedInUserName() !== '' ?
-                        <TeacherCourses selectedLink="teacher-courses"/>
+                    {AuthenticationService.getLoggedInUserName() !== ''  && this.state.authority.name === 'TEACHER'?
+                        <TeacherCabinet selectedLink="teacher-courses"/>
                         : <div></div>}
+
+                    {AuthenticationService.getLoggedInUserName() !== ''  && this.state.authority.name === 'STUDENT'?
+                        <StudentCabinet selectedLink="teacher-courses"/>
+                        : <div></div>}
+
                     {AuthenticationService.getLoggedInUserName() === '' ?
                         <EmptyCabinet/> : <div></div>
                     }
 
                 </div>
+
                 <Footer/>
             </div>
         )

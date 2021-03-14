@@ -33,8 +33,12 @@ public class User extends BaseEntity {
     @Column(name = "credentials_expired")
     private Boolean credentialsExpired = false;
 
+    @Column(name = "authority_id")
+    private int authorityId;
+
     @Column
-    private Boolean enabled = true;
+    private Boolean enabled;
+
 
     @OneToMany(mappedBy = "user", targetEntity = UserAuthority.class, cascade = {
             CascadeType.ALL}, orphanRemoval = true, fetch = FetchType.EAGER)
