@@ -124,7 +124,7 @@ export default class UpdateLessonPage extends Component {
                 {AuthenticationService.getLoggedInUserName() === '' ?
                     <NonAuthenticatedHeader selectedLink="my-cabinet" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
-                <div /*className="grid-item-left-teacher"*/>
+                <div >
                     <TeacherCabinetHeader className="Teacher-Header" selectedCourse="courses"/>
                 </div>
                 <div style={{marginTop: "10px"}} className="grid-container">
@@ -147,8 +147,7 @@ export default class UpdateLessonPage extends Component {
                         Новое название:
                     </div>
                     <div className="grid-item-right">
-                        <input type="text" /*placeholder="lesson title"*/ name="lessonNewTitle"
-                            // value={this.state.email}
+                        <input type="text" name="lessonNewTitle"
                                onChange={this.handleLessonTitleChange}/>
                     </div>
                 </div>

@@ -158,8 +158,8 @@ class TeacherCabinet extends Component {
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.createCourseClicked}>
                             Создать курс
                         </button>
-                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
-                            Удалить курс
+                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.createLessonClicked}>
+                            Создать урок
                         </button>
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
                             Изменить презентацию
@@ -170,8 +170,8 @@ class TeacherCabinet extends Component {
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.updateLessonClicked}>
                             Изменить название урока
                         </button>
-                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.createLessonClicked}>
-                            Создать урок
+                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
+                            Удалить курс
                         </button>
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.deleteLessonClicked}>
                             Удалить урок
