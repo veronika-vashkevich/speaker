@@ -18,7 +18,7 @@ export default class  SchoolLogo extends Component {
         return (
                     <div>
                         <Link  to="/">
-                            <img   src={logo} href="/" width="102" height="80" />
+                            <img   src={logo} href="/" width="110" height="80" />
                         </Link>
                     </div>
             

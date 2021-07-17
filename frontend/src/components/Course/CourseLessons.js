@@ -1,7 +1,5 @@
 import React, {Component} from 'react';
-import moment from 'moment'
 import './CourseLesson.scss'
-import LessonDataService from '../../services/LessonDataService'
 
 export default class CourseLessons extends Component {
     constructor(props) {
@@ -13,6 +11,7 @@ export default class CourseLessons extends Component {
             selectedCourse: '',
             message: null,
             lessons: [],
+            description: ''
         }
     }
 
@@ -25,30 +24,31 @@ export default class CourseLessons extends Component {
         console.log('render');
         return (
             <div className="margin-left">
-                <h1>Программа курса {this.props.courseName}</h1>
+                <h1>Краткое описание курса {this.props.courseName}</h1>
+                <a>{this.props.description}</a>
                 {/*<table className="table scroll-pane" cellspacing="5">*/}
-                <table>
-                    <thead>
-                    <tr>
-                        <th>Номер урока</th>
-                        <th>Тема</th>
-                        <th>По окончании урока ребенок сможет</th>
+                {/*<table>*/}
+                {/*    <thead>*/}
+                {/*    <tr>*/}
+                {/*        <th>Номер урока</th>*/}
+                {/*        <th>Тема</th>*/}
+                {/*        <th>По окончании урока ребенок сможет</th>*/}
 
-                    </tr>
-                    </thead>
-                    <tbody>
-                    {
-                        Array.from(this.props.lessons).map(
-                            lesson =>
-                                <tr key={lesson.id}>
-                                    <td>{lesson.orderIndex}</td>
-                                    <td>{lesson.title}</td>
-                                    <td>{lesson.content}</td>
-                                </tr>
-                        )
-                    }
-                    </tbody>
-                </table>
+                {/*    </tr>*/}
+                {/*    </thead>*/}
+                {/*    <tbody>*/}
+                {/*    {*/}
+                {/*        Array.from(this.props.lessons).map(*/}
+                {/*            lesson =>*/}
+                {/*                <tr key={lesson.id}>*/}
+                {/*                    <td>{lesson.orderIndex}</td>*/}
+                {/*                    <td>{lesson.title}</td>*/}
+                {/*                    <td>{lesson.content}</td>*/}
+                {/*                </tr>*/}
+                {/*        )*/}
+                {/*    }*/}
+                {/*    </tbody>*/}
+                {/*</table>*/}
             </div>
         )
     }

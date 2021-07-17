@@ -1,6 +1,9 @@
 //not necessasey as they are in package.json
 npm install @material-ui/core
 npm install @material-ui/icons
+npm i @progress/kendo-react-dropdowns --save   -> did not work
+npm install @syncfusion/ej2-react-dropdowns -> did not work
+npm install semantic-ui-react
 
 
 

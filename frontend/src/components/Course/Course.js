@@ -18,12 +18,13 @@ export default class Course extends Component {
             courseName: '',
             selectedCourse: '',
             lessons: [],
-            
+            description: ''
+
         };
         this.state ={
             showPopup: false
         };
-        
+
         console.log(this.props);
     }
 
@@ -56,7 +57,7 @@ export default class Course extends Component {
                         : null
                     }
                     <CourseLessons courseName={this.props.courseName} selectedCourse={this.props.selectedCourse}
-                                   lessons={this.props.lessons}/>
+                                   lessons={this.props.lessons} description={this.props.description}/>
 
                 </div>
 

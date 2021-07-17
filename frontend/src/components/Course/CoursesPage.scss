@@ -2,6 +2,11 @@ div.gallery {
   padding-top: 1%;
 }
 
+div.a {
+  text-align: left;
+}
+
+
 div.gallery:hover {
   border: 1px solid #777;
 }
@@ -21,11 +26,11 @@ div.desc {
   padding: 0px;
   text-align: center;
   color: #1a63ab;
-  margin-top: 0px; 
+  margin-top: 0px;
 }
 
 @media screen and (max-width:750px) {
-  
+
 }
 
 @media screen and (max-width:749px){

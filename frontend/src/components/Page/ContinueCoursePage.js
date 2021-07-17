@@ -14,6 +14,17 @@ import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 
 const continuer = require('../../images/continue.svg');
 
+const CONTINUE_DESCRIPTION_OLD ='Курс состоит из 40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка).\n' +
+    'На каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка в игровой форме. Занятия направлены на развитие разговорной речи и не требуют навыков чтения.\n' +
+    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
+    'Кому подойдёт: детям 5-14 лет*, которые владеют русским языком, для дальнейшего развития грамотной устной речи, расширения словарного запаса, устранения грамматических ошибок в речи. \n' +
+    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
+    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+
+const CONTINUE_DESCRIPTION = CONTINUE_DESCRIPTION_OLD.split('\n').map(i => {
+    return <p>{i}</p>
+});
+
 export default class BeginnerCoursePage extends Component {
 
     constructor(props) {
@@ -57,6 +68,7 @@ export default class BeginnerCoursePage extends Component {
                         courseName="'ПРОДОЛЖАЮЩИЙ'"
                         selectedCourse="continue"
                         lessons={this.state.lessons}
+                        description={CONTINUE_DESCRIPTION}
                     />
                     <Contact/>
                 </div>

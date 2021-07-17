@@ -17,6 +17,8 @@ import MyCabinet from './components/My-cabinet/MyCabinet'
 import LandingPage from "./components/Landing/LandingPage";
 import AppLayout from "./components/Layout/AppLayout"
 import LoginPage from "./components/Page/LoginPage";
+import RegisterPageV2 from "./components/Page/RegisterPageV2";
+
 import AboutUsPage from "./components/Page/AboutUsPage"
 import CreateCoursePage from "./components/Page/CreateCoursePage"
 import CreateLessonPage from "./components/Page/CreateLessonPage"
@@ -41,6 +43,7 @@ class App extends Component {
                     <Route exact path="/" component={LandingPage} />
                     <Route exact path="/app" component={AppLayout} />
                     <Route exact path="/login" component={LoginPage} />
+                    <Route exact path="/register" component={RegisterPageV2} />
                     <Route exact path="/home" component={LandingPage} />
                     <Route exact path="/my-cabinet" component={MyCabinet} />
                     <Route exact path="/courses" component={CoursesPage} />

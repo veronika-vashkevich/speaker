@@ -11,6 +11,18 @@ import AuthenticatedHeader from "../Header/AuthenticatedHeader";
 
 
 const beginner = require('../../images/beginner.svg');
+const BEGINNER_DESCRIPTION_OLD = 'Курс состоит из 40 наглядных уроков-презентаций (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка). \n' +
+    'На каждом занятии ребенок изучает новую лексическую тему (Семья, Животные, Еда, Дом и др.) и проходит базовые грамматические конструкции языка в игровой форме. По желанию в занятия включаются элементы обучения чтению.  По просьбе ребенка или родителей возможно включение дополнительных тем в занятия (например, «Поездка на море»).\n' +
+    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
+    'Кому подойдёт: детям 5-12 лет*, которые владеют английским и начинают учить русский язык с нуля. \n' +
+    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
+    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+
+
+const BEGINNER_DESCRIPTION = BEGINNER_DESCRIPTION_OLD.split('\n').map(i => {
+    return <p>{i}</p>
+});
+
 
 export default class BeginnerCoursePage extends Component {
 
@@ -57,6 +69,7 @@ export default class BeginnerCoursePage extends Component {
                             courseName="'НАЧИНАЮЩИЙ'"
                             selectedCourse="beginner"
                             lessons={this.state.lessons}
+                            description= {BEGINNER_DESCRIPTION}
                             // onClicked={this.imageBeginnerClick}
                         />
                         <Contact/>
