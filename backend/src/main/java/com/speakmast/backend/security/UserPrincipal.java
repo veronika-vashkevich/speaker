@@ -3,7 +3,9 @@ package com.speakmast.backend.security;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -11,12 +13,14 @@ import org.springframework.stereotype.Component;
 import com.speakmast.backend.models.authorization.User;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Component
 @AllArgsConstructor
+@Builder
 @NoArgsConstructor
 public class UserPrincipal implements UserDetails {
 
@@ -41,21 +45,23 @@ public class UserPrincipal implements UserDetails {
     private Collection<? extends GrantedAuthority> authorities;
 
     public static UserPrincipal create(User user) {
-        Set<GrantedAuthority> authorities = user.getUserAuthorities().stream().map(role ->
-                new SimpleGrantedAuthority(role.getAuthority().getName().name())
-        ).collect(Collectors.toSet());
+//        Set<GrantedAuthority> authorities = user.getUserAuthorities().stream().map(role ->
+//                new SimpleGrantedAuthority(role.getAuthority().getName().name())
+//        ).collect(Collectors.toSet());
 
-        return new UserPrincipal(
-                user.getId(),
-                user.getName(),
-                user.getEmail(),
-                user.getPassword(),
-                user.getAccountExpired(),
-                user.getAccountLocked(),
-                user.getCredentialsExpired(),
-                user.getEnabled() ,
-                authorities
-        );
+        return  UserPrincipal.builder()
+                .id(user.getId())
+                .name(user.getName())
+                .email(user.getEmail())
+                .password(user.getPassword())
+                .accountExpired(false)
+                .accountLocked(false)
+                .credentialsExpired(false)
+                .enabled(true)
+                .authorities(Collections.emptyList())
+                .build();
+
+
     }
 
     public Integer getId() {

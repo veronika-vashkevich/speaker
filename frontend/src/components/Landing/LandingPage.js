@@ -99,7 +99,7 @@ export default class LandingPage extends Component {
     render() {
         return (
             <div className="position-relative">
-                {this.state.loggedUser === '' ? <NonAuthenticatedHeader selectedLink="home" {...this.props}/> :
+                {this.state.loggedUser === '' ? <NonAuthenticatedHeader history={this.props.history} selectedLink="home" {...this.props}/> :
                     <AuthenticatedHeader /*history={this.props.history} */  selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className="Home Body">
                     <h1 className="Landing-Text"> {SLOGAN} </h1>

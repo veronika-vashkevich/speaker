@@ -1,10 +1,9 @@
-create table authority
-(
-    id   serial primary key,
-    name varchar(32) unique
-);
+CREATE TABLE `speakmast`.`authorities` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `authority` VARCHAR(45) NULL,
+  PRIMARY KEY (`id`));
 
-insert into authority(name)
-values ('ADMIN'),
-       ('TEACHER'),
-       ('STUDENT');
+
+INSERT INTO `speakmast`.`authorities` (`authority`) VALUES ('ADMIN');
+INSERT INTO `speakmast`.`authorities` (`authority`) VALUES ('TEACHER');
+INSERT INTO `speakmast`.`authorities` (`authority`) VALUES ('STUDENT');

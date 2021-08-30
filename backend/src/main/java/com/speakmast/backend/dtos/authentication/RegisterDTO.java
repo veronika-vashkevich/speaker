@@ -22,9 +22,9 @@ public class RegisterDTO extends DTO {
     private String email;
 
     @NotNull
-    @Length(max = 16, min = 6)
+    @Length(max = 16, min = 2)
     private String password;
-
-    @NotNull
-    private AuthorityType authority;
+//
+//    @NotNull
+//    private AuthorityType authority;
 }

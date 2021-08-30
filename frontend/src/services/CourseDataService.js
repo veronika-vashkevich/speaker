@@ -4,7 +4,7 @@ import {API_URL} from "../Constants";
 
 class CourseDataService {
 
-    fetchTeacherCourses(username) {
+    fetchCourses(username) {
         axios.interceptors.request.use(
             (config) => {
 

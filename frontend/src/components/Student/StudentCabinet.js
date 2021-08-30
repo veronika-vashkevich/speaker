@@ -37,7 +37,9 @@ class StudentCabinet extends Component {
             selected: '',
             refreshClicked: '',
             key: 0,
-            customCollapsed: false
+            customCollapsed: false,
+            authority: '',
+            response: ''
         };
         thisTemp = this;
         this.fetchStudentCourses = this.fetchStudentCourses.bind(this);
@@ -94,7 +96,20 @@ class StudentCabinet extends Component {
 
     fetchStudentCourses() {
         let username = AuthenticationService.getLoggedInUserName();
-        CourseDataService.fetchStudentCourses(username)
+        AuthenticationService.getUserAuthority(username)
+            .then(
+                response => {
+                    this.setState({authority: response.data});
+                }
+            );
+        console.log("authority", this.state.authority);
+        console.log("response", this.state.response);
+        this.setState({
+            title: 'МОИ ЗАНЯТИЯ',
+            loggedUser: username
+        })
+        console.log("fetching courses for student");
+        CourseDataService.fetchCourses(username)
             .then(
                 response => {
                     this.setState({StudentCourses: response.data});
@@ -102,10 +117,13 @@ class StudentCabinet extends Component {
             );
     }
 
+
     componentWillMount() {
         this.fetchStudentCourses();
         console.log("currentLesson", this.state.pptSrc);
     }
+
+
 
     render() {
 
@@ -145,12 +163,6 @@ class StudentCabinet extends Component {
                     <p> Курс: {this.state.item.courseTitle}</p>
                     <p> Урок: {this.state.item.label}</p>
                     <div style={{position: "absolute", right: "30px", display: "inline"}}>
-                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.changeLessonClicked}>
-                            Изменить презентацию
-                        </button>
-                        <button className='Header-ExitBtn btn btn-primary bold' onClick={this.refreshLessonClicked}>
-                            Обновить презентацию
-                        </button>
                         <button className='Header-ExitBtn btn btn-primary bold' onClick={this.updateLessonClicked}>
                             Изменить название урока
                         </button>

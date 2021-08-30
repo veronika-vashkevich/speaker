@@ -1,5 +1,5 @@
 import axios from 'axios'
-import { API_URL } from '../Constants'
+import {API_URL} from '../Constants'
 
 export const USER_NAME_SESSION_ATTRIBUTE_NAME = 'authenticatedUser'
 
@@ -9,14 +9,18 @@ class AuthenticationService {
     executeBasicAuthenticationService(email, password) {
         console.log("executeBasicAuthenticationService");
         return axios.get(`${API_URL}/auth`,
-            { headers: { authorization: this.createBasicAuthToken(email, password) } })
+            {headers: {authorization: this.createBasicAuthToken(email, password)}}
+            )
     }
 
     executeJwtAuthenticationService(email, password) {
-        return axios.post(`${API_URL}/auth/login`, {
-            email,
-            password
-        })
+        return axios.post(`${API_URL}/auth/login`,
+            {
+                email,
+                password
+            },
+            {headers: {authorization: this.createBasicAuthToken(email, password)}}
+        )
     }
 
     createBasicAuthToken(email, password) {
@@ -57,19 +61,20 @@ class AuthenticationService {
     }
 
 
-    getUserAuthority(email){
-        console.log("getUserAuthority...", email)
-        return axios.get(`${API_URL}/auth/authority`,{
+    getUserAuthority(email) {
+        console.log("getUserAuthority ");
+        return axios.get(`${API_URL}/auth/authority`, {
             params: {
-            email: email
-        }})
+                email: email
+            }
+        })
     }
 
 
     setupAxiosInterceptors(token) {
         console.log("setupAxiosInterceptors()...");
-        console.log("token from storage ", sessionStorage.getItem('token' ));
-        console.log("token from  input variables", token );
+        console.log("token from storage ", sessionStorage.getItem('token'));
+        console.log("token from  input variables", token);
         axios.interceptors.request.use(
             (config) => {
 

@@ -7,8 +7,6 @@ import SchoolLogo from './SchoolLogo'
 
 
 export default class NonAuthenticatedHeader extends Component {
-
-
     render () {
         const {
             className,
@@ -27,9 +25,12 @@ export default class NonAuthenticatedHeader extends Component {
                             <a className={this.props.selectedLink === 'contacts' ? 'active-course-header' : ''} href="/contacts">Контакты</a>
                         </div>
                         <div className="header-btn">
-                            <button className='Header-ExitBtn btn btn-primary bold' onClick={() => { this.props.history.push("/login")}} >Войти
+                            <button className='Header-ExitBtn btn btn-primary bold'
+                                    onClick={() => { this.props.history.push("/login")}}>
+                                Войти
                             </button>
-                            <button className='Header-ExitBtn btn btn-primary bold' onClick={() => { this.props.history.push("/register")}}>
+                            <button className='Header-ExitBtn btn btn-primary bold'
+                                    onClick={() => { this.props.history.push("/register")}}>
                                 Зарегистрироваться
                             </button>
                         </div>

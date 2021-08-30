@@ -76,7 +76,7 @@ export default class UpdateLessonPage extends Component {
     fetchTeacherCourses() {
         console.log("fetchTeacherCourses()...");
         let username = AuthenticationService.getLoggedInUserName();
-        CourseDataService.fetchTeacherCourses(username)
+        CourseDataService.fetchCourses(username)
             .then(
                 response => {
 

@@ -10,19 +10,17 @@ import javax.validation.constraints.NotNull;
 @Getter
 @Setter
 public class BaseEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Integer id;
-
-    @Column(name = "name")
-    @NotNull
-    private String name;
-
-    @Column(name = "phone")
-    private String phone;
-
-    @Column(name = "email")
-    @NotNull
-    private String email;
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id")
+//    private Integer id;
+//
+//    @Column(name = "username")
+//    @NotNull
+//    private String username;
+//
+//
+//    @Column(name = "email")
+//    @NotNull
+//    private String email;
 }

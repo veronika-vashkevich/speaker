@@ -19,40 +19,51 @@ export default class MyCabinet extends Component {
         isLoading: false,
         title: '',
         authority: '',
+        response:'',
         filter: {
             startDate: null,
             endDate: null,
             pupilName: '',
             onlyMe: false
         },
-        loggedUser: '',
-        userAuthority: ''
+        loggedUser: ''
     };
 
+    componentDidMount(){
+        // console.log("my-cabinet authority", this.state.authority);
+        // console.log("my-cabinet response", this.state.response);
+    }
 
-    componentDidMount() {
+    componentWillMount() {
         let username = AuthenticationService.getLoggedInUserName();
         if (username === '') {
             this.setState({
                 title: 'У ВАС ПОКА НЕT ЗАНЯТИЙ'
             })
         } else {
+            console.log("I am here");
+
             AuthenticationService.getUserAuthority(username)
                 .then(
-                    response => {
-                        this.setState({authority: response.data});
+                    (response) => {
+                        if (response.status === 200) {
+                            console.log("response OK ", response);
+                           // this.setState({authority: response.data,  response: response});
+
+                            this.setState({authority: response.data.authorityType}, () => {
+                                console.log("my-cabinet authority", this.state.authority);
+                            });
+
+                        }
+
                     }
                 );
-            console.log("authority", this.state.authority);
             this.setState({
                 title: 'МОИ ЗАНЯТИЯ',
                 loggedUser: username
             })
 
         }
-    }
-    componentWillMount() {
-        console.log("authority", this.state.authority);
     }
 
     render() {
@@ -63,12 +74,12 @@ export default class MyCabinet extends Component {
                     <AuthenticatedHeader selectedLink="my-cabinet" loggedUser={this.state.loggedUser} {...this.props}/>}
 
                 <div className="Home">
-                    {AuthenticationService.getLoggedInUserName() !== ''  && this.state.authority.name === 'TEACHER'?
-                        <TeacherCabinet selectedLink="teacher-courses"/>
+                    {AuthenticationService.getLoggedInUserName() !== ''  && this.state.authority === 'TEACHER'?
+                        <TeacherCabinet loggedUser={this.state.loggedUser} {...this.props} selectedLink="teacher-courses"/>
                         : <div></div>}
 
-                    {AuthenticationService.getLoggedInUserName() !== ''  && this.state.authority.name === 'STUDENT'?
-                        <StudentCabinet selectedLink="teacher-courses"/>
+                    {AuthenticationService.getLoggedInUserName() !== ''  && this.state.authority === 'STUDENT'?
+                        <StudentCabinet loggedUser={this.state.loggedUser} {...this.props} selectedLink="student-courses"/>
                         : <div></div>}
 
                     {AuthenticationService.getLoggedInUserName() === '' ?

@@ -112,7 +112,7 @@ public class CourseService implements ICourseService {
             throw new CourseException(String.format("User already enrolled in course with id=%d.", userId));
         }
 
-        this.enrollmentRepository.save(new Enrollment(course, user));
+        this.enrollmentRepository.save( Enrollment.builder().courseId(course.getId()).userId(user.getId()).build());
 
         return course;
     }

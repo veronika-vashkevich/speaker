@@ -54,7 +54,7 @@ class LoginPage extends Component {
                 <div className=" alert alert-warning">Имя пользователя или пароль неверные</div>}
                 <div className="grid-container">
                     {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
+                    {this.state.showSuccessMessage && <div>Login Successful</div>}
                     <div className="grid-item-left">
                         Имя пользователя:
                     </div>

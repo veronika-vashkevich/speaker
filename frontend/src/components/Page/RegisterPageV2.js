@@ -76,7 +76,7 @@ class RegisterPageV2 extends Component {
             AuthenticationService
                 .executeJwtAuthenticationService(input["email"], input["password"])
                 .then((response) => {
-                    AuthenticationService.registerSuccessfulregisterForJwt(input["email"], response.data.accessToken);
+                    AuthenticationService.registerSuccessfulLoginForJwt(input["email"], response.data.accessToken);
                     if (response.status === 200) {
                         console.log("response", response);
                         this.setState({hasRegisterFailed: false});
@@ -220,12 +220,19 @@ class RegisterPageV2 extends Component {
                     </div>
 
 
-                    <div className="grid-item-left">
-                        Роль:
-                    </div>
+                    {/*<div className="grid-item-left">*/}
+                    {/*    Роль:*/}
+                    {/*</div>*/}
 
 
-                    <Dropdown placeholder='Skills' fluid multiple selection options={options} />
+                    {/*<Dropdown placeholder='Skills' fluid multiple selection options={options} />*/}
+
+                    {/*<div className="grid-item-left">*/}
+                    {/*    Роль:*/}
+                    {/*</div>*/}
+
+
+                    {/*<Dropdown placeholder='Skills' fluid multiple selection options={options} />*/}
 
 
                     {/*<ShowregisterSuccessMessage showSuccessMessage={this.state.showSuccessMessage}/>*/}
@@ -238,7 +245,6 @@ class RegisterPageV2 extends Component {
                     </button>
                 </div>
 
-                <Dropdown placeholder='Skills' fluid multiple selection options={options} />
                 <Footer/>
             </div>
 

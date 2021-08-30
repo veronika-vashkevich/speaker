@@ -18,6 +18,6 @@ public class LoginDTO extends DTO {
     private String email;
 
     @NotNull
-    @Length(max = 16, min = 8)
+    @Length(max = 16, min = 2)
     private String password;
 }

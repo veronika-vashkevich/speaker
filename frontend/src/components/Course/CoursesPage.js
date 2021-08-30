@@ -8,6 +8,7 @@ import AuthenticationService from "../../services/AuthenticationService"
 import Contact from "../Contact/Contact";
 import Footer from "../Footer/Footer";
 import AuthenticatedHeader from "../Header/AuthenticatedHeader";
+import CourseHeader from "../Header/CourseHeader";
 
 const beginner = require('../../images/beginner.svg');
 const continuer = require('../../images/continue.svg');
@@ -20,7 +21,40 @@ const COURSES = [
     {title: 'Попробуйте наши лучшие курсы!', href: '/courses', Icon: Course},
 
 ]
+const BEGINNER_DESCRIPTION_OLD = 'Курс состоит из 40 наглядных уроков-презентаций (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка). \n' +
+    'На каждом занятии ребенок изучает новую лексическую тему (Семья, Животные, Еда, Дом и др.) и проходит базовые грамматические конструкции языка в игровой форме. По желанию в занятия включаются элементы обучения чтению.  По просьбе ребенка или родителей возможно включение дополнительных тем в занятия (например, «Поездка на море»).\n' +
+    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
+    'Кому подойдёт: детям 5-12 лет*, которые владеют английским и начинают учить русский язык с нуля. \n' +
+    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
+    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
 
+const BEGINNER_DESCRIPTION = BEGINNER_DESCRIPTION_OLD.split('\n').map(i => {
+    return <p>{i}</p>
+});
+
+
+const CONTINUE_DESCRIPTION_OLD ='Курс состоит из 40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка).\n' +
+    'На каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка в игровой форме. Занятия направлены на развитие разговорной речи и не требуют навыков чтения.\n' +
+    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
+    'Кому подойдёт: детям 5-14 лет*, которые владеют русским языком, для дальнейшего развития грамотной устной речи, расширения словарного запаса, устранения грамматических ошибок в речи. \n' +
+    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
+    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+
+const CONTINUE_DESCRIPTION = CONTINUE_DESCRIPTION_OLD.split('\n').map(i => {
+    return <p>{i}</p>
+});
+
+const ADVANCED_DESCRIPTION_OLD ='Курс состоит из 40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка).\n' +
+    'На каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка (выбор правильных окончаний, согласование слов и др.), которые даются в виде наглядных схем и табличек. Занятия направлены на развитие разговорной речи и совершенствования навыков чтения, понимания текста.\n' +
+    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
+    'Кому подойдёт: детям 5-14 лет*, которые владеют русским языком, для дальнейшего развития грамотной речи, расширения словарного запаса, устранения грамматических ошибок в речи, улучшения навыков чтения, понимания текстов. \n' +
+    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
+    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+
+
+const ADVANCED_DESCRIPTION = ADVANCED_DESCRIPTION_OLD.split('\n').map(i => {
+    return <p>{i}</p>
+});
 
 export default class CoursesPage extends Component {
 
@@ -131,6 +165,7 @@ export default class CoursesPage extends Component {
                 { this.state.loggedUser === ''? <NonAuthenticatedHeader selectedLink="courses" {...this.props}/> :
                     <AuthenticatedHeader selectedLink="courses" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className='Home'>
+                    <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
                         classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={beginner}
@@ -139,6 +174,7 @@ export default class CoursesPage extends Component {
                         courseName="'НАЧИНАЮЩИЙ'"
                         selectedCourse="beginner"
                         lessons={this.state.beginnerLessons}
+                        description= {BEGINNER_DESCRIPTION}
                         onClicked={this.imageBeginnerClick}
                     />
                     <Course
@@ -149,6 +185,7 @@ export default class CoursesPage extends Component {
                         courseName="'ПРОДОЛЖАЮЩИЙ'"
                         selectedCourse="continue"
                         lessons={this.state.continueLessons}
+                        description= {CONTINUE_DESCRIPTION}
                         onClicked={this.imageContinueClick}/>
 
                     <Course
@@ -159,6 +196,7 @@ export default class CoursesPage extends Component {
                         courseName="'ПРОДВИНУТЫЙ'"
                         selectedCourse="advanced"
                         lessons={this.state.advancedLessons}
+                        description= {ADVANCED_DESCRIPTION}
                         onClicked={this.imageAdvancedClick}/>
                     <Contact/>
                 </div>

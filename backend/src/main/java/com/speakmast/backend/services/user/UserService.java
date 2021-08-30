@@ -2,7 +2,6 @@ package com.speakmast.backend.services.user;
 
 import com.speakmast.backend.controllers.exceptions.AppException;
 import com.speakmast.backend.controllers.exceptions.user.EmailException;
-import com.speakmast.backend.repositories.AuthorityRepository;
 import com.speakmast.backend.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -10,12 +9,12 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
-import com.speakmast.backend.models.authorization.Authority;
 import com.speakmast.backend.models.authorization.AuthorityType;
 import com.speakmast.backend.models.authorization.User;
 import com.speakmast.backend.security.JwtTokenProvider;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,17 +22,14 @@ public class UserService implements IUserService {
 
     private final UserRepository userRepository;
 
-    private final AuthorityRepository authorityRepository;
-
     private final AuthenticationManager authenticationManager;
 
     private final JwtTokenProvider tokenProvider;
 
     @Autowired
-    public UserService(UserRepository userRepository, AuthorityRepository authorityRepository,
+    public UserService(UserRepository userRepository,
                        AuthenticationManager authenticationManager, JwtTokenProvider tokenProvider) {
         this.userRepository = userRepository;
-        this.authorityRepository = authorityRepository;
         this.authenticationManager = authenticationManager;
         this.tokenProvider = tokenProvider;
     }
@@ -54,34 +50,32 @@ public class UserService implements IUserService {
     }
 
     @Override
-    public void register(User user, AuthorityType authority) {
+    public void register(User user) {
 
         if (userRepository.existsByEmail(user.getEmail())) {
             throw new EmailException("Email address already in use!");
         }
 
-        Authority userAuthority = authorityRepository.findByName(authority)
-                .orElseThrow(() -> new AppException("User authority not found."));
+//        Authority userAuthority = authorityRepository.findByName(authority)
+//                .orElseThrow(() -> new AppException("User authority not found."));
 
-        //add a student authority for each registered user
-        if (authority != AuthorityType.STUDENT) {
-            Authority studentAuthority = authorityRepository.findByName(AuthorityType.STUDENT)
-                    .orElseThrow(() -> new AppException("User authority not found."));
-//
-//            user.getUserAuthorities().add(new UserAuthority(user, studentAuthority));
-        }
-//        user.getUserAuthorities().add(new UserAuthority(user, userAuthority));
+//        //add a student authority for each registered user
+//        if (authority != AuthorityType.STUDENT) {
+//            Authority studentAuthority = authorityRepository.findByName(AuthorityType.STUDENT)
+//                    .orElseThrow(() -> new AppException("User authority not found."));
+////
+////            user.getUserAuthorities().add(new UserAuthority(user, studentAuthority));
+//        }
+////        user.getUserAuthorities().add(new UserAuthority(user, userAuthority));
 
         userRepository.save(user);
     }
 
     @Override
-    public Authority getUserAuthorityBy(String email) {
-        int authorityId =  userRepository.findByEmail(email)
-                .orElseThrow(RuntimeException::new)
-                .getAuthorityId();
+    public AuthorityType getUserAuthorityBy(String email) {
+        User user = userRepository.findByEmail(email).get();
 
-        return authorityRepository.findById(authorityId).get();
+        return user.getAuthority() == null ? AuthorityType.NONE : AuthorityType.valueOf(user.getAuthority()) ;
 
     }
 }

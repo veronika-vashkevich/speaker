@@ -105,7 +105,7 @@ class TeacherCabinet extends Component {
 
     fetchTeacherCourses() {
         let username = AuthenticationService.getLoggedInUserName();
-        CourseDataService.fetchTeacherCourses(username)
+        CourseDataService.fetchCourses(username)
             .then(
                 response => {
                     this.setState({teacherCourses: response.data});

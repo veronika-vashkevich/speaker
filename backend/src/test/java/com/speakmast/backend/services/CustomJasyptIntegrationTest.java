@@ -21,9 +21,10 @@ public class CustomJasyptIntegrationTest {
 
     @Test
     public void whenConfiguredExcryptorUsed_ReturnCustomEncryptor() {
+
         System.out.println("APP_PASS var is " + System.getenv().get("APP_PASS"));
         Environment environment = appCtx.getBean(Environment.class);
-        assertEquals("Password@1", environment.getProperty("encrypted.property"));
+        assertEquals("test", environment.getProperty("encrypted.property"));
     }
 
 
