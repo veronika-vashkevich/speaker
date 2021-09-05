@@ -1,35 +1,28 @@
-import React, { Component } from 'react'
-
-import { map } from 'underscore'
-import { Link } from "react-router-dom"
+import React, {Component} from 'react'
 
 import './Home.scss'
 
-import Header from '../Header/Header'
-
-import { ReactComponent as Performance } from '../../images/performance.svg'
-import { ReactComponent as House } from '../../images/house.svg'
-import { ReactComponent as Pupils } from '../../images/pupils.svg'
-import { ReactComponent as Payments } from '../../images/payments.svg'
-import { ReactComponent as Broadcast } from '../../images/broadcast.svg'
-import { ReactComponent as Teachers } from '../../images/teachers.svg'
-import { ReactComponent as Lesson } from '../../images/lessons.svg'
+import {ReactComponent as Performance} from '../../images/performance.svg'
+import {ReactComponent as Pupils} from '../../images/pupils.svg'
+import {ReactComponent as Payments} from '../../images/payments.svg'
+import {ReactComponent as Teachers} from '../../images/teachers.svg'
+import {ReactComponent as Lesson} from '../../images/lessons.svg'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 import LandingPage from "../Landing/LandingPage";
 
 const TITLE = 'Домашняя'
 
 const SECTIONS = [
-    { title: 'Уроки', href: '/lessons', Icon: Lesson },
-    { title: 'Успеваемость', href: '/performance', Icon: Performance  },
-    { title: 'Оплаты', href: '/payments', Icon: Payments },
-    { title: 'Ученики', href: '/pupils', Icon: Pupils },
-    { title:' Преподаватели', href: '/teachers', Icon: Teachers }
+    {title: 'Уроки', href: '/lessons', Icon: Lesson},
+    {title: 'Успеваемость', href: '/performance', Icon: Performance},
+    {title: 'Оплаты', href: '/payments', Icon: Payments},
+    {title: 'Ученики', href: '/pupils', Icon: Pupils},
+    {title: 'Преподаватели', href: '/teachers', Icon: Teachers}
 ]
 
 export default class Home extends Component {
 
-    render () {
+    render() {
         return (
             <div className='Home'>
                 <NonAuthenticatedHeader {...this.props}/>

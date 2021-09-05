@@ -13,7 +13,6 @@ export default class ContactsPage extends Component {
         };
     }
     componentWillMount() {
-        console.log("/home")
         let user = AuthenticationService.getLoggedInUserName();
         this.setState({
             loggedUser: user

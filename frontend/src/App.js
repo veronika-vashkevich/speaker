@@ -28,6 +28,7 @@ import CoursesPage from "./components/Course/CoursesPage";
 import BeginnerCoursePage from "./components/Page/BiginnerCoursePage"
 import ContinueCoursePage from "./components/Page/ContinueCoursePage";
 import AdvancedCoursePage from "./components/Page/AdvancedCoursePage";
+import AdultCoursePage from "./components/Page/AdultCoursePage";
 import ContactsPage from "./components/Page/ContactsPage";
 
 
@@ -50,13 +51,14 @@ class App extends Component {
                     <Route exact path="/courses/beginner" component={BeginnerCoursePage} />
                     <Route exact path="/courses/continue" component={ContinueCoursePage} />
                     <Route exact path="/courses/advanced" component={AdvancedCoursePage} />
+                    <Route exact path="/courses/adult" component={AdultCoursePage} />
                     <Route exact path="/about-us" component={AboutUsPage} />
                     <Route exact path="/my-cabinet/create-course" component={CreateCoursePage} />
                     <Route exact path="/my-cabinet/create-lesson" component={CreateLessonPage} />
                     <Route exact path="/my-cabinet/delete-lesson" component={DeleteLessonPage} />
                     <Route exact path="/my-cabinet/delete-lesson" render={(props) => <DeleteLessonPage {...props} item={this.item}/>}  />
                     <Route exact path="/my-cabinet/update-lesson" render={(props) => <UpdateLessonPage {...props} item={this.item}/>}  />
-                    {/*<Route exact path="/contacts" component={ContactsPage} />*/}
+                    <Route exact path="/contacts" component={ContactsPage} />
                     <ProtectedRoute exact path="/app" component={AppLayout} />
                     <Route path="*"component={() => "404 NOT FOUND"} />
                 </Switch>

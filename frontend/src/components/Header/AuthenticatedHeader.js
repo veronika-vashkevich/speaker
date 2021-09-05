@@ -27,7 +27,7 @@ export default class AuthenticatedHeader extends Component {
                             <a  className={this.props.selectedLink === 'courses' ? 'active-course-header' : ''} href="/courses">Курсы</a>
                             <a  className={this.props.selectedLink === 'my-cabinet' ? 'active-course-header' : ''} href="/my-cabinet">Мой кабинет</a>
                             <a  className={this.props.selectedLink === 'about-us' ? 'active-course-header' : ''} href="/about-us">О нас</a>
-                            <a className={this.props.selectedLink === 'contacts' ? 'active-course-header' : ''} href="/contacts">Контакты</a>
+                            {/*<a className={this.props.selectedLink === 'contacts' ? 'active-course-header' : ''} href="/contacts">Контакты</a>*/}
                         </div>
                         <div  className="header-btn" style={{color: "black"}}>{this.props.loggedUser}</div>
                         <div className="header-btn">

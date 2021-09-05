@@ -14,11 +14,14 @@
   z-index: 1;
   border: #1a63ab;
   border-style: solid;
+
 }
-.close {  
+
+.close {
   margin-right: 10px;
   margin-top: 10px;
 }
+
 .popup\_inner {
   position: relative;
   left: 25%;
@@ -33,13 +36,13 @@
 .popup\_inner h1 {
   text-align: center;
 }
+
 .btn-bot {
-  position: absolute;
-  //left: 25%;
-  //right: 25%;
-  //top: 25%;
-  //bottom: 25%;
+  position: relative;
+  top: 25%;
+  bottom: 25%;
 }
+
 //#close {
 //  float:right;
 //  display:inline-block;

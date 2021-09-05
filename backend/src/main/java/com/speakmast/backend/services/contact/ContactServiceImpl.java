@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.speakmast.backend.services.EmailService;
 
+import javax.mail.MessagingException;
+
 @Service
 public class ContactServiceImpl implements ContactService {
     private final EmailService emailService;
@@ -15,7 +17,7 @@ public class ContactServiceImpl implements ContactService {
     }
     
     @Override
-    public void contactMe(ContactMeDto contactMeDto){
+    public void contactMe(ContactMeDto contactMeDto) throws MessagingException{
         emailService.sendEmail(contactMeDto);
     }
     

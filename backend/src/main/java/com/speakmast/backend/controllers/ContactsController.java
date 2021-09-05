@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.speakmast.backend.dtos.ContactMeDto;
 import com.speakmast.backend.services.contact.ContactService;
 
+import javax.mail.MessagingException;
+
 @RestController
 @RequestMapping("/contacts")
 public class ContactsController {
@@ -21,7 +23,7 @@ public class ContactsController {
     }
 
     @PostMapping("/contact-me")
-    public ResponseEntity<ContactMeDto> contactMe(@RequestBody ContactMeDto contactMeDto) {
+    public ResponseEntity<ContactMeDto> contactMe(@RequestBody ContactMeDto contactMeDto) throws MessagingException {
         this.contactService.contactMe(contactMeDto);
         ResponseEntity response = ResponseEntity.ok(contactMeDto);
         System.out.println(response.toString());

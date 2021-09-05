@@ -127,8 +127,8 @@ export default class Contact extends Component {
 
                                     {this.state.showPopup ?
                                         <Popup
-                                            text={"ВАШ EMAIL УСПЕШНО СОХРАНЕН В НАШЕЙ СИСТЕМЕ.\n" +
-                                            "МЫ СВЯЖЕМСЯ С ВАМИ В ТЕЧЕНИЕ 24 ЧАСОВ"}
+                                            text={"Ваш email успешно сохранен в нашей системе.\n" +
+                                            "Мы свяжемся с Вами в течении 24 часов :)"}
                                             closePopup={this.togglePopup.bind(this)}
                                         />
                                         : null

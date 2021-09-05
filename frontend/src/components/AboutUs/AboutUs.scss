@@ -36,6 +36,7 @@
   background-color: #f8a30a;
   border-color: white;
   color: #1a63ab;
+  margin-top: 50px;
 }
 
 @media screen and (max-width:750px){
@@ -44,6 +45,7 @@
     align-content: center;
     flex: 1 1 50%;
     padding-bottom: 30px;
+    font-size: large;
     color: #1a63ab;
   }
 
@@ -80,5 +82,6 @@ and (orientation: landscape) {
 
   .project-item-about{
     padding-bottom: 5px;
+    font-size: large;
   }
 }

@@ -13,46 +13,66 @@ import CourseHeader from "../Header/CourseHeader";
 const beginner = require('../../images/beginner.svg');
 const continuer = require('../../images/continue.svg');
 const advanced = require('../../images/advanced.svg');
+const adult = require('../../images/adult.svg');
 
 
-const COURSES = [
-    {className: '', title: '5-7 лет!', href: '/courses', Icon: Beginner},
-    {title: 'Попробуйте наши лучшие курсы!', href: '/courses', Icon: Course},
-    {title: 'Попробуйте наши лучшие курсы!', href: '/courses', Icon: Course},
-
-]
-const BEGINNER_DESCRIPTION_OLD = 'Курс состоит из 40 наглядных уроков-презентаций (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка). \n' +
-    'На каждом занятии ребенок изучает новую лексическую тему (Семья, Животные, Еда, Дом и др.) и проходит базовые грамматические конструкции языка в игровой форме. По желанию в занятия включаются элементы обучения чтению.  По просьбе ребенка или родителей возможно включение дополнительных тем в занятия (например, «Поездка на море»).\n' +
-    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
-    'Кому подойдёт: детям 5-12 лет*, которые владеют английским и начинают учить русский язык с нуля. \n' +
-    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
-    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+const BEGINNER_DESCRIPTION_OLD = '•\t 40 наглядных уроков-презентаций (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка)  \n' +
+    '•\t	на каждом занятии ребенок изучает новую лексическую тему (Семья, Животные, Еда, Дом и др.) и проходит базовые грамматические конструкции языка в игровой форме \n' +
+    '•\t обучение правилам чтения и произношения \n' +
+    '•\t возможно включение дополнительных тем в занятия (например, «Поездка на море»).\n' +
+    '•\t интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя.  \n' +
+    'Кому подойдёт: детям 6-13 лет*, которые владеют английским и начинают учить русский язык с нуля.\n' +
+    'Занятия: 1-2 раза в неделю, 1 урок – 50-55 мин.\n' +
+    '*курсы гибкие и могут быть адаптированы под детей старшего возраста. В зависимости от интересов студента в урок включаются различные лексические темы.';
 
 const BEGINNER_DESCRIPTION = BEGINNER_DESCRIPTION_OLD.split('\n').map(i => {
     return <p>{i}</p>
 });
 
 
-const CONTINUE_DESCRIPTION_OLD ='Курс состоит из 40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка).\n' +
-    'На каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка в игровой форме. Занятия направлены на развитие разговорной речи и не требуют навыков чтения.\n' +
-    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
-    'Кому подойдёт: детям 5-14 лет*, которые владеют русским языком, для дальнейшего развития грамотной устной речи, расширения словарного запаса, устранения грамматических ошибок в речи. \n' +
-    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
-    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+const CONTINUE_DESCRIPTION_OLD ='•\t40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка)\n' +
+    '•\t на каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка в игровой форме\n' +
+    '•\t занятия направлены на развитие разговорной речи и не требуют навыков чтения \n' +
+    '•\t интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя.  \n' +
+    'Кому подойдёт: детям и подросткам 6-16 лет*, которые владеют русским языком, для: \n' +
+    '•\t дальнейшего развития грамотной устной речи и преодоления языкового барьера \n'+
+    '•\t расширения словарного запаса \n' +
+    '•\t устранения грамматических ошибок в речи. \n'+
+    'Занятия: 1-2 раза в неделю, 1 урок – 50-55 мин. \n'+
+    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n' +
+    '*курсы гибкие и могут быть адаптированы под детей старшего возраста. В зависимости от интересов студента в урок включаются различные лексические темы.';
 
 const CONTINUE_DESCRIPTION = CONTINUE_DESCRIPTION_OLD.split('\n').map(i => {
     return <p>{i}</p>
 });
 
-const ADVANCED_DESCRIPTION_OLD ='Курс состоит из 40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка).\n' +
-    'На каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка (выбор правильных окончаний, согласование слов и др.), которые даются в виде наглядных схем и табличек. Занятия направлены на развитие разговорной речи и совершенствования навыков чтения, понимания текста.\n' +
-    'Интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя. \n' +
-    'Кому подойдёт: детям 5-14 лет*, которые владеют русским языком, для дальнейшего развития грамотной речи, расширения словарного запаса, устранения грамматических ошибок в речи, улучшения навыков чтения, понимания текстов. \n' +
-    'Занятия: 1-2 раза в неделю, 1 урок – 45-50 мин. \n' +
-    '*курс гибкий и может быть адаптирован под детей старшего возраста.\n';
+const ADVANCED_DESCRIPTION_OLD ='•\t 40 наглядных уроков-презентаций с добавлением мультимедиа материалов (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей ребенка) \n' +
+    '•\t на каждом занятии ребенок изучает новую лексическую тему и проходит правила из грамматики русского языка (выбор правильных окончаний, согласование слов и др.), которые даются в виде наглядных схем и таблиц \n' +
+    '•\t занятия направлены на развитие разговорной речи и совершенствования навыков чтения, понимания текста \n' +
+    '•\t интерактивное домашнее задание не отнимает много времени и не требует постоянного присутствия родителя.  \n' +
+    'Кому подойдёт: детям и подросткам 6-16 лет*, которые владеют русским языком, для: \n' +
+    '•\t дальнейшего развития грамотной речи и преодоления языкового барьера \n'+
+    '•\t расширения словарного запаса \n' +
+    '•\t устранения грамматических ошибок в речи \n'+
+    '•\t улучшения навыков чтения, понимания текстов. \n'+
+    ' Занятия: 1-2 раза в неделю, 1 урок – 50-55 мин. \n'+
+    '*курсы гибкие и могут быть адаптированы под детей старшего возраста. В зависимости от интересов студента в урок включаются различные лексические темы.';
 
 
 const ADVANCED_DESCRIPTION = ADVANCED_DESCRIPTION_OLD.split('\n').map(i => {
+    return <p>{i}</p>
+});
+
+const ADULT_DESCRIPTION_OLD = '•\t 40 наглядных уроков-презентаций (количество уроков в курсе может изменяться в зависимости от желаемого конечного уровня, возраста и возможностей студента)  \n' +
+    '•\t на каждом занятии изучается новая лексическая тема (общение в различных ситуациях: «Кафе», «В городе», «В отпуске») и базовые грамматические конструкции языка \n' +
+    '•\t параллельно происходит обучение правилам чтения и произношения \n' +
+    '•\t возможно включение дополнительных тем в занятия по желанию студента\n' +
+    '•\t интерактивное домашнее задание помогает повторить и закрепить материал с занятия и занимает буквально 10-20 минут  \n' +
+    'Кому подойдёт: подросткам и взрослым от 13 лет*, которые владеют английским и начинают учить русский язык с нуля.  \n' +
+    ' Занятия: 1-2 раза в неделю, 1 урок – 50-55 мин \n' +
+    '*курсы гибкие и могут быть адаптированы под детей старшего возраста. В зависимости от интересов студента в урок включаются различные лексические темы.';
+
+const ADULT_DESCRIPTION = ADULT_DESCRIPTION_OLD.split('\n').map(i => {
     return <p>{i}</p>
 });
 
@@ -66,70 +86,72 @@ export default class CoursesPage extends Component {
             advancedLessons: [],
             selectedCourse: 'beginner',
             courseId: 1,
-            courseName: "\"НАЧИНАЮЩИЙ\"",
+            courseName: "\"НАЧИНАЮЩИЕ\"",
             loggedUser: ''
         };
         this.imageBeginnerClick = this.imageBeginnerClick.bind(this);
         this.imageContinueClick = this.imageContinueClick.bind(this);
         this.imageAdvancedClick = this.imageAdvancedClick.bind(this);
-        this.refreshLessons = this.refreshLessons.bind(this);
-        this.refreshAllLessons = this.refreshAllLessons.bind(this);
+        this.imageAdultClick = this.imageAdultClick.bind(this);
+        //this.refreshLessons = this.refreshLessons.bind(this);
+      //  this.refreshAllLessons = this.refreshAllLessons.bind(this);
     }
 
-    refreshAllLessons() {
-        console.log("executing refreshAllLessons()...");
-        this.refreshLessons(1);
-        this.refreshLessons(2);
-        this.refreshLessons(3);
+    //refreshAllLessons() {
+        //console.log("executing refreshAllLessons()...");
+        // this.refreshLessons(1);
+        // this.refreshLessons(2);
+        // this.refreshLessons(3);
+        // this.refreshLessons(4);
 
-    }
+    //}
 
-    refreshLessons(courseId) {
-        let username = AuthenticationService.getLoggedInUserName();
-        // console.log("username");
-        // console.log(username);
-        LessonDataService.retrieveAllLessons(username, courseId)
-            .then(
-                response => {
-                    console.log(response);
-                    if (courseId === 1) {
-                        this.setState({beginnerLessons: response.data});
-                        console.log("executing refreshLessons(1)...");
-                        console.log("lessons for beginner)...", this.state.beginnerLessons);
-                    } else if (courseId === 2) {
-                        this.setState({continueLessons: response.data});
-                        console.log("executing refreshLessons(2)...");
-                        console.log("lessons for continue)...", this.state.continueLessons);
-                    } else if (courseId === 3) {
-                        this.setState({advancedLessons: response.data});
-                        console.log("executing refreshLessons(3)...");
-                        console.log("lessons for advanced)...", this.state.advancedLessons);
-                    }
-
-                }
-            )
-    }
+    // refreshLessons(courseId) {
+    //     let username = AuthenticationService.getLoggedInUserName();
+    //     // console.log("username");
+    //     // console.log(username);
+    //     LessonDataService.retrieveAllLessons(username, courseId)
+    //         .then(
+    //             response => {
+    //                 console.log(response);
+    //                 if (courseId === 1) {
+    //                     this.setState({beginnerLessons: response.data});
+    //                     console.log("executing refreshLessons(1)...");
+    //                     console.log("lessons for beginner)...", this.state.beginnerLessons);
+    //                 } else if (courseId === 2) {
+    //                     this.setState({continueLessons: response.data});
+    //                     console.log("executing refreshLessons(2)...");
+    //                     console.log("lessons for continue)...", this.state.continueLessons);
+    //                 } else if (courseId === 3) {
+    //                     this.setState({advancedLessons: response.data});
+    //                     console.log("executing refreshLessons(3)...");
+    //                     console.log("lessons for advanced)...", this.state.advancedLessons);
+    //                 }else if (courseId === 4) {
+    //                     this.setState({adultLessons: response.data});
+    //                     console.log("executing refreshLessons(4)...");
+    //                     console.log("lessons for advanced)...", this.state.advancedLessons);
+    //                 }
+    //
+    //             }
+    //         )
+    // }
 
     componentWillMount() {
-        console.log('componentWillMount');
-        this.refreshAllLessons();
+       // this.refreshAllLessons();
         let loggedUser = AuthenticationService.getLoggedInUserName();
         this.setState({
             loggedUser: loggedUser
         });
-        console.log('loggedUser', loggedUser );
     }
 
     imageBeginnerClick() {
         this.setState(
             {
                 selectedCourse: 'beginner',
-                courseName: "\"НАЧИНАЮЩИЙ\""
+                courseName: "\"НАЧИНАЮЩИЕ\""
             }
         );
-        console.log(this.state.selectedCourse);
-        console.log(this.state.courseName);
-        this.refreshLessons(1);
+       // this.refreshLessons(1);
 
     }
 
@@ -137,25 +159,30 @@ export default class CoursesPage extends Component {
         this.setState(
             {
                 selectedCourse: 'continue',
-                courseName: "\"ПРОДОЛЖАЮЩИЙ\""
+                courseName: "\"ПРОДОЛЖАЮЩИЕ\""
             }
         );
-        console.log(this.state.selectedCourse);
-        console.log(this.state.courseName);
-        this.refreshLessons(2);
+      //  this.refreshLessons(2);
     }
 
     imageAdvancedClick() {
         this.setState(
             {
                 selectedCourse: 'advanced',
-                courseName: "\"ПРОДВИНУТЫЙ\""
+                courseName: "\"ПРОДВИНУТЫЕ\""
             }
-        )
+        );
+        //this.refreshLessons(3);
+    }
 
-        console.log(this.state.selectedCourse);
-        console.log(this.state.courseName);
-        this.refreshLessons(3);
+    imageAdultClick() {
+        this.setState(
+            {
+                selectedCourse: 'adult',
+                courseName: "\"ВЗРОСЛЫЕ\""
+            }
+        );
+        //this.refreshLessons(3);
     }
 
 
@@ -167,37 +194,51 @@ export default class CoursesPage extends Component {
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}
+                        classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery-courses active' : 'gallery'}`}
                         imgSrc={beginner}
-                        desc1="Курс для самых маленьких"
-                        desc2="5-7 лет"
-                        courseName="'НАЧИНАЮЩИЙ'"
+                        desc1="Курс НАЧИНАЮЩИЕ (дети) "
+                        desc2="6-13 лет"
+                        courseName="'НАЧИНАЮЩИЕ'"
                         selectedCourse="beginner"
-                        lessons={this.state.beginnerLessons}
+                        lessons={this.state.lessons}
                         description= {BEGINNER_DESCRIPTION}
                         onClicked={this.imageBeginnerClick}
                     />
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery-courses active' : 'gallery-courses'}`}
+                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery-courses active' : 'gallery'}`}
                         imgSrc={continuer}
-                        desc1="Продолжение курса"
-                        desc2="8-12 лет"
-                        courseName="'ПРОДОЛЖАЮЩИЙ'"
+                        desc1="Курс ПРОДОЛЖАЮЩИЕ "
+                        desc2="6-16 лет"
+                        courseName="'ПРОДОЛЖАЮЩИЕ'"
                         selectedCourse="continue"
-                        lessons={this.state.continueLessons}
-                        description= {CONTINUE_DESCRIPTION}
-                        onClicked={this.imageContinueClick}/>
+                        lessons={this.state.lessons}
+                        description={CONTINUE_DESCRIPTION}
+                        onClicked={this.imageContinueClick}
+                    />
 
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery-courses active' : 'gallery-courses'}`}
+                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery-courses active' : 'gallery'}`}
                         imgSrc={advanced}
-                        desc1="Продвинутый курс"
-                        desc2="13-17 лет"
-                        courseName="'ПРОДВИНУТЫЙ'"
+                        desc1="Курс ПРОДВИНУТЫЕ"
+                        desc2="6-16 лет"
+                        courseName="'ПРОДВИНУТЫЕ'"
                         selectedCourse="advanced"
-                        lessons={this.state.advancedLessons}
+                        lessons={this.state.lessons}
                         description= {ADVANCED_DESCRIPTION}
                         onClicked={this.imageAdvancedClick}/>
+                    />
+                    <Course
+                        classNameValue={`${this.state.selectedCourse === 'adult' ? 'gallery-courses active' : 'gallery'}`}
+                        imgSrc={adult}
+                        desc1="Курс ВЗРОСЛЫЕ"
+                        desc2="от 13 лет"
+                        courseName="'ВЗРОСЛЫЕ'"
+                        selectedCourse="adult"
+                        lessons={this.state.lessons}
+                        description={ADULT_DESCRIPTION}
+                        onClicked={this.imageAdvancedClick}/>
+                    />
+
                     <Contact/>
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>

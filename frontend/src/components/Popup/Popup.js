@@ -27,7 +27,7 @@ class Popup extends React.Component {
                     {/*      onClick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>x</span>*/}
 
                     <h1>{this.props.text}</h1>
-                    <button className="Header-ExitBtn btn btn-primary bold  btn-bot" onClick={this.props.closePopup}>СПАСИБО!</button>
+                    <button className="Header-ExitBtn btn btn-primary bold btn-bot" onClick={this.props.closePopup}>СПАСИБО!</button>
                 </div>
             </div>
         );

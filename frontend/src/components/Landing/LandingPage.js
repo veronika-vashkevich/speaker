@@ -4,11 +4,10 @@ import './LandingPage.scss'
 
 import Contact from "../Contact/Contact";
 import {Link} from "react-router-dom"
-import {ReactComponent as Course} from "../../images/conference.svg";
-import LandingPupils from "../Landing/LandingPupils"
 import {ReactComponent as Beginner} from "../../images/beginner.svg";
 import {ReactComponent as Continue} from "../../images/continue.svg";
 import {ReactComponent as Advanced} from "../../images/advanced.svg";
+import {ReactComponent as Adult} from "../../images/adult.svg";
 
 
 import {map} from 'underscore'
@@ -23,33 +22,39 @@ import CustomSlider from "../Feedback/CustomSlider";
 
 
 const SLOGAN = 'Попробуйте наши лучшие курсы!';
-
+const BEGINNER_DESCRIPTION_OLD = '6-13 лет \n Курс Beginners Kids \n (начинающие дети)';
+const CONTINUE_DESCRIPTION_OLD = '6-16 лет \n Курс Intermediate \n (продолжающие)';
+const ADVANCED_DESCRIPTION_OLD = '6-16 лет \n Курс Intermediate+Reading \n (продолжающие + чтение)';
+const ADULT_DESCRIPTION_OLD = 'от 13 лет \n Курс Adult Beginners \n (начинающие взрослые)';
 const SECTIONS = [
-    {title: '5-7 лет НАЧИНАЮЩИЙ', href: '/courses/beginner', Icon: Beginner, selectedCourse: "beginner", courseId: 1},
+    {   title: BEGINNER_DESCRIPTION_OLD.split('\n').map(i => {return <p>{i}</p>}),
+        href: '/courses/beginner',
+        Icon: Beginner,
+        selectedCourse: "beginner",
+        courseId: 1
+    },
     {
-        title: '8-12 лет ПРОДОЛЖАЮЩИЙ',
+        title: CONTINUE_DESCRIPTION_OLD.split('\n').map(i => {return <p>{i}</p>}),
         href: '/courses/continue',
         Icon: Continue,
         selectedCourse: "continue",
         courseId: 2
     },
     {
-        title: '13-17 лет ПРОДВИНУТЫЙ',
+        title: ADVANCED_DESCRIPTION_OLD.split('\n').map(i => {return <p>{i}</p>}),
         href: '/courses/advanced',
         Icon: Advanced,
         selectedCourse: "advanced",
         courseId: 3
     },
-
+    {
+        title: ADULT_DESCRIPTION_OLD.split('\n').map(i => {return <p>{i}</p>}),
+        href: '/courses/adult',
+        Icon: Adult,
+        selectedCourse: "adult",
+        courseId: 4
+    }
 ];
-
-const COURSES = [
-    {title: '5-7 лет!', href: '/courses', Icon: Beginner},
-    {title: 'Попробуйте наши лучшие курсы!', href: '/courses', Icon: Course},
-    {title: 'Попробуйте наши лучшие курсы!', href: '/courses', Icon: Course},
-
-];
-
 
 export default class LandingPage extends Component {
     constructor(props) {
@@ -66,7 +71,6 @@ export default class LandingPage extends Component {
         this.redirect = this.redirect.bind(this);
     }
 
-
     handleChange(event) {
         this.setState(
             {
@@ -75,21 +79,14 @@ export default class LandingPage extends Component {
         )
     }
 
-
-
     componentWillMount() {
-        console.log("/home")
         let user = AuthenticationService.getLoggedInUserName();
         this.setState({
             loggedUser: user
         });
-        console.log("username is ", user)
     }
 
     redirect(href, selectedCourse, courseId) {
-        console.log("this is redirect");
-        console.log("selectedCourse is ", selectedCourse);
-        console.log("courseId is ", courseId);
         this.props.history.push({
             pathname: href,
             state: {selectedCourse: selectedCourse, courseId: courseId}
@@ -100,7 +97,7 @@ export default class LandingPage extends Component {
         return (
             <div className="position-relative">
                 {this.state.loggedUser === '' ? <NonAuthenticatedHeader history={this.props.history} selectedLink="home" {...this.props}/> :
-                    <AuthenticatedHeader /*history={this.props.history} */  selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
+                    <AuthenticatedHeader  selectedLink="home" loggedUser={this.state.loggedUser} {...this.props}/>}
                 <div className="Home Body">
                     <h1 className="Landing-Text"> {SLOGAN} </h1>
                     <ul>
@@ -121,14 +118,7 @@ export default class LandingPage extends Component {
                             ))}
                         </li>
                     </ul>
-                    <Contact/>
-                    <hr className="my-4"/>
-                    {/*<Feedback/>*/}
                     <CustomSlider/>
-                    {/*<LandingPupils/>*/}
-                    {/*<hr className="my-4"/>*/}
-                </div>
-                <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
                     <Footer/>
                 </div>
             </div>
