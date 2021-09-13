@@ -42,11 +42,11 @@ export default class CustomSlider extends Component {
                 <div className="carousel-inner">
                 <Slider>
 
-                    <Slide index={0}> <img src={feedback_1} className="slider-item" /></Slide>
-                    <Slide index={1}> <img src={feedback_2} className="slider-item" /></Slide>
-                    <Slide index={2}> <img src={feedback_3} className="slider-item" /></Slide>
-                    <Slide index={3}> <img src={feedback_4} className="slider-item" /></Slide>
-                    <Slide index={4}> <img src={feedback_5} className="slider-item" /></Slide>
+                    <Slide index={0}> <img src={feedback_1} className="slider-item" alt="" /></Slide>
+                    <Slide index={1}> <img src={feedback_2} className="slider-item" alt=""/></Slide>
+                    <Slide index={2}> <img src={feedback_3} className="slider-item" alt=""/></Slide>
+                    <Slide index={3}> <img src={feedback_4} className="slider-item" alt=""/></Slide>
+                    <Slide index={4}> <img src={feedback_5} className="slider-item" alt=""/></Slide>
                 </Slider>
                 </div>
             </CarouselProvider>
