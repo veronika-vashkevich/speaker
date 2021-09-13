@@ -74,7 +74,6 @@ export default class BeginnerCoursePage extends Component {
                         lessons={this.state.lessons}
                         description={CONTINUE_DESCRIPTION}
                     />
-                    <Contact/>
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
                     <Footer />

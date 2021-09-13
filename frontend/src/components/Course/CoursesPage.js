@@ -2,7 +2,6 @@ import React, {Component} from 'react'
 import NonAuthenticatedHeader from "../Header/NonAuthenticatedHeader";
 import Course from "../Course/Course"
 import '../../components/Header/Header.scss'
-import {ReactComponent as Beginner} from "../../images/beginner.svg";
 import LessonDataService from "../../services/LessonDataService";
 import AuthenticationService from "../../services/AuthenticationService"
 import Contact from "../Contact/Contact";
@@ -194,7 +193,7 @@ export default class CoursesPage extends Component {
                 <div className='Home'>
                     <CourseHeader className="Course-Header" selectedCourse={this.state.selectedCourse}/>
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery-courses active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'beginner' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={beginner}
                         desc1="Курс НАЧИНАЮЩИЕ (дети) "
                         desc2="6-13 лет"
@@ -205,7 +204,7 @@ export default class CoursesPage extends Component {
                         onClicked={this.imageBeginnerClick}
                     />
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery-courses active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'continue' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={continuer}
                         desc1="Курс ПРОДОЛЖАЮЩИЕ "
                         desc2="6-16 лет"
@@ -217,7 +216,7 @@ export default class CoursesPage extends Component {
                     />
 
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery-courses active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'advanced' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={advanced}
                         desc1="Курс ПРОДВИНУТЫЕ"
                         desc2="6-16 лет"
@@ -225,10 +224,10 @@ export default class CoursesPage extends Component {
                         selectedCourse="advanced"
                         lessons={this.state.lessons}
                         description= {ADVANCED_DESCRIPTION}
-                        onClicked={this.imageAdvancedClick}/>
+                        onClicked={this.imageAdvancedClick}
                     />
                     <Course
-                        classNameValue={`${this.state.selectedCourse === 'adult' ? 'gallery-courses active' : 'gallery'}`}
+                        classNameValue={`${this.state.selectedCourse === 'adult' ? 'gallery-courses active' : 'gallery-courses'}`}
                         imgSrc={adult}
                         desc1="Курс ВЗРОСЛЫЕ"
                         desc2="от 13 лет"
@@ -236,10 +235,9 @@ export default class CoursesPage extends Component {
                         selectedCourse="adult"
                         lessons={this.state.lessons}
                         description={ADULT_DESCRIPTION}
-                        onClicked={this.imageAdvancedClick}/>
+                        onClicked={this.imageAdultClick}
                     />
 
-                    <Contact/>
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
                     <Footer />

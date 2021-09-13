@@ -74,7 +74,6 @@ export default class BeginnerCoursePage extends Component {
                             description= {BEGINNER_DESCRIPTION}
                             // onClicked={this.imageBeginnerClick}
                         />
-                        <Contact/>
                     </div>
                     <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
                         <Footer />

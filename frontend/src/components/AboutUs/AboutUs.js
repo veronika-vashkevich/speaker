@@ -34,9 +34,9 @@ export default class AboutUs extends Component {
             <div className="content-wrap-about">
 
                     {/*<img src="images/project-courses.jpg" alt="Lynda & LinkedIn Learning course list">*/}
-                        <div className="project-item-about">Hi, my name is Mariya Stankevich.</div>
-                        <div className="project-item-about">I am in love of what I am doing!</div>
-                        <div className="project-item-about">Lets be friends :)</div>
+                        <div className="project-item-about"><h1>Hi, my name is Mariya Stankevich</h1></div>
+                <div className="project-item-about"><h1>I am in love of what I am doing!</h1></div>
+                <div className="project-item-about"><h1>Lets be friends :)</h1></div>
                         <a className="btn btn-primary-about"
                            href="https://www.instagram.com/speak_mast/"
                            target="_blank">Follow me</a>

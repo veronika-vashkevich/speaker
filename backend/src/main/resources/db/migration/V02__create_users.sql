@@ -7,3 +7,6 @@ CREATE TABLE `speakmast`.`users` (
   `authority` VARCHAR(45) NULL,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE,
   PRIMARY KEY (`id`));
+
+
+INSERT INTO `speakmast`.`users` (`name`, `email`, `password`) VALUES ('test', 'test', 'test');

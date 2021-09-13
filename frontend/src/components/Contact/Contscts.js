@@ -31,10 +31,10 @@ export default class Contacts extends Component {
         return (
             <div className="content-wrap-contacts">
                 <div className="project-item">
-                    <div>Email:</div>
-                    <div>speakmast@gmail.com</div>
-                    <div>WhatsApp / Viber:</div>
-                    <div> +375 44 53 45 678</div>
+                    <div><h1>Email:</h1></div>
+                    <div><h2>speakmast@gmail.com</h2></div>
+                    <div><h1>WhatsApp / Viber:</h1></div>
+                    <div> <h2>+375 44 53 45 678</h2></div>
                 </div>
             </div>
 

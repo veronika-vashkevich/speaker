@@ -5,10 +5,15 @@
   margin-top: 10%;
 }
 .carousel img {
-  height: 200px;
-  width: 410px;
+  height:500px;
+  width: 890px;
   border: 1px solid lightgrey;
 }
+
+//.carousel-inner{
+//  width:100%;
+//  max-height: 200px !important;
+//}
 
 @media screen  and (max-width: 667px) and (max-height: 375px){
   .carousel img {

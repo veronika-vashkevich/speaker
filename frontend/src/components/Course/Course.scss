@@ -1,14 +1,4 @@
 div.gallery {
-  margin: 5px auto;
-  padding-bottom: 20px;
-  border: 1px solid #ccc;
-  width: 90%;
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  column-gap: 20px;
-}
-
-div.gallery-courses {
   margin: 40px auto;
   padding-bottom: 20px;
   border: 1px solid #ccc;
@@ -22,6 +12,15 @@ div.gallery img {
   margin-top: 20px;
   width: 300px;
   height: 300px;
+}
+div.gallery-courses {
+  margin: 40px auto;
+  padding-bottom: 20px;
+  border: 1px solid #ccc;
+  width: 90%;
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  column-gap: 20px;
 }
 
 div.gallery-courses img{
@@ -72,9 +71,8 @@ div.desc {
     border: 1px solid #ccc;
     width: 90%;
     display: block;
-    //overflow: hidden;
-    //grid-template-columns: 1fr 2fr;
-    //column-gap: 20px;
+
+
   }
 
   div.gallery-courses {

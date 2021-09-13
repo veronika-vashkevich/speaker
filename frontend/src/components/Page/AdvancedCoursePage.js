@@ -72,7 +72,6 @@ export default class AdvancedCoursePage extends Component {
                         lessons={this.state.lessons}
                         description= {ADVANCED_DESCRIPTION}
                     />
-                    <Contact />
                 </div>
                 <div style={{position: "relative", margin: " 5% auto", alignItems: "center"}}>
                     <Footer />
