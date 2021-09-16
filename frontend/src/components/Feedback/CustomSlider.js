@@ -10,7 +10,12 @@ import feedback_5 from '../../images/feedback_5.png';
 import "./CustomSlider.scss"
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
+
 import 'pure-react-carousel/dist/react-carousel.es.css';
+
+const images = [900, 800, 700, 600, 500].map((size) => ({
+    src: feedback_1
+}));
 
 
 export default class CustomSlider extends Component {
@@ -32,11 +37,13 @@ export default class CustomSlider extends Component {
     render() {
         return (
 
+
             <CarouselProvider
                 naturalSlideWidth={1}
                 naturalSlideHeight={0.4}
                 totalSlides={this.state.totalSlides}
                 currentSlide={this.state.currentSlide}
+                touchEnabled={true}
                 id="home"
             > <h1 >Отзывы учеников</h1>
                 <div className="carousel-inner">
@@ -50,6 +57,7 @@ export default class CustomSlider extends Component {
                 </Slider>
                 </div>
             </CarouselProvider>
+
         );
     }
 }

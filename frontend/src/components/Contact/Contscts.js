@@ -32,9 +32,9 @@ export default class Contacts extends Component {
             <div className="content-wrap-contacts">
                 <div className="project-item">
                     <div><h1>Email:</h1></div>
-                    <div><h2>speakmast@gmail.com</h2></div>
+                    <div><h1>speakmast@gmail.com</h1></div>
                     <div><h1>WhatsApp / Viber:</h1></div>
-                    <div> <h2>+375 44 53 45 678</h2></div>
+                    <div><h1>+375 44 53 45 678</h1></div>
                 </div>
             </div>
 
